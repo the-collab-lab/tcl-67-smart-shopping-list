@@ -5,6 +5,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
     - [Dione Developer](https://github.com/DioneDeveloper) 💅
 
 ## Cohort Participants
+[Fredrick (Ricky) Barfield](https://github.com/flbarfield)
 
 ## Mentors
 
