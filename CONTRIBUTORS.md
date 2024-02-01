@@ -9,4 +9,6 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 ## Mentors
 
+- [Nicole Schnurr](https://github.com/DwightTheShark) 🥰
+
 ## Code of Conduct Contacts
