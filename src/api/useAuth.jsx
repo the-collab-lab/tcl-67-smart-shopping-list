@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { auth } from './config.js';
 import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
-import { addUserToDatabase } from './firebase.js';
+import { UserContext } from '../context/user.js';
 
 /**
  * A button that signs the user in using Google OAuth. When clicked,
@@ -32,16 +32,7 @@ export const SignOutButton = () => (
  * @see https://firebase.google.com/docs/auth/web/start#set_an_authentication_state_observer_and_get_user_data
  */
 export const useAuth = () => {
-	const [user, setUser] = useState(null);
-
-	useEffect(() => {
-		auth.onAuthStateChanged((user) => {
-			setUser(user);
-			if (user) {
-				addUserToDatabase(user);
-			}
-		});
-	}, []);
+	const { user } = useContext(UserContext);
 
 	return { user };
 };
