@@ -9,6 +9,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 [Fredrick (Ricky) Barfield](https://github.com/flbarfield) 🧙🏿‍♂️
 [Alyssa Essman](https://github.com/arbitrary-berry) 🦚
 [Jenny Takahara](https://github.com/jtkabenni) 🦂
+[Alex Berger](https://github.com/aberger3647) 🍔
 
 ## Mentors
 
