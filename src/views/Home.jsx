@@ -1,6 +1,14 @@
 import './Home.css';
+import { SingleList } from '../components/SingleList.jsx';
 
 export function Home({ data, setListPath }) {
+	const singleList = data.map((data) => (
+		<li key={data.id}>
+			<SingleList name={data.name} />
+		</li>
+	));
+	console.log(data);
+
 	return (
 		<div className="Home">
 			<p>
@@ -11,6 +19,7 @@ export function Home({ data, setListPath }) {
 				 * TODO: write some JavaScript that renders the `lists` array
 				 * so we can see which lists the user has access to.
 				 */}
+				{singleList}
 			</ul>
 		</div>
 	);
