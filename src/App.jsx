@@ -7,7 +7,6 @@ import { useAuth } from './api';
 import { useShoppingListData, useShoppingLists } from './api';
 
 import { useStateWithStorage } from './utils';
-import { UserProvider } from './context/UserProvider';
 
 export function App() {
 	/**
@@ -44,19 +43,17 @@ export function App() {
 	const data = useShoppingListData(listPath);
 
 	return (
-		<UserProvider>
-			<Router>
-				<Routes>
-					<Route path="/" element={<Layout />}>
-						<Route
-							index
-							element={<Home data={lists} setListPath={setListPath} />}
-						/>
-						<Route path="/list" element={<List data={data} />} />
-						<Route path="/manage-list" element={<ManageList />} />
-					</Route>
-				</Routes>
-			</Router>
-		</UserProvider>
+		<Router>
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route
+						index
+						element={<Home data={lists} setListPath={setListPath} />}
+					/>
+					<Route path="/list" element={<List data={data} />} />
+					<Route path="/manage-list" element={<ManageList />} />
+				</Route>
+			</Routes>
+		</Router>
 	);
 }
