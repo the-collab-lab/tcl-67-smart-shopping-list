@@ -43,8 +43,6 @@ export function App() {
 	 */
 	const data = useShoppingListData(listPath);
 
-	console.log({ lists, data });
-
 	return (
 		<Router>
 			<Routes>

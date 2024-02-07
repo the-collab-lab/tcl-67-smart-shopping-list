@@ -1,14 +1,6 @@
-import { useEffect } from 'react';
 import './Home.css';
-import { useAuth } from '../api';
 
 export function Home({ data, setListPath }) {
-	const { user } = useAuth();
-
-	useEffect(() => {
-		setListPath(`${data.name}/${data.path}`);
-	}, []);
-
 	return (
 		<div className="Home">
 			<p>
