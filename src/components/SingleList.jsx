@@ -2,12 +2,12 @@ import './SingleList.css';
 
 export function SingleList({ name, path, setListPath }) {
 	function handleClick() {
-		setListPath(path);
+		setListPath(`${name}/${path}`);
 	}
 
 	return (
 		<li className="SingleList">
-			<button onClick={handleClick}>{name}</button>
+			<button onClick={handleClick}>{path}</button>
 		</li>
 	);
 }

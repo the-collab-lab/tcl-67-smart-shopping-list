@@ -2,13 +2,16 @@ import './Home.css';
 import { SingleList } from '../components/SingleList.jsx';
 
 export function Home({ data, setListPath }) {
-	const singleList = data.map((data) => (
-		<li key={data.id}>
-			<SingleList name={data.name} />
-		</li>
-	));
-	console.log(data);
-
+	const singleList = data.map((data) => {
+		return (
+			<SingleList
+				key={data.name}
+				name={data.name}
+				path={data.path}
+				setListPath={setListPath}
+			/>
+		);
+	});
 	return (
 		<div className="Home">
 			<p>

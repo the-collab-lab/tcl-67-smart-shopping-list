@@ -1,12 +1,9 @@
 import { ListItem } from '../components';
 
 export function List({ data }) {
-	const listItems = data.map((data) => (
-		<li key={data.id}>
-			<ListItem name={data.name} />
-		</li>
-	));
-	console.log(data);
+	const listItems = data.map((data) => {
+		return <ListItem key={data.id} name={data.name} />;
+	});
 
 	return (
 		<>
