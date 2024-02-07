@@ -7,6 +7,7 @@ import { useAuth } from './api';
 import { useShoppingListData, useShoppingLists } from './api';
 
 import { useStateWithStorage } from './utils';
+import { useEffect } from 'react';
 
 export function App() {
 	/**
@@ -41,6 +42,8 @@ export function App() {
 	 * Check ./api/firestore.js for its implementation.
 	 */
 	const data = useShoppingListData(listPath);
+
+	console.log({ lists, data });
 
 	return (
 		<Router>
