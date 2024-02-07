@@ -7,7 +7,6 @@ import { useAuth } from './api';
 import { useShoppingListData, useShoppingLists } from './api';
 
 import { useStateWithStorage } from './utils';
-import { useEffect } from 'react';
 
 export function App() {
 	/**
