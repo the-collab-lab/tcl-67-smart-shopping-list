@@ -1,6 +1,10 @@
 import { ListItem } from '../components';
 
 export function List({ data }) {
+	const listItems = data.map((data) => {
+		return <ListItem key={data.id} name={data.name} />;
+	});
+
 	return (
 		<>
 			<p>
@@ -12,6 +16,7 @@ export function List({ data }) {
 				 * using the `ListItem` component that's imported at the top
 				 * of this file.
 				 */}
+				{listItems}
 			</ul>
 		</>
 	);
