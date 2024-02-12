@@ -64,7 +64,7 @@ This document serves as your comprehensive guide to all available resources nece
 
 | 📖 Self-study learning modules                         | Description                                                                                                                                                                            |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [How to tell your story](https://youtu.be/Zhtd-DdTwSs) | Refine the skill of effectively telling your story in interviews and when meeting new people, allowing you to leave a lasting impression and stand out during the application process. |
+| [How to tell your story](https://youtu.be/Zhtd-DdTwSs?si=XMPc7_JvWdzUUYPJ&t=83) | Refine the skill of effectively telling your story in interviews and when meeting new people, allowing you to leave a lasting impression and stand out during the application process. |
 
 ### Week 4, February 25 - March 2
 
@@ -98,7 +98,7 @@ This document serves as your comprehensive guide to all available resources nece
 
 | 📖 Self-study learning modules                                             | Description                                                                                                                                                           |
 | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Navigating finances during a career change](https://youtu.be/xtkgOmFPUJU) | This presentation will teach you invaluable techniques on how to effectively navigate finances during a career change, setting you up for success in your transition. |
+| [Navigating finances during a career change](https://youtu.be/xtkgOmFPUJU&t=202s) | This presentation will teach you invaluable techniques on how to effectively navigate finances during a career change, setting you up for success in your transition. |
 
 ### Week 6, March 10 - 16
 
@@ -166,8 +166,7 @@ This document serves as your comprehensive guide to all available resources nece
 
 | 📖 Self-study learning modules                                                                                         | Description                                                                                       |
 | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Review, prepare for, schedule, and complete the [Job-Fit Mock Interview](./learning-modules/mock-interview-job-fit.md) |                                                                                                   |
-| [Takehome Assignment](./learning-modules/complete-take-home-assignment.md)                                             | Complete the take home assignement that will be used in your Technical Mock Interview in Week 10. |
+| Job-Fit Mock Interview | We will be using Interviewable to practice responding to common interview questions. Stay tuned for login details.                                           |
 
 ### Week 10, April 7 - 13
 
@@ -180,6 +179,7 @@ This document serves as your comprehensive guide to all available resources nece
 | --------------------- | --------------------------------------------------------------------------------------- |
 |                       | No assigned issues. This is a good chance to address any emergent work defined by team. |
 
-| 📖 Self-study learning modules                                                                                           |
-| ------------------------------------------------------------------------------------------------------------------------ |
-| Review, prepare for, schedule, and complete the [Technical Mock Interview](./learning-modules/mock-interview-job-fit.md) |
+| 📖 Self-study learning modules                                                                                         | Description                                                                                       |
+| ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Technical Mock Interview | We will be using Interviewable to practice responding to common interview questions. Stay tuned for login details.                                           |
+
