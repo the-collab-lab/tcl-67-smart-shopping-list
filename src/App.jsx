@@ -48,10 +48,10 @@ export function App() {
 				<Route path="/" element={<Layout />}>
 					<Route
 						index
-						element={<Home data={lists} setListPath={setListPath} />}
+						element={<Home data={lists} setListPath={setListPath} exact />}
 					/>
-					<Route path="/list" element={<List data={data} />} />
-					<Route path="/manage-list" element={<ManageList />} />
+					<Route path="/list" element={<List data={data} />} exact />
+					<Route path="/manage-list" element={<ManageList />} exact />
 				</Route>
 			</Routes>
 		</Router>
