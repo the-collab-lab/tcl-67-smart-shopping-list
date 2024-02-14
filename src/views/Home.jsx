@@ -13,13 +13,13 @@ export function Home({ data, setListPath }) {
 	const handleChange = (e) => {
 		setListName(e.target.value);
 	};
-
+	console.log(data);
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		try {
 			await createList(auth.currentUser.uid, auth.currentUser.email, listName);
-			setMessage('List created');
+			setMessage('List created, redirecting in 1 second...');
 			setTimeout(() => {
 				navigate('/list');
 			}, '1000');
@@ -34,15 +34,11 @@ export function Home({ data, setListPath }) {
 			<p>
 				Hello from the home (<code>/</code>) page!
 			</p>
-			<form onSubmit={(e) => handleSubmit(e)}>
+			<form onSubmit={handleSubmit}>
 				<label htmlFor="listName" name="listName">
 					List Name
 				</label>
-				<input
-					id="listName"
-					name="listName"
-					onChange={(e) => handleChange(e)}
-				></input>
+				<input id="listName" name="listName" onChange={handleChange}></input>
 				<button type="submit">Submit</button>
 			</form>
 
