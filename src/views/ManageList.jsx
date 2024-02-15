@@ -39,7 +39,7 @@ export function ManageList({ listPath }) {
 						value={userItem}
 					/>
 				</div>
-				<span>Remind me to replace item in...</span> <br />
+				<span>Remind me to replace the item in...</span> <br />
 				<select
 					onChange={(e) => setItemDuration(e.target.value)}
 					name="replaceTime"
