@@ -10,6 +10,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 [Alyssa Essman](https://github.com/arbitrary-berry) 🦚
 [Jenny Takahara](https://github.com/jtkabenni) 🦂
 [Alex Berger](https://github.com/aberger3647) 🍔
+[Tishtanya Shaw](https://github.com/tishshaw) 🐢
 
 ## Mentors
 
