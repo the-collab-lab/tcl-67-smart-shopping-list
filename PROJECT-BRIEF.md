@@ -19,10 +19,10 @@ This document serves as your comprehensive guide to all available resources nece
 | Pair Programming | Schedule a pairing session(s) with your partner early in the week to complete the development work required to meet the acceptance criteria of your Github issue.                                                                        |
 | Optional         | Office Hours                                                                                                                                                                                                                             |
 
-| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                    |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Alyssa & Alexandra     | [2. As a user, I want to read all of my shopping lists and the items in them](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/2)                                          |
-| Jenny & Fredrick     | [3. As a user, I want to be able to navigate to all the pages in the application by clicking the links in the nav bar](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/3) |
+| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                                                                      |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tishtanya & Alexandra | [2. As a user, I want to read all of my shopping lists and the items in them](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/2)                                          |
+| Jenny & Fredrick      | [3. As a user, I want to be able to navigate to all the pages in the application by clicking the links in the nav bar](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/3) |
 
 | 📖 Self-study learning modules                                                                                                                                                      | Description                                                                                                                                              |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -40,10 +40,10 @@ This document serves as your comprehensive guide to all available resources nece
 | Pair Programming | Schedule a pairing session(s) with your partner early in the week to complete the development work required to meet the acceptance criteria of your Github issue. |
 | Optional         | Office Hours                                                                                                                                                      |
 
-| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                              |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                                                |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Alexandra & Jenny     | [4. As a user, I want to set up a new shopping list so I can start tracking purchased items.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/4)    |
-| Alyssa & Fredrick     | [5. As a user, I want to add a new item to my shopping list so I can start recording purchases.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/5) |
+| Tishtanya & Fredrick  | [5. As a user, I want to add a new item to my shopping list so I can start recording purchases.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/5) |
 
 | 📖 Self-study learning modules                                                                                                                                | Description                                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -57,10 +57,10 @@ This document serves as your comprehensive guide to all available resources nece
 | Pair Programming | Schedule a pairing session(s) with your partner early in the week to complete the development work required to meet the acceptance criteria of your Github issue. |
 | Optional         | Office Hours                                                                                                                                                      |
 
-| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Jenny & Alyssa     | [6. As a user, I want to be able to invite others to an existing shopping list.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/6)                   |
-| Fredrick & Alexandra     | [7. As a user, I want to filter my shopping list to make it easier to locate an item in the list.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/7) |
+| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                                                  |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Jenny & Tishtanya     | [6. As a user, I want to be able to invite others to an existing shopping list.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/6)                   |
+| Fredrick & Alexandra  | [7. As a user, I want to filter my shopping list to make it easier to locate an item in the list.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/7) |
 
 | 📖 Self-study learning modules                         | Description                                                                                                                                                                            |
 | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -74,10 +74,10 @@ This document serves as your comprehensive guide to all available resources nece
 | Pair Programming | Schedule a pairing session(s) with your partner early in the week to complete the development work required to meet the acceptance criteria of your Github issue. |
 | Optional         | Office Hours                                                                                                                                                      |
 
-| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                                      |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Alyssa & Alexandra     | [8. As a user, I want to see a welcoming prompt to add my first item if my list is empty to help me get oriented to how the app works. ](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/8) |
-| Jenny & Fredrick     | [9. As a user, I want to mark an item on my shopping list as purchased so the app can learn how often I buy different items.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/9)            |
+| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                                                                                        |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tishtanya & Alexandra | [8. As a user, I want to see a welcoming prompt to add my first item if my list is empty to help me get oriented to how the app works. ](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/8) |
+| Jenny & Fredrick      | [9. As a user, I want to mark an item on my shopping list as purchased so the app can learn how often I buy different items.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/9)            |
 
 | 📖 Self-study learning modules                                                                | Description                                                                                                                                                                     |
 | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -91,10 +91,10 @@ This document serves as your comprehensive guide to all available resources nece
 | Pair Programming | Schedule a pairing session(s) with your partner early in the week to complete the development work required to meet the acceptance criteria of your Github issue. |
 | Optional         | Office Hours                                                                                                                                                      |
 
-| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                                                                                |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                                                                                                                                  |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Alexandra & Jenny     | [10. As a user, I want to be alerted when I’m entering an empty item or an item that's already on my list.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/10)                                                                       |
-| Alyssa & Fredrick     | [11. As an item, I want my estimated next purchase date to be computed at the time my purchase is recorded in the database so the app can learn how often I buy different items.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/11) |
+| Tishtanya & Fredrick  | [11. As an item, I want my estimated next purchase date to be computed at the time my purchase is recorded in the database so the app can learn how often I buy different items.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/11) |
 
 | 📖 Self-study learning modules                                             | Description                                                                                                                                                           |
 | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -108,10 +108,10 @@ This document serves as your comprehensive guide to all available resources nece
 | Pair Programming | Schedule a pairing session(s) with your partner early in the week to complete the development work required to meet the acceptance criteria of your Github issue. |
 | Optional         | Office Hours                                                                                                                                                      |
 
-| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                                                                              |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Jenny & Alyssa     | [12. As a user, I want to be able to delete items from my shopping list so that my list isn’t cluttered with items I don’t want to buy in the future.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/12)                          |
-| Fredrick & Alexandra     | [13. As a user, I want to view a list of my shopping list items in order of how soon I am likely to need to buy each of them again so that it’s clear what I need to buy soon.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/13) |
+| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                                                                                                                                |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Jenny & Tishtanya     | [12. As a user, I want to be able to delete items from my shopping list so that my list isn’t cluttered with items I don’t want to buy in the future.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/12)                          |
+| Fredrick & Alexandra  | [13. As a user, I want to view a list of my shopping list items in order of how soon I am likely to need to buy each of them again so that it’s clear what I need to buy soon.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/13) |
 
 | 📖 Self-study learning modules                                                       | Description                                                                                                                       |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -125,8 +125,8 @@ This document serves as your comprehensive guide to all available resources nece
 | Pair Programming | Schedule a pairing session(s) with your partner early in the week to complete the development work required to meet the acceptance criteria of your Github issue. |
 | Optional         | - Office Hours <br> - Design meeting with Mark                                                                                                                    |
 
-| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                 |
-| --------------------- | ---------------------------------------------------------------------------------------- |
+| 🤝 Developer pairings | 🖥 Assigned Github issue                                                                                                                   |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | Full team             | [14. As a user, I want the app to look professional and welcoming](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/14) |
 
 | 📖 Self-study learning modules                                                     | Description                                                                                                                     |
@@ -155,7 +155,7 @@ This document serves as your comprehensive guide to all available resources nece
 
 | 👋 Sync meetings                   | Agenda                                                                                                                            |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Final Weekly Sync                  | - Demo <br> - Retro <br> - Planning                                                                                                            |
+| Final Weekly Sync                  | - Demo <br> - Retro <br> - Planning                                                                                               |
 | Pair Programming / Design planning | During this week, you should aim to collaborate as a full team to create a plan for implementing an engagind design for your app. |
 | Job Fit Mock Interview             | Practice a job fit interview with the mentor you've been assigned                                                                 |
 | Optional                           | Office Hours                                                                                                                      |
