@@ -6,6 +6,7 @@ import {
 	doc,
 	onSnapshot,
 	updateDoc,
+	addDoc,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
@@ -163,9 +164,8 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
  */
 export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 	const listCollectionRef = collection(db, listPath, 'items');
-	// Previously code had this displaying as a console.log, now intending
-	// to create a document via Firebase function
-	return setDoc(listCollectionRef, {
+
+	return addDoc(listCollectionRef, {
 		dateCreated: new Date(),
 		// NOTE: This is null because the item has just been created.
 		// We'll use updateItem to put a Date here when the item is purchased!
