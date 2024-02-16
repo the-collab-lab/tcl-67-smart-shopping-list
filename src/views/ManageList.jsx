@@ -11,15 +11,19 @@ export function ManageList({ listPath }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		try {
-			await addItem(listPath, {
-				itemName: userItem,
-				daysUntilNextPurchase: itemDuration,
-			});
-			setMessage('Item added to the list!');
-		} catch (error) {
-			setMessage('Unable to add item to the list.');
-			console.error(error);
+		if (userItem.trim() === '') {
+			setMessage('Please enter a name for your item');
+		} else {
+			try {
+				await addItem(listPath, {
+					itemName: userItem,
+					daysUntilNextPurchase: itemDuration,
+				});
+				setMessage('Item added to the list!');
+			} catch (error) {
+				setMessage('Unable to add item to the list.');
+				console.error(error);
+			}
 		}
 	};
 
