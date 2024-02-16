@@ -19,7 +19,7 @@ export function ManageList({ listPath }) {
 			setMessage('Item added to the list!');
 		} catch (error) {
 			setMessage('Unable to add item to the list.');
-			console.log(error);
+			console.error(error);
 		}
 	};
 
@@ -29,7 +29,7 @@ export function ManageList({ listPath }) {
 				Hello from the <code>/manage-list</code> page!
 			</p>
 
-			<form onSubmit={handleSubmit} method="POST">
+			<form onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor="itemName">Item Name: </label>
 					<input
