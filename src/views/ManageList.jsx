@@ -27,6 +27,14 @@ export function ManageList({ listPath }) {
 		}
 	};
 
+	if (!listPath) {
+		return (
+			<>
+				<span>Currently, there is no list set to manage items for.</span>
+			</>
+		);
+	}
+
 	return (
 		<>
 			<p>
