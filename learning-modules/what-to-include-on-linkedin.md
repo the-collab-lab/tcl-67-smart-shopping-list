@@ -1,20 +1,10 @@
 # Async: What to include on your LinkedIn profile
 
-> **Homework:** Please spend at least **1 hour on Monday or Tuesday** watching the videos below and working on your LinkedIn profile in preparation for a Q&A session.
-
-## Collabies:
-
-Please ping your assigned mentor with your profile that is ready for review no later than Wednesday, August 31st!
-
-## Mentors:
-
-Please have review and [rubric](https://docs.google.com/spreadsheets/d/1e0n1k6izyZM0mkmkL9zezr7FW2-qRLu-bmFnYBLVkLs/copy) submitted to Collabies by [DATE].
-
 It is a well-known fact: **LinkedIn is the home of recruiters.** This is where they live and breathe. This is where they search for potential candidates. As a job searcher, you want to **make sure your LinkedIn profile attracts the recruiter’s attention.** The aim of this lesson is to help you maximize your chances of being seen on LinkedIn by creating a strong LinkedIn profile.
 
 In this lesson, we will go over each of the main parts of a LinkedIn profile. To make it easier for you, we’ve divided the LinkedIn profile into 3 parts listed below. **Each part has a video you should watch.**
 
-**What you need to do**: Watch the video for each of the parts listed below and make changes to your LinkedIn profile based on the suggestions in the video. Once you have made the changes requested, let us know and we will pair you with a mentor who will give you feedback on your profile.
+**What you need to do**: Watch the video for each of the parts listed below and make changes to your LinkedIn profile based on the suggestions in the video. You can use this [rubric](https://docs.google.com/spreadsheets/d/1e0n1k6izyZM0mkmkL9zezr7FW2-qRLu-bmFnYBLVkLs/copy) to guide you. If you would like to have your updated profile reviewed and receive feedback, make a post in the #linkedin-review Slack channel, include links to your LinkedIn profile and your rubric, and a volunteer will take a look.
 
 # Let’s get started!
 
