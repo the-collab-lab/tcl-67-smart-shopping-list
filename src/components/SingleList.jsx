@@ -2,7 +2,7 @@ import './SingleList.css';
 
 export function SingleList({ name, path, setListPath }) {
 	function handleClick() {
-		setListPath(`${name}/${path}`);
+		setListPath(path);
 	}
 
 	return (
