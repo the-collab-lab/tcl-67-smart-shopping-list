@@ -132,7 +132,6 @@ This document serves as your comprehensive guide to all available resources nece
 | 📖 Self-study learning modules                                                     | Description                                                                                                                     |
 | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | [How to rock the technical interview](https://www.youtube.com/watch?v=X-7eKmYqM8M) | This video is packed with invaluable insights to enhance your success in a variety of technical interviews.                     |
-| [Pair interview practice](./learning-modules/pair-interview-practice.md)           | Familiarize yourself with these questions so you can pair up with a fellow Collabie next week and engage in effective practice. |
 
 ### Week 8, March 24 - 30
 
@@ -140,7 +139,6 @@ This document serves as your comprehensive guide to all available resources nece
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | Weekly Sync                        | - Demo <br> - Planning                                                                                                            |
 | Pair Programming / Design planning | During this week, you should aim to collaborate as a full team to create a plan for implementing an engagind design for your app. |
-| Pair Interview Practice            | Get together with some fellow Collabies to practice some common interview questions.                                              |
 | Optional                           | - Office Hours <br> - Design meeting with Mark                                                                                    |
 
 | 🤝 Developer pairings | 🖥 Assigned Github issue                                                                |
