@@ -166,8 +166,6 @@ This document serves as your comprehensive guide to all available resources nece
 | 📖 Self-study learning modules                                                                                         | Description                                                                                       |
 | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | Review, prepare for, schedule, and complete the [Job-Fit Mock Interview](./learning-modules/mock-interview-job-fit.md) |                                                                                                   |
-| [Takehome Assignment](./learning-modules/complete-take-home-assignment.md)                                             | Complete the take home assignment that will be used in your Technical Mock Interview in Week 10. |
-
 ### Week 10, April 7 - 13
 
 | 👋 Sync meetings          | Agenda                                                                                                                          |
