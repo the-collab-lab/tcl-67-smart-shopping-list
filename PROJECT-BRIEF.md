@@ -156,8 +156,7 @@ This document serves as your comprehensive guide to all available resources nece
 | 👋 Sync meetings                   | Agenda                                                                                                                            |
 | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | Final Weekly Sync                  | - Demo <br> - Retro <br> - Planning                                                                                               |
-| Pair Programming / Design planning | During this week, you should aim to collaborate as a full team to create a plan for implementing an engagind design for your app. |
-| Job Fit Mock Interview             | Practice a job fit interview with the mentor you've been assigned                                                                 |
+| Pair Programming / Design planning | During this week, you should aim to collaborate as a full team to create a plan for implementing an engaging design for your app. |
 | Optional                           | Office Hours                                                                                                                      |
 
 | 🤝 Developer pairings | 🖥 Assigned Github issue                                                                |
@@ -167,13 +166,12 @@ This document serves as your comprehensive guide to all available resources nece
 | 📖 Self-study learning modules                                                                                         | Description                                                                                       |
 | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | Review, prepare for, schedule, and complete the [Job-Fit Mock Interview](./learning-modules/mock-interview-job-fit.md) |                                                                                                   |
-| [Takehome Assignment](./learning-modules/complete-take-home-assignment.md)                                             | Complete the take home assignement that will be used in your Technical Mock Interview in Week 10. |
+| [Takehome Assignment](./learning-modules/complete-take-home-assignment.md)                                             | Complete the take home assignment that will be used in your Technical Mock Interview in Week 10. |
 
 ### Week 10, April 7 - 13
 
 | 👋 Sync meetings          | Agenda                                                                                                                          |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Technical Mock Interview  | Practice a technical mock interview using your take-home assignment with the mentor you've been assigned.                       |
 | Cohort Demo / Celebration | Join all the teams in your cohort to walk through your app and celebrate all the hard work we've put in over the last 10 weeks! |
 
 | 🤝 Developer pairings | 🖥 Assigned Github issue                                                                |
