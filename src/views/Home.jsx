@@ -13,7 +13,7 @@ export function Home({ data, setListPath }) {
 	const handleChange = (e) => {
 		setListName(e.target.value);
 	};
-	console.log(data);
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
@@ -38,7 +38,7 @@ export function Home({ data, setListPath }) {
 				<label htmlFor="listName" name="listName">
 					List Name
 				</label>
-				<input id="listName" name="listName" onChange={handleChange}></input>
+				<input id="listName" name="listName" onChange={handleChange} />
 				<button type="submit">Submit</button>
 			</form>
 
