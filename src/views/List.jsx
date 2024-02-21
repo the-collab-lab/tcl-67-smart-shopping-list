@@ -1,28 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ListItem } from '../components';
 
 export function List({ data }) {
-	const [currentItems, setCurrentItems] = useState('');
-	const [list, setList] = useState([]);
 	const [input, setInput] = useState('');
 
+	const filteredItems = data.filter((item) => {
+		if (input) {
+			const lowerCaseItemName = item.name.toLowerCase();
+			return lowerCaseItemName.includes(input.toLowerCase());
+		} else {
+			return item;
+		}
+	});
+
 	function handleInputChange(e) {
-		setCurrentItems(e.target.value);
 		setInput(e.target.value);
 	}
 
-	useEffect(() => {
-		const filteredItems = data.filter((item) =>
-			item.name.includes(currentItems),
-		);
-		const newListItems = filteredItems.map((item) => (
-			<ListItem key={item.id} name={item.name} />
-		));
-		setList(newListItems);
-	}, [data, currentItems]);
-
 	function clearSearch() {
-		setCurrentItems('');
 		setInput('');
 	}
 
@@ -41,7 +36,11 @@ export function List({ data }) {
 			<p>
 				Hello from the <code>/list</code> page!
 			</p>
-			<ul>{list}</ul>
+			<ul>
+				{filteredItems.map((item) => (
+					<ListItem key={item.id} name={item.name} />
+				))}
+			</ul>
 		</>
 	);
 }
