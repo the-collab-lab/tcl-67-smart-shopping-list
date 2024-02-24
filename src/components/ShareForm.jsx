@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { shareList } from '../api/firebase';
-import { auth } from '../api/config';
+import { useAuth } from '../api';
 
 const ShareForm = ({ listPath }) => {
+	const { user } = useAuth();
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
 
@@ -11,15 +12,11 @@ const ShareForm = ({ listPath }) => {
 
 		if (email) {
 			try {
-				const response = await shareList(listPath, auth.currentUser.uid, email);
-
-				if (response.status === true) {
-					setMessage(response.reason);
-				} else {
-					setMessage(response.reason);
-				}
+				const response = await shareList(listPath, user.uid, email);
+				setMessage(response);
 			} catch (error) {
 				console.error(error.message);
+				setMessage(error.message);
 			}
 		}
 	};
