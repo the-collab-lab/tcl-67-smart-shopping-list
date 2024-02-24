@@ -1,5 +1,6 @@
 import { addItem } from '../api/firebase';
 import { useState } from 'react';
+import ShareForm from '../components/ShareForm';
 
 export function ManageList({ listPath }) {
 	const [message, setMessage] = useState('');
@@ -68,6 +69,7 @@ export function ManageList({ listPath }) {
 					<span>{message}</span>
 				</div>
 			</form>
+			<ShareForm listPath={listPath} />
 		</>
 	);
 }
