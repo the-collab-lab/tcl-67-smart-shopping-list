@@ -38,7 +38,7 @@ export function List({ data }) {
 			</p>
 			<ul>
 				{filteredItems.map((item) => (
-					<ListItem key={item.id} name={item.name} />
+					<ListItem key={item.id} item={item} />
 				))}
 			</ul>
 		</>
