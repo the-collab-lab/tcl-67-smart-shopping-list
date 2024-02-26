@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { ListItem } from '../components';
+import { useNavigate } from 'react-router-dom';
 
 export function List({ data }) {
 	const [input, setInput] = useState('');
+
+	const navigate = useNavigate();
 
 	const filteredItems = data.filter((item) => {
 		if (input) {
@@ -37,9 +40,18 @@ export function List({ data }) {
 				Hello from the <code>/list</code> page!
 			</p>
 			<ul>
-				{filteredItems.map((item) => (
-					<ListItem key={item.id} name={item.name} />
-				))}
+				{filteredItems.length > 0 ? (
+					filteredItems.map((item) => (
+						<ListItem key={item.id} name={item.name} />
+					))
+				) : (
+					<div>
+						<p>There are no items in this list!</p>
+						<button onClick={() => navigate('/manage-list')}>
+							Add item to list
+						</button>
+					</div>
+				)}
 			</ul>
 		</>
 	);
