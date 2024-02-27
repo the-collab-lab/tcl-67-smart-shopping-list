@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './ListItem.css';
 import { updateItem } from '../api/firebase';
 
 export function ListItem({ item, listPath }) {
 	const { id, totalPurchases, name, dateLastPurchased } = item;
-	const lessThan24HoursSincePurchase =
-		dateLastPurchased &&
-		(new Date() - dateLastPurchased.toDate()) / 3600000 < 24;
+
+	const isLessThan24HoursSinceLastPurchased =
+		compareIfDateIsLessThan24Hours(dateLastPurchased);
 
 	const [isChecked, setIsChecked] = useState(
-		lessThan24HoursSincePurchase || false,
+		isLessThan24HoursSinceLastPurchased || false,
 	);
+
+	function compareIfDateIsLessThan24Hours(date) {
+		return date && (new Date() - date.toDate()) / 3600000 < 24;
+	}
 
 	async function handleCheckboxCheck() {
 		setIsChecked(!isChecked);
