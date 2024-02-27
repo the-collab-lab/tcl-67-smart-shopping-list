@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ListItem } from '../components';
 
-export function List({ data }) {
+export function List({ data, listPath }) {
 	const [input, setInput] = useState('');
 
 	const filteredItems = data.filter((item) => {
@@ -38,7 +38,7 @@ export function List({ data }) {
 			</p>
 			<ul>
 				{filteredItems.map((item) => (
-					<ListItem key={item.id} item={item} />
+					<ListItem key={item.id} item={item} listPath={listPath} />
 				))}
 			</ul>
 		</>
