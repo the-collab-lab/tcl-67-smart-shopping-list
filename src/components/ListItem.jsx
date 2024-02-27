@@ -16,11 +16,10 @@ export function ListItem({ item, listPath }) {
 		setIsChecked(!isChecked);
 		if (!isChecked) {
 			try {
-				const updatedItem = await updateItem(listPath, {
+				await updateItem(listPath, {
 					itemId: id,
 					totalPurchases: totalPurchases,
 				});
-				console.log(updatedItem);
 			} catch (error) {
 				console.error(error);
 			}
