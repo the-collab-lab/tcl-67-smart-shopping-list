@@ -189,10 +189,10 @@ export async function updateItem(listPath, { itemId, totalPurchases }) {
 	const itemDoc = doc(db, listPath, 'items', itemId);
 
 	updateDoc(itemDoc, {
-		dateLastPurchased: Date.now(),
+		dateLastPurchased: new Date(),
 		totalPurchases: totalPurchases + 1,
 	});
-	return 'success!';
+	return 'Item purchased!';
 }
 
 export async function deleteItem() {

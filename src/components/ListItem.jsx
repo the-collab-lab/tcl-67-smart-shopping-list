@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ListItem.css';
 import { updateItem } from '../api/firebase';
 
 export function ListItem({ item, listPath }) {
-	console.log(item);
 	const { id, totalPurchases, name, dateLastPurchased } = item;
-	const [isChecked, setIsChecked] = useState(false);
-	// on click, update lastPurchased and total purchases for item.
+	const lessThan24HoursSincePurchase =
+		dateLastPurchased &&
+		(new Date() - dateLastPurchased.toDate()) / 3600000 < 24;
+
+	const [isChecked, setIsChecked] = useState(
+		lessThan24HoursSincePurchase || false,
+	);
+
 	async function handleCheckboxCheck() {
 		setIsChecked(!isChecked);
-		console.log(id, totalPurchases);
-		try {
-			const updatedItem = await updateItem(listPath, {
-				itemId: id,
-				totalPurchases: totalPurchases,
-			});
-			console.log(updatedItem);
-		} catch (error) {
-			console.error(error);
+		if (!isChecked) {
+			try {
+				const updatedItem = await updateItem(listPath, {
+					itemId: id,
+					totalPurchases: totalPurchases,
+				});
+				console.log(updatedItem);
+			} catch (error) {
+				console.error(error);
+			}
 		}
 	}
 
@@ -31,7 +37,6 @@ export function ListItem({ item, listPath }) {
 				onChange={handleCheckboxCheck}
 			/>
 			<label htmlFor="item">{name}</label>
-			{dateLastPurchased}
 		</div>
 	);
 }
