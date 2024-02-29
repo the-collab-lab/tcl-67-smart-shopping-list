@@ -8,6 +8,10 @@ import { useShoppingListData, useShoppingLists } from './api';
 
 import { useStateWithStorage } from './utils';
 
+import { QueryClientProvider, QueryClient } from 'react-query';
+
+const queryClient = new QueryClient();
+
 export function App() {
 	/**
 	 * This custom hook takes the path of a shopping list
@@ -43,23 +47,25 @@ export function App() {
 	const data = useShoppingListData(listPath);
 
 	return (
-		<Router>
-			<Routes>
-				<Route path="/" element={<Layout />}>
-					<Route
-						index
-						element={<Home data={lists} setListPath={setListPath} exact />}
-					/>
-					<Route
-						path="/list"
-						element={<List data={data} listPath={listPath} />}
-					/>
-					<Route
-						path="/manage-list"
-						element={<ManageList listPath={listPath} />}
-					/>
-				</Route>
-			</Routes>
-		</Router>
+		<QueryClientProvider client={queryClient}>
+			<Router>
+				<Routes>
+					<Route path="/" element={<Layout />}>
+						<Route
+							index
+							element={<Home data={lists} setListPath={setListPath} exact />}
+						/>
+						<Route
+							path="/list"
+							element={<List data={data} listPath={listPath} />}
+						/>
+						<Route
+							path="/manage-list"
+							element={<ManageList listPath={listPath} />}
+						/>
+					</Route>
+				</Routes>
+			</Router>
+		</QueryClientProvider>
 	);
 }
