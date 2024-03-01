@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import './ListItem.css';
 import { updateItem } from '../api/firebase';
-import { useQuery } from 'react-query';
+import { useMutation } from 'react-query';
+
+async function markAsPurchased({ listPath, id, totalPurchases }) {
+	await updateItem(listPath, {
+		itemId: id,
+		totalPurchases: totalPurchases,
+	});
+}
 
 export function ListItem({ item, listPath }) {
 	const { id, totalPurchases, name, dateLastPurchased } = item;
@@ -19,25 +26,20 @@ export function ListItem({ item, listPath }) {
 		return date && (new Date() - date.toDate()) / 3600000 < 24;
 	}
 
-	const { error, data, isFetching } = useQuery('markAsPurchased', () =>
-		markAsPurchased(),
-	);
+	const {
+		error,
+		isLoading,
+		mutateAsync: markAsPurchasedMutation,
+	} = useMutation({
+		mutationFn: markAsPurchased,
+	});
 
-	async function markAsPurchased() {
-		await updateItem(listPath, {
-			itemId: id,
-			totalPurchases: totalPurchases,
-		});
-	}
+	const isDisabled = isChecked || isLoading;
 
 	async function handleCheckboxCheck() {
 		setIsChecked(!isChecked);
 		if (!isChecked) {
-			try {
-				await markAsPurchased();
-			} catch (error) {
-				console.error(error);
-			}
+			await markAsPurchasedMutation({ listPath, id, totalPurchases });
 		}
 	}
 
@@ -49,10 +51,11 @@ export function ListItem({ item, listPath }) {
 				name="item"
 				checked={isChecked || false}
 				onChange={handleCheckboxCheck}
+				disabled={isDisabled}
 			/>
 			<label htmlFor="item">{name}</label>
-			{error ? <p>Error marking as purchased</p> : ''}
-			{isFetching ? <p>Marking item as purchased...</p> : ''}
+			{error && <p>Error marking as purchased</p>}
+			{isLoading && <p>Updating item as purchased...</p>}
 		</div>
 	);
 }
