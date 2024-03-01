@@ -40,16 +40,22 @@ export function List({ data }) {
 				Hello from the <code>/list</code> page!
 			</p>
 			<ul>
-				{filteredItems.length > 0 ? (
-					filteredItems.map((item) => (
-						<ListItem key={item.id} name={item.name} />
-					))
-				) : (
+				{filteredItems.map((item) => (
+					<ListItem key={item.id} name={item.name} />
+				))}
+
+				{data.length === 0 && (
 					<div>
 						<p>There are no items in this list!</p>
 						<button onClick={() => navigate('/manage-list')}>
 							Add item to list
 						</button>
+					</div>
+				)}
+
+				{data.length > 0 && filteredItems.length === 0 && (
+					<div>
+						<p>No match found for that filter query.</p>
 					</div>
 				)}
 			</ul>
