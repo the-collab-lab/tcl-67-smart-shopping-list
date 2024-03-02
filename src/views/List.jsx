@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ListItem } from '../components';
 import { useNavigate } from 'react-router-dom';
 
-export function List({ data }) {
+export function List({ data, listPath }) {
 	const [input, setInput] = useState('');
 
 	const navigate = useNavigate();
@@ -41,7 +41,7 @@ export function List({ data }) {
 			</p>
 			<ul>
 				{filteredItems.map((item) => (
-					<ListItem key={item.id} name={item.name} />
+					<ListItem key={item.id} item={item} listPath={listPath} />
 				))}
 
 				{data.length === 0 && (

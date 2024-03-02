@@ -145,7 +145,7 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
 	const recipientDoc = await getDoc(doc(usersCollectionRef, recipientEmail));
 	// If the recipient user doesn't exist, we can't share the list.
 	if (!recipientDoc.exists()) {
-		throw new Error('User do not exist!');
+		throw new Error('User does not exist!');
 	}
 
 	// Add the list to the recipient user's sharedLists array.
@@ -179,12 +179,20 @@ export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 	});
 }
 
-export async function updateItem() {
+export async function updateItem(listPath, { itemId, totalPurchases }) {
 	/**
 	 * TODO: Fill this out so that it uses the correct Firestore function
 	 * to update an existing item. You'll need to figure out what arguments
 	 * this function must accept!
 	 */
+
+	const itemDoc = doc(db, listPath, 'items', itemId);
+
+	updateDoc(itemDoc, {
+		dateLastPurchased: new Date(),
+		totalPurchases: totalPurchases + 1,
+	});
+	return 'Item purchased!';
 }
 
 export async function deleteItem() {
