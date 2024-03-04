@@ -10,7 +10,9 @@ const ShareForm = ({ listPath }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		if (email) {
+		if (email.trim() === '') {
+			setMessage('Please enter an email');
+		} else {
 			try {
 				const response = await shareList(listPath, user.uid, email);
 				setMessage(response);

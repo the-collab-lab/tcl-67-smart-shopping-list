@@ -2,29 +2,49 @@ import { addItem } from '../api/firebase';
 import { useState } from 'react';
 import ShareForm from '../components/ShareForm';
 
-export function ManageList({ listPath }) {
+export function ManageList({ listPath, data }) {
 	const [message, setMessage] = useState('');
 	const [userItem, setUserItem] = useState('');
 	// Presetting item duration to 7, as that option starts
 	// selected on page rendering.
 	const [itemDuration, setItemDuration] = useState(7);
 
+	// lowercases name and removes non-alpha characters
+	const normalizeInput = (name) => {
+		const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+		name = name.toLowerCase();
+		return name
+			.split('')
+			.filter((char) => alphabet.includes(char))
+			.join('');
+	};
+
+	const normalizedItemNames = data.map((item) => normalizeInput(item.name));
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		if (userItem.trim() === '') {
 			setMessage('Please enter a name for your item');
-		} else {
-			try {
-				await addItem(listPath, {
-					itemName: userItem,
-					daysUntilNextPurchase: itemDuration,
-				});
-				setMessage('Item added to the list!');
-			} catch (error) {
-				setMessage('Unable to add item to the list.');
-				console.error(error);
-			}
+			return;
+		}
+
+		const normalizedInput = normalizeInput(userItem);
+
+		if (normalizedItemNames.includes(normalizedInput)) {
+			setMessage('Item already exists');
+			return;
+		}
+
+		try {
+			await addItem(listPath, {
+				itemName: userItem,
+				daysUntilNextPurchase: itemDuration,
+			});
+			setMessage('Item added to the list!');
+		} catch (error) {
+			setMessage('Unable to add item to the list.');
+			console.error(error);
 		}
 	};
 
