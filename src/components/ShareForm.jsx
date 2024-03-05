@@ -10,7 +10,7 @@ const ShareForm = ({ listPath }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		if (email.trim() === '') {
+		if (!email.trim()) {
 			setMessage('Please enter an email');
 		} else {
 			try {

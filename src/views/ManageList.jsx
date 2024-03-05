@@ -1,6 +1,7 @@
 import { addItem } from '../api/firebase';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import ShareForm from '../components/ShareForm';
+import { useMutation } from 'react-query';
 
 export function ManageList({ listPath, data }) {
 	const [message, setMessage] = useState('');
@@ -11,41 +12,45 @@ export function ManageList({ listPath, data }) {
 
 	// lowercases name and removes non-alpha characters
 	const normalizeInput = (name) => {
-		const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-		name = name.toLowerCase();
-		return name
-			.split('')
-			.filter((char) => alphabet.includes(char))
-			.join('');
+		return name.toLowerCase().replace(/[^a-z0-9]/g, '');
 	};
 
-	const normalizedItemNames = data.map((item) => normalizeInput(item.name));
+	const normalizedItemNames = useMemo(() => {
+		return data.map((item) => normalizeInput(item.name));
+	}, [data]);
+
+	const {
+		isSuccess,
+		error,
+		isLoading,
+		mutateAsync: addItemToListMutation,
+	} = useMutation({
+		mutationFn: addItemToList,
+	});
+
+	async function addItemToList() {
+		await addItem(listPath, {
+			itemName: userItem,
+			daysUntilNextPurchase: itemDuration,
+		});
+	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
-		if (userItem.trim() === '') {
+		setMessage('');
+		if (!userItem.trim()) {
 			setMessage('Please enter a name for your item');
 			return;
 		}
 
 		const normalizedInput = normalizeInput(userItem);
-
+		console.log(normalizedInput, normalizedItemNames);
 		if (normalizedItemNames.includes(normalizedInput)) {
 			setMessage('Item already exists');
 			return;
 		}
 
-		try {
-			await addItem(listPath, {
-				itemName: userItem,
-				daysUntilNextPurchase: itemDuration,
-			});
-			setMessage('Item added to the list!');
-		} catch (error) {
-			setMessage('Unable to add item to the list.');
-			console.error(error);
-		}
+		await addItemToListMutation({ listPath, userItem, itemDuration });
 	};
 
 	if (!listPath) {
@@ -87,6 +92,9 @@ export function ManageList({ listPath, data }) {
 				</div>
 				<div>
 					<span>{message}</span>
+					{isSuccess && <span>Success!!</span>}
+					{error && <span>Unable to add item to list</span>}
+					{isLoading && <span>Adding...</span>}
 				</div>
 			</form>
 			<ShareForm listPath={listPath} />
