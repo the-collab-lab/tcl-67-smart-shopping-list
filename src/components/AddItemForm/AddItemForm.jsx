@@ -1,4 +1,4 @@
-import { addItem } from '../api/firebase';
+import { addItem } from '../../api/firebase';
 import { useState, useMemo } from 'react';
 import { useMutation } from 'react-query';
 import { normalizeInput } from '../../utils/stringHelpers';
