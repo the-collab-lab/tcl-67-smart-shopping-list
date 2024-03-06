@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import './ListItem.css';
 import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
+import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
+import { getDaysBetweenDates } from '../utils/dates';
 
 export function ListItem({ item, listPath }) {
-	const { id, totalPurchases, name, dateLastPurchased } = item;
+	const { id, totalPurchases, name, dateLastPurchased, dateNextPurchased } =
+		item;
 
 	const isLessThan24HoursSinceLastPurchased =
 		compareIfDateIsLessThan24Hours(dateLastPurchased);
@@ -32,6 +35,17 @@ export function ListItem({ item, listPath }) {
 			itemId: id,
 			totalPurchases: totalPurchases,
 		});
+		// testing the calculate estimate
+		// console.log(
+		// 	calculateEstimate(
+		// 		dateNextPurchased,
+		// 		getDaysBetweenDates(dateLastPurchased, dateNextPurchased),
+		// 		totalPurchases,
+		// 	),
+		// );
+
+		// testing just getDaysBetweenDates
+		console.log(getDaysBetweenDates(dateLastPurchased, dateNextPurchased));
 	}
 
 	const isDisabled = isChecked || isLoading;
@@ -39,7 +53,12 @@ export function ListItem({ item, listPath }) {
 	async function handleCheckboxCheck() {
 		setIsChecked(!isChecked);
 		if (!isChecked) {
-			await markAsPurchasedMutation({ listPath, id, totalPurchases });
+			await markAsPurchasedMutation({
+				listPath,
+				id,
+				totalPurchases,
+				dateNextPurchased,
+			});
 		}
 	}
 
