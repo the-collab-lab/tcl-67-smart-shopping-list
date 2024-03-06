@@ -8,4 +8,10 @@ describe('AddItemForm', () => {
 		// needs to mock firebase call
 		// render(<AddItemForm />);
 	});
+
+	it('adds an item', () => {});
+
+	it('adds an item and shows loading', () => {});
+
+	it('adds an item and shows error', () => {});
 });
