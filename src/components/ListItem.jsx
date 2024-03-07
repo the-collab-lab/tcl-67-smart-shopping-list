@@ -36,31 +36,16 @@ export function ListItem({ item, listPath }) {
 		dateLastPurchased,
 	);
 
-	// console.log(
-	// 	calculateEstimate(
-	// 		previousEstimate,
-	// 		getDaysBetweenDates(Timestamp.now(), dateLastPurchased),
-	// 		totalPurchases,
-	// 	),
-	// );
-
 	async function markAsPurchased() {
 		await updateItem(listPath, {
 			itemId: id,
 			totalPurchases: totalPurchases,
-		});
-		// testing the calculate estimate
-
-		console.log(
-			calculateEstimate(
+			dateNextPurchased: calculateEstimate(
 				previousEstimate,
 				getDaysBetweenDates(Timestamp.now(), dateLastPurchased),
 				totalPurchases,
 			),
-		);
-
-		// testing just getDaysBetweenDates
-		console.log(getDaysBetweenDates(Timestamp.now(), dateLastPurchased));
+		});
 	}
 
 	const isDisabled = isChecked || isLoading;

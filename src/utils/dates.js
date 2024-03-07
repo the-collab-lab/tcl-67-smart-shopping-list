@@ -12,22 +12,25 @@ export function getFutureDate(offset) {
 }
 
 export function getDaysBetweenDates(startDate, endDate) {
-	// console.log(
-	// 	`startDate: ${startDate}\n\n endDate: ${endDate}\n\n endDateToDate: ${endDate.toDate()} \n\n startDateToDate: ${startDate.toDate()} \n\n
-	// 	startDateMilli ${startDate.toMillis()}`,
-	// );
+	// New items are created without a startDate. This avoids null type
+	// error on new item creation.
+	if (!startDate) {
+		return;
+	}
 
 	// the .toDate method converts date formatting to milliseconds.
 	// divinding these days by ONE_DAY_IN_MILLISECONDS, gives you the total
 	// ammount of days after the difference is established.
-	const difference = startDate.toDate() - endDate.toDate();
-	const calculation = Math.floor(difference / ONE_DAY_IN_MILLISECONDS);
+	if (startDate && endDate) {
+		const difference = startDate.toDate() - endDate.toDate();
+		const calculation = Math.floor(difference / ONE_DAY_IN_MILLISECONDS);
 
-	// if number cannot divide evenly into a number more than 1, than less than a day has
-	// passed. Defaults to 0.
-	if (calculation <= 0) {
-		return 0;
-	} else {
-		return calculation;
+		// if number cannot divide evenly into a number more than 1, than less than a day has
+		// passed. Defaults to 0.
+		if (calculation <= 0) {
+			return 0;
+		} else {
+			return calculation;
+		}
 	}
 }
