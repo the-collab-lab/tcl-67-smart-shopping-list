@@ -2,6 +2,7 @@ import { addItem } from '../api/firebase';
 import { useState, useMemo } from 'react';
 import ShareForm from '../components/ShareForm';
 import { useMutation } from 'react-query';
+import { normalizeInput } from '../utils';
 
 export function ManageList({ listPath, data }) {
 	const [message, setMessage] = useState('');
@@ -9,11 +10,6 @@ export function ManageList({ listPath, data }) {
 	// Presetting item duration to 7, as that option starts
 	// selected on page rendering.
 	const [itemDuration, setItemDuration] = useState(7);
-
-	// lowercases name and removes non-alpha characters
-	const normalizeInput = (name) => {
-		return name.toLowerCase().replace(/[^a-z0-9]/g, '');
-	};
 
 	const normalizedItemNames = useMemo(() => {
 		return data.map((item) => normalizeInput(item.name));
@@ -44,7 +40,7 @@ export function ManageList({ listPath, data }) {
 		}
 
 		const normalizedInput = normalizeInput(userItem);
-		console.log(normalizedInput, normalizedItemNames);
+
 		if (normalizedItemNames.includes(normalizedInput)) {
 			setMessage('Item already exists');
 			return;
