@@ -4,6 +4,7 @@ import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import { getDaysBetweenDates } from '../utils/dates';
+import { Timestamp } from 'firebase/firestore';
 
 export function ListItem({ item, listPath }) {
 	const { id, totalPurchases, name, dateLastPurchased, dateNextPurchased } =
@@ -39,13 +40,13 @@ export function ListItem({ item, listPath }) {
 		// console.log(
 		// 	calculateEstimate(
 		// 		dateNextPurchased,
-		// 		getDaysBetweenDates(dateLastPurchased, dateNextPurchased),
+		// 		getDaysBetweenDates(Timestamp.now(), dateLastPurchased),
 		// 		totalPurchases,
 		// 	),
 		// );
 
 		// testing just getDaysBetweenDates
-		console.log(getDaysBetweenDates(dateLastPurchased, dateNextPurchased));
+		console.log(getDaysBetweenDates(Timestamp.now(), dateLastPurchased));
 	}
 
 	const isDisabled = isChecked || isLoading;
