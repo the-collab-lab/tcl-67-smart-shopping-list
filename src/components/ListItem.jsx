@@ -53,6 +53,7 @@ export function ListItem({ item, listPath }) {
 
 		const updatedTimeSTamp = Timestamp.fromDate(currentDate);
 
+		// this should be the final conversion to firebase's date format.
 		console.log(updatedTimeSTamp.toDate());
 		return updatedTimeSTamp.toDate();
 	}
