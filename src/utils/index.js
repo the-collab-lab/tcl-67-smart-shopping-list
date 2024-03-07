@@ -1,3 +1,3 @@
 export * from './dates';
 export * from './hooks';
-export * from './helpers';
+export * from './stringHelpers';
