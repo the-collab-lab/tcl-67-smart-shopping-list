@@ -31,15 +31,29 @@ export function ListItem({ item, listPath }) {
 		mutationFn: markAsPurchased,
 	});
 
+	const previousEstimate = getDaysBetweenDates(
+		dateNextPurchased,
+		dateLastPurchased,
+	);
+
+	// console.log(
+	// 	calculateEstimate(
+	// 		previousEstimate,
+	// 		getDaysBetweenDates(Timestamp.now(), dateLastPurchased),
+	// 		totalPurchases,
+	// 	),
+	// );
+
 	async function markAsPurchased() {
 		await updateItem(listPath, {
 			itemId: id,
 			totalPurchases: totalPurchases,
 		});
 		// testing the calculate estimate
+
 		console.log(
 			calculateEstimate(
-				dateNextPurchased,
+				previousEstimate,
 				getDaysBetweenDates(Timestamp.now(), dateLastPurchased),
 				totalPurchases,
 			),
