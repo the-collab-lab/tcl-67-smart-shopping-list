@@ -26,7 +26,7 @@ export function getDaysBetweenDates(startDate, endDate) {
 	// if number cannot divide evenly into a number more than 1, than less than a day has
 	// passed. Defaults to 0.
 	if (calculation <= 0) {
-		return calculation;
+		return 0;
 	} else {
 		return calculation;
 	}
