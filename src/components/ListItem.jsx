@@ -37,13 +37,13 @@ export function ListItem({ item, listPath }) {
 			totalPurchases: totalPurchases,
 		});
 		// testing the calculate estimate
-		// console.log(
-		// 	calculateEstimate(
-		// 		dateNextPurchased,
-		// 		getDaysBetweenDates(Timestamp.now(), dateLastPurchased),
-		// 		totalPurchases,
-		// 	),
-		// );
+		console.log(
+			calculateEstimate(
+				dateNextPurchased,
+				getDaysBetweenDates(Timestamp.now(), dateLastPurchased),
+				totalPurchases,
+			),
+		);
 
 		// testing just getDaysBetweenDates
 		console.log(getDaysBetweenDates(Timestamp.now(), dateLastPurchased));
