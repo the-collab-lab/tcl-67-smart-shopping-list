@@ -3,7 +3,7 @@ import './ListItem.css';
 import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
-import { getDaysBetweenDates } from '../utils/dates';
+import { getDaysBetweenDates, ONE_DAY_IN_MILLISECONDS } from '../utils/dates';
 import { Timestamp } from 'firebase/firestore';
 
 export function ListItem({ item, listPath }) {
@@ -36,15 +36,32 @@ export function ListItem({ item, listPath }) {
 		dateLastPurchased,
 	);
 
+	function estimateAddedToNow() {
+		// converts estmated days to milliseconds, and then adds it to current time
+		// milliseconds.
+		const estDaysToMilli =
+			calculateEstimate(
+				previousEstimate,
+				getDaysBetweenDates(Timestamp.now(), dateLastPurchased),
+				totalPurchases,
+			) * ONE_DAY_IN_MILLISECONDS;
+
+		const currentDate = Timestamp.now().toDate();
+
+		//adding milliseconds to date
+		currentDate.setTime(currentDate.getTime() + estDaysToMilli);
+
+		const updatedTimeSTamp = Timestamp.fromDate(currentDate);
+
+		console.log(updatedTimeSTamp.toDate());
+		return updatedTimeSTamp.toDate();
+	}
+
 	async function markAsPurchased() {
 		await updateItem(listPath, {
 			itemId: id,
 			totalPurchases: totalPurchases,
-			dateNextPurchased: calculateEstimate(
-				previousEstimate,
-				getDaysBetweenDates(Timestamp.now(), dateLastPurchased),
-				totalPurchases,
-			),
+			dateNextPurchased: estimateAddedToNow(),
 		});
 	}
 
