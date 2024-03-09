@@ -48,7 +48,7 @@ export default function AddItemForm({ listPath, data }) {
 		}
 
 		await addItemToListMutation({ listPath, userItem, itemDuration }).catch(
-			() => {},
+			(e) => console.error(e),
 		);
 	};
 
