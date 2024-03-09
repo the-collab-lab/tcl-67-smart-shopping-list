@@ -43,8 +43,8 @@
 		"preview": "vite preview",
 		"prepare": "husky install",
 		"coverage": "vitest run --coverage",
-		"eslint-check": "npx eslint src/**/*.jsx",
-		"fix-prettier": "npx eslint src/**/*.jsx --fix"
+		"eslint-check": "npx eslint src/**/*.{jsx,js}",
+		"fix-prettier": "npx eslint src/**/*.{jsx,js} --fix"
 	},
 	"lint-staged": {
 		"*.{js,jsx}": [
