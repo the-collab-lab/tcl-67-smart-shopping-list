@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import './ListItem.css';
 import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
-import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
-import { getDaysBetweenDates, ONE_DAY_IN_MILLISECONDS } from '../utils/dates';
-import { Timestamp } from 'firebase/firestore';
 
 export function ListItem({ item, listPath }) {
-	const { id, totalPurchases, name, dateLastPurchased, dateNextPurchased } =
-		item;
+	const {
+		id,
+		totalPurchases,
+		name,
+		dateLastPurchased,
+		dateNextPurchased,
+		dateCreated,
+	} = item;
 
 	const isLessThan24HoursSinceLastPurchased =
 		compareIfDateIsLessThan24Hours(dateLastPurchased);
@@ -31,38 +34,13 @@ export function ListItem({ item, listPath }) {
 		mutationFn: markAsPurchased,
 	});
 
-	const previousEstimate = getDaysBetweenDates(
-		dateNextPurchased,
-		dateLastPurchased,
-	);
-
-	function estimateAddedToNow() {
-		// converts estmated days to milliseconds, and then adds it to current time
-		// milliseconds.
-		const estDaysToMilli =
-			calculateEstimate(
-				previousEstimate,
-				getDaysBetweenDates(Timestamp.now(), dateLastPurchased),
-				totalPurchases,
-			) * ONE_DAY_IN_MILLISECONDS;
-
-		const currentDate = Timestamp.now().toDate();
-
-		//adding milliseconds to date
-		currentDate.setTime(currentDate.getTime() + estDaysToMilli);
-
-		const updatedTimeSTamp = Timestamp.fromDate(currentDate);
-
-		// this should be the final conversion to firebase's date format.
-		console.log(updatedTimeSTamp.toDate());
-		return updatedTimeSTamp.toDate();
-	}
-
 	async function markAsPurchased() {
 		await updateItem(listPath, {
 			itemId: id,
 			totalPurchases: totalPurchases,
-			dateNextPurchased: estimateAddedToNow(),
+			dateLastPurchased: dateLastPurchased,
+			dateNextPurchased: dateNextPurchased,
+			dateCreated: dateCreated,
 		});
 	}
 
@@ -75,7 +53,6 @@ export function ListItem({ item, listPath }) {
 				listPath,
 				id,
 				totalPurchases,
-				dateNextPurchased,
 			});
 		}
 	}
