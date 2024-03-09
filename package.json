@@ -26,6 +26,7 @@
 		"eslint-config-prettier": "^8.10.0",
 		"eslint-config-react-app": "^7.0.1",
 		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"eslint-plugin-prettier": "^5.1.3",
 		"husky": "^8.0.3",
 		"jsdom": "^22.1.0",
 		"lint-staged": "^13.2.3",
@@ -41,7 +42,9 @@
 		"test": "vitest",
 		"preview": "vite preview",
 		"prepare": "husky install",
-		"coverage": "vitest run --coverage"
+		"coverage": "vitest run --coverage",
+		"eslint": "npx eslint src/**/*.jsx",
+		"fix-prettier": "npx eslint src/**/*.jsx --fix"
 	},
 	"lint-staged": {
 		"*.{js,jsx}": [
