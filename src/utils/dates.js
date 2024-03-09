@@ -11,30 +11,28 @@ export function getFutureDate(offset) {
 	return new Date(Date.now() + offset * ONE_DAY_IN_MILLISECONDS);
 }
 
-export function getDaysBetweenDates(startDate, endDate) {
+export function getDaysBetweenDates(dateLastPurchase, dateNextPurchase) {
 	// New items are created without a startDate. This avoids null type
 	// error on new item creation.
-	if (!startDate) {
+	if (!dateLastPurchase) {
 		return;
 	}
-
-	console.log('startDate: ', startDate, 'endDate: ', endDate);
 
 	// the .toDate method converts date formatting to milliseconds.
 	// divinding these days by ONE_DAY_IN_MILLISECONDS, gives you the total
 	// ammount of days after the difference is established.
-	if (startDate && endDate) {
-		const difference = startDate - endDate;
-		const calculation = Math.floor(difference / ONE_DAY_IN_MILLISECONDS);
+	if (dateLastPurchase && dateNextPurchase) {
+		const difference = dateLastPurchase - dateNextPurchase;
+		const numOfDaysBetweenCalculation = Math.floor(
+			difference / ONE_DAY_IN_MILLISECONDS,
+		);
 
 		// if number cannot divide evenly into a number more than 1, than less than a day has
 		// passed. Defaults to 0.
-		if (calculation <= 0) {
-			console.log('zero');
+		if (numOfDaysBetweenCalculation <= 0) {
 			return 0;
 		} else {
-			console.log(calculation);
-			return calculation;
+			return numOfDaysBetweenCalculation;
 		}
 	}
 }

@@ -181,7 +181,7 @@ export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 
 export async function updateItem(
 	listPath,
-	{ itemId, dateLastPurchased, dateNextPurchased, dateCreated, totalPurchases },
+	{ itemId, dateLastPurchased, dateNextPurchased, totalPurchases },
 ) {
 	/**
 	 * TODO: Fill this out so that it uses the correct Firestore function
@@ -189,37 +189,43 @@ export async function updateItem(
 	 * this function must accept!
 	 */
 
-	const daysSinceLastPurchase = getDaysBetweenDates(
-		new Date(Date.now()),
-		dateLastPurchased ? dateLastPurchased?.toDate() : dateCreated.toDate(),
-	);
+	const itemDoc = doc(db, listPath, 'items', itemId);
+
+	const today = new Date();
+
+	/**
+	 * Calculate the previous estimate for purchase
+	 * based on historical data
+	 */
 
 	const previousEstimate = getDaysBetweenDates(
-		dateNextPurchased,
-		dateLastPurchased?.toDate()
-			? dateLastPurchased?.toDate()
-			: dateCreated.toDate(),
+		dateLastPurchased?.toDate() ? dateLastPurchased?.toDate() : today,
+		dateNextPurchased.toDate(),
 	);
 
-	console.log(dateNextPurchased);
-	console.log(dateLastPurchased);
-	console.log(dateCreated.toDate());
+	/**
+	 * Calculate the days since the last purchase,
+	 * considering either date last purchased or the created date
+	 */
+	const daysSinceLastPurchase = getDaysBetweenDates(
+		today,
+		dateLastPurchased ? dateLastPurchased?.toDate() : today,
+	);
 
-	console.log(previousEstimate);
-
-	const smartNextEstimate = calculateEstimate(
+	const smartNextPurchaseEstimate = calculateEstimate(
 		previousEstimate,
 		daysSinceLastPurchase ? daysSinceLastPurchase : previousEstimate,
 		totalPurchases,
 	);
 
-	const nextPurchaseDate = smartNextEstimate * 86400000 + new Date(Date.now());
-
-	const itemDoc = doc(db, listPath, 'items', itemId);
+	// Ensure that the next purchase date is at least one day in the future
+	if (smartNextPurchaseEstimate <= 0) {
+		smartNextPurchaseEstimate = 1;
+	}
 
 	updateDoc(itemDoc, {
 		dateLastPurchased: new Date(),
-		dateNextPurchased: nextPurchaseDate ? nextPurchaseDate : previousEstimate,
+		dateNextPurchased: getFutureDate(smartNextPurchaseEstimate),
 		totalPurchases: totalPurchases + 1,
 	});
 	return 'Item purchased!';

@@ -4,14 +4,8 @@ import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
 
 export function ListItem({ item, listPath }) {
-	const {
-		id,
-		totalPurchases,
-		name,
-		dateLastPurchased,
-		dateNextPurchased,
-		dateCreated,
-	} = item;
+	const { id, totalPurchases, name, dateLastPurchased, dateNextPurchased } =
+		item;
 
 	const isLessThan24HoursSinceLastPurchased =
 		compareIfDateIsLessThan24Hours(dateLastPurchased);
@@ -40,7 +34,6 @@ export function ListItem({ item, listPath }) {
 			totalPurchases: totalPurchases,
 			dateLastPurchased: dateLastPurchased,
 			dateNextPurchased: dateNextPurchased,
-			dateCreated: dateCreated,
 		});
 	}
 
