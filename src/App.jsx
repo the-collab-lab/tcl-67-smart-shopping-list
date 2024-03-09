@@ -10,7 +10,7 @@ import { useStateWithStorage } from './utils';
 
 import { QueryClientProvider, QueryClient } from 'react-query';
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 export function App() {
 	/**

@@ -25,7 +25,7 @@ export default function AddItemForm({ listPath, data }) {
 	});
 
 	async function addItemToList() {
-		await addItem(listPath, {
+		return await addItem(listPath, {
 			itemName: userItem,
 			daysUntilNextPurchase: itemDuration,
 		});
@@ -55,6 +55,7 @@ export default function AddItemForm({ listPath, data }) {
 			<div>
 				<label htmlFor="itemName">Item Name: </label>
 				<input
+					data-testid="itemName"
 					onChange={(e) => setUserItem(e.target.value)}
 					type="text"
 					id="itemName"
@@ -63,6 +64,7 @@ export default function AddItemForm({ listPath, data }) {
 			</div>
 			<span>Remind me to replace the item in...</span> <br />
 			<select
+				data-testid="replaceTime"
 				onChange={(e) => setItemDuration(e.target.value)}
 				name="replaceTime"
 				value={itemDuration}
@@ -72,13 +74,15 @@ export default function AddItemForm({ listPath, data }) {
 				<option value={30}>30 days</option>
 			</select>
 			<div>
-				<button>Submit</button>
+				<button data-testid="submit-button">Submit</button>
 			</div>
 			<div>
-				<span>{message}</span>
-				{isSuccess && <span>Success!!</span>}
-				{error && <span>Unable to add item to list</span>}
-				{isLoading && <span>Adding...</span>}
+				<span data-testid="addItemFormMessage">{message}</span>
+				{isSuccess && <span data-testid="addItemFormSuccess">Success!!</span>}
+				{error && (
+					<span data-testid="addItemFormError">Unable to add item to list</span>
+				)}
+				{isLoading && <span data-testId="addItemFormLoading">Adding...</span>}
 			</div>
 		</form>
 	);
