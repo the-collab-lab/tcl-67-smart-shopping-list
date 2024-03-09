@@ -3,6 +3,13 @@ import { useState, useMemo } from 'react';
 import { useMutation } from 'react-query';
 import { normalizeInput } from '../utils';
 
+async function addItemToList({ listPath, userItem, itemDuration }) {
+	return await addItem(listPath, {
+		itemName: userItem,
+		daysUntilNextPurchase: itemDuration,
+	});
+}
+
 export default function AddItemForm({ listPath, data }) {
 	const [message, setMessage] = useState('');
 	const [userItem, setUserItem] = useState('');
@@ -24,13 +31,6 @@ export default function AddItemForm({ listPath, data }) {
 		mutationFn: addItemToList,
 	});
 
-	async function addItemToList() {
-		return await addItem(listPath, {
-			itemName: userItem,
-			daysUntilNextPurchase: itemDuration,
-		});
-	}
-
 	const handleSubmit = async (e) => {
 		reset();
 		e.preventDefault();
@@ -47,7 +47,9 @@ export default function AddItemForm({ listPath, data }) {
 			return;
 		}
 
-		await addItemToListMutation({ listPath, userItem, itemDuration });
+		await addItemToListMutation({ listPath, userItem, itemDuration }).catch(
+			() => {},
+		);
 	};
 
 	return (
@@ -82,7 +84,7 @@ export default function AddItemForm({ listPath, data }) {
 				{error && (
 					<span data-testid="addItemFormError">Unable to add item to list</span>
 				)}
-				{isLoading && <span data-testId="addItemFormLoading">Adding...</span>}
+				{isLoading && <span data-testid="addItemFormLoading">Adding...</span>}
 			</div>
 		</form>
 	);
