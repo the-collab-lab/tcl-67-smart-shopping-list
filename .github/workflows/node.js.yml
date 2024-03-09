@@ -21,7 +21,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: running test and linting
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
@@ -29,3 +29,4 @@ jobs:
     - run: npm install
     - run: npm run build 
     - run: npm test
+    - run: npm run eslint-check

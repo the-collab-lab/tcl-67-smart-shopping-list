@@ -5,7 +5,9 @@
 		"react-app",
 		"react-app/jest"
 	],
+	"plugins": ["prettier"],
 	"rules": {
-		"react/jsx-filename-extension": "error"
+		"react/jsx-filename-extension": "error",
+		"prettier/prettier": "error"
 	}
 }
