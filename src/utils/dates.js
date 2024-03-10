@@ -1,3 +1,5 @@
+import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
+
 export const ONE_DAY_IN_MILLISECONDS = 86400000;
 
 /**
@@ -35,4 +37,44 @@ export function getDaysBetweenDates(dateLastPurchase, dateNextPurchase) {
 			return numOfDaysBetweenCalculation;
 		}
 	}
+}
+
+export function getNextPurchasedDate({
+	dateLastPurchased,
+	dateNextPurchased,
+	totalPurchases,
+}) {
+	const today = new Date();
+
+	/**
+	 * Calculate the previous estimate for purchase
+	 * based on historical data
+	 */
+
+	const previousEstimate = getDaysBetweenDates(
+		dateLastPurchased?.toDate() ? dateLastPurchased?.toDate() : today,
+		dateNextPurchased.toDate(),
+	);
+
+	/**
+	 * Calculate the days since the last purchase,
+	 * considering either date last purchased or the created date
+	 */
+	const daysSinceLastPurchase = getDaysBetweenDates(
+		today,
+		dateLastPurchased ? dateLastPurchased?.toDate() : today,
+	);
+
+	let smartNextPurchaseEstimate = calculateEstimate(
+		previousEstimate,
+		daysSinceLastPurchase ? daysSinceLastPurchase : previousEstimate,
+		totalPurchases,
+	);
+
+	// Ensure that the next purchase date is at least one day in the future
+	if (smartNextPurchaseEstimate <= 0) {
+		smartNextPurchaseEstimate = 1;
+	}
+
+	return getFutureDate(smartNextPurchaseEstimate);
 }
