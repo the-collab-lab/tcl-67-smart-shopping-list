@@ -24,10 +24,12 @@ const ShareForm = ({ listPath }) => {
 	};
 	return (
 		<div>
+			<h2 data-testid="shareForm-header">Share your list</h2>
 			<form onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor="email">Email: </label>
 					<input
+						data-testid="email"
 						onChange={(e) => setEmail(e.target.value)}
 						type="text"
 						id="email"
@@ -36,10 +38,10 @@ const ShareForm = ({ listPath }) => {
 				</div>
 				<span>Enter the email of an existing user...</span> <br />
 				<div>
-					<button>Submit</button>
+					<button data-testid="shareForm-submit-button">Submit</button>
 				</div>
 				<div>
-					<span>{message}</span>
+					<span data-testid="shareFormMessage">{message}</span>
 				</div>
 			</form>
 		</div>
