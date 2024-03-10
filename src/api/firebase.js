@@ -168,7 +168,7 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
 export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 	const listCollectionRef = collection(db, listPath, 'items');
 
-	return addDoc(listCollectionRef, {
+	const docRef = await addDoc(listCollectionRef, {
 		dateCreated: new Date(),
 		// NOTE: This is null because the item has just been created.
 		// We'll use updateItem to put a Date here when the item is purchased!
@@ -177,6 +177,15 @@ export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 		name: itemName,
 		totalPurchases: 0,
 	});
+
+	// Retrieve the added document by its reference
+	const addedDoc = await getDoc(docRef);
+
+	// Return the document data
+	return {
+		id: docRef.id,
+		...addedDoc.data(),
+	};
 }
 
 export async function updateItem(

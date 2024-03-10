@@ -10,7 +10,7 @@ import { useStateWithStorage } from './utils';
 
 import { QueryClientProvider, QueryClient } from 'react-query';
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 export function App() {
 	/**
@@ -61,7 +61,7 @@ export function App() {
 						/>
 						<Route
 							path="/manage-list"
-							element={<ManageList listPath={listPath} />}
+							element={<ManageList listPath={listPath} data={data} />}
 						/>
 					</Route>
 				</Routes>
