@@ -10,8 +10,7 @@ import {
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
-import { getFutureDate } from '../utils';
-
+import { getFutureDate } from '../utils/dates.js';
 /**
  * A custom hook that subscribes to the user's shopping lists in our Firestore
  * database and returns new data whenever the lists change.
@@ -188,7 +187,10 @@ export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 	};
 }
 
-export async function updateItem(listPath, { itemId, totalPurchases }) {
+export async function updateItem(
+	listPath,
+	{ itemId, dateNextPurchased, totalPurchases },
+) {
 	/**
 	 * TODO: Fill this out so that it uses the correct Firestore function
 	 * to update an existing item. You'll need to figure out what arguments
@@ -199,6 +201,7 @@ export async function updateItem(listPath, { itemId, totalPurchases }) {
 
 	updateDoc(itemDoc, {
 		dateLastPurchased: new Date(),
+		dateNextPurchased,
 		totalPurchases: totalPurchases + 1,
 	});
 	return 'Item purchased!';

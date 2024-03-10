@@ -33,7 +33,6 @@ const PWAConfig = {
 		background_color: '#ffffff',
 	},
 };
-
 // https://vitejs.dev/config/
 export default defineConfig({
 	build: {
@@ -60,6 +59,7 @@ export default defineConfig({
 	plugins: [react(), svgr({ exportAsDefault: true }), VitePWA(PWAConfig)],
 	server: { open: true, port: 3000 },
 	test: {
+		pool: 'vmThreads',
 		globals: true,
 		environment: 'jsdom',
 		setupFiles: './tests/setup.js',

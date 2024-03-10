@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import './ListItem.css';
 import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
+import { getNextPurchasedDate } from '../utils';
 
 export function ListItem({ item, listPath }) {
-	const { id, totalPurchases, name, dateLastPurchased } = item;
+	const { id, totalPurchases, name, dateLastPurchased, dateNextPurchased } =
+		item;
 
 	const isLessThan24HoursSinceLastPurchased =
 		compareIfDateIsLessThan24Hours(dateLastPurchased);
@@ -28,9 +30,16 @@ export function ListItem({ item, listPath }) {
 	});
 
 	async function markAsPurchased() {
+		const nextPurchasedDate = getNextPurchasedDate({
+			dateLastPurchased,
+			dateNextPurchased,
+			totalPurchases,
+		});
+
 		await updateItem(listPath, {
 			itemId: id,
 			totalPurchases: totalPurchases,
+			dateNextPurchased: nextPurchasedDate,
 		});
 	}
 
@@ -39,7 +48,11 @@ export function ListItem({ item, listPath }) {
 	async function handleCheckboxCheck() {
 		setIsChecked(!isChecked);
 		if (!isChecked) {
-			await markAsPurchasedMutation({ listPath, id, totalPurchases });
+			await markAsPurchasedMutation({
+				listPath,
+				id,
+				totalPurchases,
+			});
 		}
 	}
 
