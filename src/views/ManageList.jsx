@@ -1,5 +1,6 @@
 import ShareForm from '../components/ShareForm';
 import AddItemForm from '../components/AddItemForm';
+import { comparePurchaseUrgency } from '../api/firebase';
 
 export function ManageList({ listPath, data }) {
 	if (!listPath) {
@@ -9,7 +10,7 @@ export function ManageList({ listPath, data }) {
 			</>
 		);
 	}
-
+	comparePurchaseUrgency(data);
 	return (
 		<>
 			<p>

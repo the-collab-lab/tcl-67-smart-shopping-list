@@ -221,7 +221,34 @@ export async function deleteItem() {
 
 // ***Question for adit - how do we access listpath properties from firebase.js
 
-export function comparePurchaseUrgency(listPath, {}) {
+export function comparePurchaseUrgency(data) {
+	let categories = {
+		soon: [],
+		kindOfSoon: [],
+		notSoon: [],
+		inactive: [],
+	};
+	data.map((item) => {
+		console.log(`${item.name} urgency`, item.urgency);
+		switch (item.urgency) {
+			case 'Soon':
+				categories.soon.push(item);
+				break;
+			case 'Kind of soon':
+				categories.kindOfSoon.push(item);
+				break;
+			case 'Not soon':
+				categories.notSoon.push(item);
+				break;
+			case 'Inactive':
+				categories.inactive.push(item);
+				break;
+			default:
+				console.log(`${item.name} does not have an associated urgency`);
+		}
+	});
+
+	console.log(categories);
 	// PSEUDO CODE:
 	// loop through list items
 	// place items into arrays, depending on the urgency
@@ -230,3 +257,12 @@ export function comparePurchaseUrgency(listPath, {}) {
 	// if inactive, last
 	// once each array is sorted, append to respective div
 }
+// dont need to add urgency property, calculate on demand
+// category display function
+// find and insert into sublist
+// separate data modification from view update
+// if you modify array page re-renders
+// comparator function to compare 2 items
+// sort uses -1, 0, 1 to determine order
+// write a function that takes in one item and mutates the item's array to put it in the right order
+// use badges to define urgency

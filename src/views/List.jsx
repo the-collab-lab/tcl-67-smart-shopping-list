@@ -24,26 +24,8 @@ export function List({ data, listPath }) {
 		setInput('');
 	}
 
-	console.log(`****${new Date()}`);
-	console.log(`****DATE NOW***${Date.now}`);
-
 	return (
 		<>
-			<div className="soon">
-				<h1>Soon</h1>
-			</div>
-			<div className="kindOfSoon">
-				<h1>Kind of Soon</h1>
-			</div>
-			<div className="notSoon">
-				<h1>Not Soon</h1>
-			</div>
-			<div className="inactive">
-				<h1>Inactive</h1>
-			</div>
-			<div className="overdue">
-				<h1>Overdue</h1>
-			</div>
 			<form action="">
 				<label htmlFor="searchItems">Search Items: </label>
 				<input
@@ -57,6 +39,21 @@ export function List({ data, listPath }) {
 			<p>
 				Hello from the <code>/list</code> page!
 			</p>
+			<div className="soon">
+				<h2>Soon</h2>
+			</div>
+			<div className="kindOfSoon">
+				<h2>Kind of Soon</h2>
+			</div>
+			<div className="notSoon">
+				<h2>Not Soon</h2>
+			</div>
+			<div className="inactive">
+				<h2>Inactive</h2>
+			</div>
+			<div className="overdue">
+				<h2>Overdue</h2>
+			</div>
 			<ul>
 				{filteredItems.map((item) => (
 					<ListItem key={item.id} item={item} listPath={listPath} />
