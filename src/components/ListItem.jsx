@@ -3,6 +3,7 @@ import './ListItem.css';
 import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
 import { getNextPurchasedDate } from '../utils';
+import { deleteItem } from '../api/firebase';
 
 export function ListItem({ item, listPath }) {
 	const { id, totalPurchases, name, dateLastPurchased, dateNextPurchased } =
@@ -22,8 +23,8 @@ export function ListItem({ item, listPath }) {
 	}
 
 	const {
-		error,
-		isLoading,
+		error: purchaseError,
+		isLoading: purchaseIsLoading,
 		mutateAsync: markAsPurchasedMutation,
 	} = useMutation({
 		mutationFn: markAsPurchased,
@@ -43,9 +44,22 @@ export function ListItem({ item, listPath }) {
 		});
 	}
 
-	const isDisabled = isChecked || isLoading;
+	const {
+		error: deleteError,
+		isLoading: deleteIsLoading,
+		mutateAsync: markItemAsDeleteMutation,
+	} = useMutation({
+		mutationFn: markItemAsDelete,
+	});
+
+	async function markItemAsDelete() {
+		await deleteItem(listPath, id);
+	}
+
+	const isDisabled = isChecked || purchaseError;
 
 	async function handleCheckboxCheck() {
+		console.log(name);
 		setIsChecked(!isChecked);
 		if (!isChecked) {
 			await markAsPurchasedMutation({
@@ -53,6 +67,16 @@ export function ListItem({ item, listPath }) {
 				id,
 				totalPurchases,
 			});
+		}
+	}
+
+	async function handleDeleteItem() {
+		if (window.confirm(`Do you really want to delete ${name}?`)) {
+			try {
+				await markItemAsDeleteMutation(listPath, id);
+			} catch (error) {
+				throw new Error('There was an error deleting the item');
+			}
 		}
 	}
 
@@ -66,8 +90,12 @@ export function ListItem({ item, listPath }) {
 				onChange={handleCheckboxCheck}
 			/>
 			<label htmlFor="item">{name}</label>
-			{error && <p>Error marking as purchased</p>}
-			{isLoading && <p>Updating item as purchased...</p>}
+
+			<button onClick={handleDeleteItem}>Delete</button>
+			{deleteError && <p>Error deleting item</p>}
+			{deleteIsLoading && <p>Deleting item...</p>}
+			{purchaseError && <p>Error marking as purchased</p>}
+			{purchaseIsLoading && <p>Updating item as purchased...</p>}
 		</div>
 	);
 }
