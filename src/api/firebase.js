@@ -58,6 +58,7 @@ export function useShoppingListData(listPath) {
 	/** @type {import('firebase/firestore').DocumentData[]} */
 	const initialState = [];
 	const [data, setData] = useState(initialState);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		if (!listPath) return;
@@ -80,11 +81,12 @@ export function useShoppingListData(listPath) {
 
 			// Update our React state with the new data.
 			setData(nextData);
+			setLoading(false);
 		});
 	}, [listPath]);
 
 	// Return the data so it can be used by our React components.
-	return data;
+	return { data, loading };
 }
 
 /**

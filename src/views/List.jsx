@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ListItem } from '../components';
 import { useNavigate } from 'react-router-dom';
 
 export function List({ data, listPath }) {
+	console.log(data);
+	const [loading, setLoading] = useState(true);
 	const [input, setInput] = useState('');
 
 	const navigate = useNavigate();
 
-	const filteredItems = data.filter((item) => {
+	const filteredItems = data.data.filter((item) => {
 		if (input) {
 			const lowerCaseItemName = item.name.toLowerCase();
 			return lowerCaseItemName.includes(input.toLowerCase());
@@ -22,6 +24,11 @@ export function List({ data, listPath }) {
 
 	function clearSearch() {
 		setInput('');
+	}
+
+	if (data.loading) {
+		// If data is not loaded yet, render a loading indicator
+		return <p>Loading...</p>;
 	}
 
 	return (
@@ -39,11 +46,8 @@ export function List({ data, listPath }) {
 			<p>
 				Hello from the <code>/list</code> page!
 			</p>
-			<ul>
-				{filteredItems.map((item) => (
-					<ListItem key={item.id} item={item} listPath={listPath} />
-				))}
 
+			<ul>
 				{data.length === 0 && (
 					<div>
 						<p>There are no items in this list!</p>
@@ -52,13 +56,15 @@ export function List({ data, listPath }) {
 						</button>
 					</div>
 				)}
-
-				{data.length > 0 && filteredItems.length === 0 && (
-					<div>
-						<p>No match found for that filter query.</p>
-					</div>
-				)}
 			</ul>
+			{data.length > 0 && filteredItems.length === 0 && (
+				<div>
+					<p>No match found for that filter query.</p>
+				</div>
+			)}
+			{filteredItems.map((item) => (
+				<ListItem key={item.id} item={item} listPath={listPath} />
+			))}
 		</>
 	);
 }
