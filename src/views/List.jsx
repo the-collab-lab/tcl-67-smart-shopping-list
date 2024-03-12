@@ -24,8 +24,26 @@ export function List({ data, listPath }) {
 		setInput('');
 	}
 
+	console.log(`****${new Date()}`);
+	console.log(`****DATE NOW***${Date.now}`);
+
 	return (
 		<>
+			<div className="soon">
+				<h1>Soon</h1>
+			</div>
+			<div className="kindOfSoon">
+				<h1>Kind of Soon</h1>
+			</div>
+			<div className="notSoon">
+				<h1>Not Soon</h1>
+			</div>
+			<div className="inactive">
+				<h1>Inactive</h1>
+			</div>
+			<div className="overdue">
+				<h1>Overdue</h1>
+			</div>
 			<form action="">
 				<label htmlFor="searchItems">Search Items: </label>
 				<input
