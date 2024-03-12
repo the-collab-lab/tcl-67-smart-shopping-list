@@ -52,7 +52,6 @@ export function getNextPurchasedDate({
 	 */
 
 	const previousEstimate = getDaysBetweenDates(
-		// *********WHUTTTTTTTTTTTT&********!"!?!?!"
 		dateLastPurchased?.toDate() ? dateLastPurchased?.toDate() : today,
 		dateNextPurchased.toDate(),
 	);
@@ -77,21 +76,20 @@ export function getNextPurchasedDate({
 		smartNextPurchaseEstimate = 1;
 	}
 
-	console.log('days since alst purchase', daysSinceLastPurchase);
 	return getFutureDate(smartNextPurchaseEstimate);
 }
 
 // compare last purchase with current date to get inactive
 
-export function categorizePurchaseStatus(numberOfDays, dateLastPurchased) {
+export function categorizePurchaseStatus(numberOfDays) {
 	if (numberOfDays <= 7) {
 		return 'Need to buy soon';
 	} else if (numberOfDays > 7 && numberOfDays <= 30) {
 		return 'Kind of Soon';
 	} else if (numberOfDays > 30) {
 		return 'Not Soon';
-	} else if (isInactive(dateLastPurchased) === true) {
-		return 'Inactive';
+		// } else if (isInactive(dateLastPurchased) === true) {
+		// 	return 'Inactive';
 	}
 }
 
@@ -105,24 +103,3 @@ export function isInactive(dateLastPurchased) {
 		return true;
 	}
 }
-
-export function comparePurchaseUrgency(urgency) {
-	// if inactive, last
-	// ascending order ofdays til purchase
-	// sorts items w same days until purch alphabetically
-	if ('Need to buy soon') {
-		// ...
-	}
-}
-
-// create an object that has status as keys, values will be the items that fall
-// underneath each of those keys.
-
-// sort each of those items depending on days next purchase. Sooner comes earlier in the list.
-
-// items with the same date are simply sorted alphabetically
-
-// populate DOM with each of those arrays for each corresponding key. This will be
-// done via list view.
-
-// compare next to today in order to obtain overdue items. Put them at the top of the list.

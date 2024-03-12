@@ -7,10 +7,16 @@ import {
 	onSnapshot,
 	updateDoc,
 	addDoc,
+	query,
+	where,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
-import { getFutureDate } from '../utils/dates.js';
+import {
+	getFutureDate,
+	getDaysBetweenDates,
+	categorizePurchaseStatus,
+} from '../utils/dates.js';
 /**
  * A custom hook that subscribes to the user's shopping lists in our Firestore
  * database and returns new data whenever the lists change.
@@ -167,6 +173,8 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
 export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 	const listCollectionRef = collection(db, listPath, 'items');
 
+	const urgency = categorizePurchaseStatus(daysUntilNextPurchase);
+
 	const docRef = await addDoc(listCollectionRef, {
 		dateCreated: new Date(),
 		// NOTE: This is null because the item has just been created.
@@ -175,6 +183,7 @@ export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 		dateNextPurchased: getFutureDate(daysUntilNextPurchase),
 		name: itemName,
 		totalPurchases: 0,
+		urgency: urgency,
 	});
 
 	// Retrieve the added document by its reference
@@ -191,18 +200,15 @@ export async function updateItem(
 	listPath,
 	{ itemId, dateNextPurchased, totalPurchases },
 ) {
-	/**
-	 * TODO: Fill this out so that it uses the correct Firestore function
-	 * to update an existing item. You'll need to figure out what arguments
-	 * this function must accept!
-	 */
-
+	const numberOfDays = getDaysBetweenDates(new Date(), dateNextPurchased);
+	const urgency = categorizePurchaseStatus(numberOfDays);
 	const itemDoc = doc(db, listPath, 'items', itemId);
 
 	updateDoc(itemDoc, {
 		dateLastPurchased: new Date(),
 		dateNextPurchased,
 		totalPurchases: totalPurchases + 1,
+		urgency: urgency,
 	});
 	return 'Item purchased!';
 }
@@ -213,4 +219,16 @@ export async function deleteItem() {
 	 * to delete an existing item. You'll need to figure out what arguments
 	 * this function must accept!
 	 */
+}
+
+// ***Question for adit - how do we access listpath properties from firebase.js
+
+export function comparePurchaseUrgency(listPath, {}) {
+	// PSEUDO CODE:
+	// loop through list items
+	// place items into arrays, depending on the urgency
+	// use daysBetweenDates() to sort in ascending order of days
+	// sort items w same days alphabetically
+	// if inactive, last
+	// once each array is sorted, append to respective div
 }
