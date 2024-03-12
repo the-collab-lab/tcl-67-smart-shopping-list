@@ -26,16 +26,6 @@ describe('ShareForm', () => {
 		renderShareListForm({ listPath: '/test-list' });
 	});
 
-	//spy: partial mock - only specific methods of object are overridden
-	// mock: whole thing is overridden
-
-	// 1. test that component renders what is expected
-	// 2. when calling firebase function, expected thing happens
-
-	//facade pattern?
-	// e.g. integation test for firebase, before each test, mockout useAuth
-	// business logic - utils should be unit tested
-	// smoke tests for component rendering - rendering with errors
 	// it('Shares form with user successfully', async () => {
 	// 	//mocked user
 	// 	const mockedUserReturnValue = {
@@ -51,7 +41,7 @@ describe('ShareForm', () => {
 	// 	// mocked share list
 	// 	const mockedShareListReturnValue = 'List was shared successfully';
 	// 	const mockedShareList = vi.spyOn(FirebaseFunctions, 'shareList');
-	// 	mockedShareList.mockImplementationOnce(async () => {
+	// 	mockedShareList.mockImplementationOnce(async (mockedUser) => {
 	// 		await sleep();
 	// 		return mockedShareListReturnValue;
 	// 	});

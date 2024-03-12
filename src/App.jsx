@@ -31,7 +31,6 @@ export function App() {
 	 * Check ./api/useAuth.jsx for its implementation.
 	 */
 	const { user } = useAuth();
-	console.log(user);
 	const userId = user?.uid;
 	const userEmail = user?.email;
 
