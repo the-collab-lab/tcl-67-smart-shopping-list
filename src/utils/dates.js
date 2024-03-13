@@ -1,6 +1,6 @@
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 
-export const ONE_DAY_IN_MILLISECONDS = 86400000;
+let ONE_DAY_IN_MILLISECONDS = 86400000;
 
 /**
  * Get a new JavaScript Date that is `offset` days in the future.
@@ -13,30 +13,16 @@ export function getFutureDate(offset) {
 	return new Date(Date.now() + offset * ONE_DAY_IN_MILLISECONDS);
 }
 
-export function getDaysBetweenDates(dateLastPurchase, dateNextPurchase) {
-	// New items are created without a startDate. This avoids null type
-	// error on new item creation.
-	if (!dateLastPurchase) {
-		return;
+export function getDaysBetweenDates(date1, date2) {
+	if (!date1 || !date2) {
+		return 0;
 	}
 
-	// the .toDate method converts date formatting to milliseconds.
-	// divinding these days by ONE_DAY_IN_MILLISECONDS, gives you the total
-	// ammount of days after the difference is established.
-	if (dateLastPurchase && dateNextPurchase) {
-		const difference = dateLastPurchase - dateNextPurchase;
-		const numOfDaysBetweenCalculation = Math.floor(
-			difference / ONE_DAY_IN_MILLISECONDS,
-		);
+	const date1Milliseconds = date1.getTime();
+	const date2Milliseconds = date2.getTime();
 
-		// if number cannot divide evenly into a number more than 1, than less than a day has
-		// passed. Defaults to 0.
-		if (numOfDaysBetweenCalculation <= 0) {
-			return 0;
-		} else {
-			return numOfDaysBetweenCalculation;
-		}
-	}
+	const milliDiff = Math.abs(date2Milliseconds - date1Milliseconds);
+	return milliDiff / ONE_DAY_IN_MILLISECONDS;
 }
 
 export function getNextPurchasedDate({
@@ -79,27 +65,23 @@ export function getNextPurchasedDate({
 	return getFutureDate(smartNextPurchaseEstimate);
 }
 
-// compare last purchase with current date to get inactive
-
-export function categorizePurchaseStatus(numberOfDays) {
-	if (numberOfDays <= 7) {
-		return 'Need to buy soon';
-	} else if (numberOfDays > 7 && numberOfDays <= 30) {
-		return 'Kind of Soon';
-	} else if (numberOfDays > 30) {
-		return 'Not Soon';
-		// } else if (isInactive(dateLastPurchased) === true) {
-		// 	return 'Inactive';
-	}
-}
-
-export function isInactive(dateLastPurchased) {
-	const today = new Date();
-	const daysSinceLastPurchase = getDaysBetweenDates(
-		today,
-		dateLastPurchased?.toDate() ? dateLastPurchased?.toDate() : today,
-	);
-	if (daysSinceLastPurchase > 60) {
-		return true;
-	}
+export function sortByDaysBetweenDates(data) {
+	data.sort((a, b) => {
+		const numOfDaysA = getDaysBetweenDates(
+			a.dateLastPurchased?.toDate(),
+			a.dateNextPurchased?.toDate(),
+		);
+		const numOfDaysB = getDaysBetweenDates(
+			b.dateLastPurchased?.toDate(),
+			b.dateNextPurchased?.toDate(),
+		);
+		if (numOfDaysA < numOfDaysB) {
+			return -1;
+		}
+		if (numOfDaysA > numOfDaysB) {
+			return 1;
+		}
+		return 0;
+	});
+	return data;
 }

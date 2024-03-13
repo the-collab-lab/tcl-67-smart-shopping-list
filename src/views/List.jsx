@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { ListItem } from '../components';
 import { useNavigate } from 'react-router-dom';
+import { comparePurchaseUrgency } from '../api/firebase';
 
-export function List({ data, listPath, urgency }) {
+export function List({ data, listPath }) {
 	const [input, setInput] = useState('');
 
 	const navigate = useNavigate();
 
-	const filteredItems = data.filter((item) => {
+	const sortedItems = comparePurchaseUrgency(data);
+
+	const filteredItems = sortedItems.filter((item) => {
 		if (input) {
 			const lowerCaseItemName = item.name.toLowerCase();
 			return lowerCaseItemName.includes(input.toLowerCase());
@@ -39,7 +42,7 @@ export function List({ data, listPath, urgency }) {
 			<p>
 				Hello from the <code>/list</code> page!
 			</p>
-			<button>Click me to sort by urgency!</button>
+
 			<ul>
 				{filteredItems.map((item) => (
 					<ListItem key={item.id} item={item} listPath={listPath} />

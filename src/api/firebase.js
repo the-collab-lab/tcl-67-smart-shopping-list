@@ -10,11 +10,7 @@ import {
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
-import {
-	getFutureDate,
-	getDaysBetweenDates,
-	categorizePurchaseStatus,
-} from '../utils/dates.js';
+import { getFutureDate, sortByDaysBetweenDates } from '../utils/dates.js';
 /**
  * A custom hook that subscribes to the user's shopping lists in our Firestore
  * database and returns new data whenever the lists change.
@@ -213,80 +209,14 @@ export async function deleteItem() {
 	 */
 }
 
-// export function comparePurchaseUrgency(data) {
-// 	let priority = {
-// 		'soon': 1,
-// 		'kindOf': 2,
-// 		'notSoon': 3,
-// 		'inactive': 4,
-// 	};
-// }
-
-/* 
-A function that defines the sort order. The return value should be a number whose sign indicates the relative order of the two elements: 
-negative if a is less than b, positive if a is greater than b, and zero if they are equal. NaN is treated as 0. The function is called 
-with the following arguments*/
-
-// const urgency = categorizePurchaseStatus(numberOfDays);
-// data.map((item) => {
-// const numOfDays = getDaysBetweenDates(new Date(), item.dateNextPurchased);
-// }
-export function testFn() {
-	const items = [
-		{
-			dateCreated: 'February 9, 2024 at 1:05:32 PM UTC-6',
-			dateLastPurchased: null,
-			dateNextPurchased: 'March 27, 2024 at 2:05:32 PM UTC-5',
-			name: 'pear',
-			totalPurchases: 0,
-		},
-		{
-			dateCreated: 'February 16, 2024 at 1:05:32 PM UTC-6',
-			dateLastPurchased: null,
-			dateNextPurchased: 'March 17, 2024 at 2:05:32 PM UTC-5',
-			name: 'apple',
-			totalPurchases: 0,
-		},
-	];
-	items.sort((a, b) => {
-		const numOfDaysA = getDaysBetweenDates(a.dateCreated, a.dateNextPurchased);
-		const numOfDaysB = getDaysBetweenDates(b.dateCreated, b.dateNextPurchased);
-		console.log(numOfDaysA);
-		console.log(numOfDaysB);
-		if (numOfDaysA < numOfDaysB) {
-			console.log(items);
-			return -1;
-		}
-		if (numOfDaysA > numOfDaysB) {
-			console.log(items);
-			return 1;
-		}
-
-		// names must be equal
-		return 0;
-	});
-
-	console.log(items);
+export function comparePurchaseUrgency(data) {
+	sortByDaysBetweenDates(data);
+	return data;
 }
 
-// export function comparePurchaseUrgency(data) {
-// 	//
-// 	)};
-
-// PSEUDO CODE:
-// loop through list items
-// place items into arrays, depending on the urgency
-// use daysBetweenDates() to sort in ascending order of days
-// sort items w same days alphabetically
-// if inactive, last
-// once each array is sorted, append to respective div
-
-// dont need to add urgency property, calculate on demand
-// category display function
+// calculate urgency on demand
 // find and insert into sublist
-// separate data modification from view update
 // if you modify array page re-renders
-// comparator function to compare 2 items
-// sort uses -1, 0, 1 to determine order
 // write a function that takes in one item and mutates the item's array to put it in the right order
+// separate data modification from view update
 // use badges to define urgency
