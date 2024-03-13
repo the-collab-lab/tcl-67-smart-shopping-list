@@ -213,7 +213,7 @@ export async function updateItem(
 export async function deleteItem(listPath, itemId) {
 	const itemDoc = doc(db, listPath, 'items', itemId);
 
-	const deletedItem = deleteDoc(itemDoc);
+	deleteDoc(itemDoc);
 	return 'Item successfully deleted';
 	// throw new Error('Issue deleting item');
 

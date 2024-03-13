@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ListItem } from '../components';
 import { useNavigate } from 'react-router-dom';
 
 export function List({ data, listPath }) {
 	console.log(data);
-	const [loading, setLoading] = useState(true);
 	const [input, setInput] = useState('');
 
 	const navigate = useNavigate();
