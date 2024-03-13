@@ -1,26 +1,44 @@
 import React, { useState } from 'react';
 import { shareList } from '../api/firebase';
 import { useAuth } from '../api';
+import { useMutation } from 'react-query';
+
+async function shareListWithUser({ listPath, user, email }) {
+	return await shareList(listPath, user.uid, email);
+}
 
 const ShareForm = ({ listPath }) => {
 	const { user } = useAuth();
 	const [email, setEmail] = useState('');
 	const [message, setMessage] = useState('');
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
+	const {
+		isSuccess,
+		error,
+		isLoading,
+		reset,
+		mutateAsync: shareListWithUserMutation,
+	} = useMutation({
+		mutationFn: shareListWithUser,
+	});
 
+	// async function shareListWithUser() {
+	// 	console.log(listPath, user.uid, email);
+	// 	return await shareList(listPath, user.uid, email);
+	// }
+
+	const handleSubmit = async (e) => {
+		reset();
+		e.preventDefault();
 		if (!email.trim()) {
 			setMessage('Please enter an email');
-		} else {
-			try {
-				const response = await shareList(listPath, user.uid, email);
-				setMessage(response);
-			} catch (error) {
-				console.error(error.message);
-				setMessage(error.message);
-			}
+			return;
 		}
+		console.log(shareListWithUserMutation);
+
+		await shareListWithUserMutation({ listPath, user, email }).catch((e) =>
+			console.error(e),
+		);
 	};
 	return (
 		<div>
@@ -29,7 +47,7 @@ const ShareForm = ({ listPath }) => {
 				<div>
 					<label htmlFor="email">Email: </label>
 					<input
-						data-testid="email"
+						data-testid="shareForm-email-input"
 						onChange={(e) => setEmail(e.target.value)}
 						type="text"
 						id="email"
@@ -40,9 +58,14 @@ const ShareForm = ({ listPath }) => {
 				<div>
 					<button data-testid="shareForm-submit-button">Submit</button>
 				</div>
-				<div>
-					<span data-testid="shareFormMessage">{message}</span>
-				</div>
+				<span data-testid="shareForm-validation-message">{message}</span>
+				{isSuccess && (
+					<span data-testid="shareForm-success-message">
+						Successfully shared item with user
+					</span>
+				)}
+				{error && <span>Unable to share item with user</span>}
+				{isLoading && <span>Sharing...</span>}
 			</form>
 		</div>
 	);

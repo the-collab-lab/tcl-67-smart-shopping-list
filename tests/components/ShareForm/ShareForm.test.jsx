@@ -26,53 +26,75 @@ describe('ShareForm', () => {
 		renderShareListForm({ listPath: '/test-list' });
 	});
 
-	// it('Shares form with user successfully', async () => {
-	// 	//mocked user
-	// 	const mockedUserReturnValue = {
-	// 		uid: 'testuser',
-	// 		email: 'test@gmail.com',
-	// 	};
-	// 	const mockedUser = vi.spyOn(AuthFunctions, 'useAuth');
-	// 	mockedUser.mockImplementationOnce(async () => {
-	// 		await sleep();
-	// 		return mockedUserReturnValue;
-	// 	});
+	it('Shares form with user successfully', async () => {
+		//mocked user
+		const mockedUserReturnValue = {
+			user: {
+				uid: 'testuser',
+			},
+		};
+		const mockedUser = vi.spyOn(AuthFunctions, 'useAuth');
+		mockedUser.mockImplementation(() => {
+			return mockedUserReturnValue;
+		});
 
-	// 	// mocked share list
-	// 	const mockedShareListReturnValue = 'List was shared successfully';
-	// 	const mockedShareList = vi.spyOn(FirebaseFunctions, 'shareList');
-	// 	mockedShareList.mockImplementationOnce(async (mockedUser) => {
-	// 		await sleep();
-	// 		return mockedShareListReturnValue;
-	// 	});
+		// mocked ShareList
+		const mockedShareListReturnValue = 'List was shared successfully';
+		const mockedShareList = vi.spyOn(FirebaseFunctions, 'shareList');
+		mockedShareList.mockImplementationOnce(async () => {
+			await sleep();
+			return mockedShareListReturnValue;
+		});
 
-	// 	renderShareListForm({ listPath: '/test-list' });
+		renderShareListForm({ listPath: '/test-list' });
 
-	// 	// submitting email address
-	// 	const emailInput = screen.getByTestId('email');
-	// 	const submitButton = screen.getByTestId('shareForm-submit-button');
-	// 	await userEvent.type(emailInput, 'email@email.com');
-	// 	await userEvent.click(submitButton);
+		// submitting email address
+		const emailInput = screen.getByTestId('shareForm-email-input');
+		const submitButton = screen.getByTestId('shareForm-submit-button');
+		await userEvent.type(emailInput, 'email@email.com');
+		await userEvent.click(submitButton);
 
-	// 	// expect(mockedShareList).toHaveBeenCalledWith(mockedUserReturnValue);
-	// 	const successMessage = await screen.findByTestId('shareFormMessage');
-	// 	expect(successMessage).toBeTruthy();
-	// 	expect(successMessage.innerHTML).toBe('List was shared successfully!');
-	// });
-	// it('Tries to add empty string in email input', async () => {
-	// 	const mockedReturnValue = 'List was shared successfully';
-	// 	const mockedShareList = vi.spyOn(FirebaseFunctions, 'shareList');
-	// 	mockedShareList.mockImplementationOnce(async () => {
-	// 		await sleep();
-	// 		return mockedReturnValue;
-	// 	});
-	// 	renderShareListForm({ listPath: '/test-list' });
+		expect(mockedShareList).toHaveBeenCalledTimes(1);
+		expect(mockedShareList).toHaveBeenCalledWith(
+			'/test-list',
+			'testuser',
+			'email@email.com',
+		);
+		const successMessage = await screen.findByTestId(
+			'shareForm-success-message',
+		);
+		expect(successMessage).toBeTruthy();
+		expect(successMessage.innerHTML).toBe('Successfully shared item with user');
+	});
+	it('Tries to add empty string in email input', async () => {
+		//mocked user
+		const mockedUserReturnValue = {
+			user: {
+				uid: 'testuser',
+			},
+		};
+		const mockedUser = vi.spyOn(AuthFunctions, 'useAuth');
+		mockedUser.mockImplementation(() => {
+			return mockedUserReturnValue;
+		});
 
-	// 	const submitButton = screen.getByTestId('shareForm-submit-button');
-	// 	await userEvent.click(submitButton);
-	// 	const validationMessage = await screen.findByTestId('shareFormMessage');
+		// mocked ShareList
+		const mockedReturnValue = 'List was shared successfully';
+		const mockedShareList = vi.spyOn(FirebaseFunctions, 'shareList');
+		mockedShareList.mockImplementationOnce(async () => {
+			await sleep();
+			return mockedReturnValue;
+		});
 
-	// 	expect(validationMessage).toBeTruthy();
-	// 	expect(validationMessage.innerHTML).toBe('Please enter an email');
-	// });
+		renderShareListForm({ listPath: '/test-list' });
+
+		const submitButton = screen.getByTestId('shareForm-submit-button');
+		await userEvent.click(submitButton);
+
+		const successMessage = await screen.findByTestId(
+			'shareForm-validation-message',
+		);
+		expect(successMessage).toBeTruthy();
+		expect(successMessage.innerHTML).toBe('Please enter an email');
+	});
 });
