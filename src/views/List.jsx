@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ListItem } from '../components';
 import { useNavigate } from 'react-router-dom';
 
-export function List({ data, listPath }) {
+export function List({ data, listPath, urgency }) {
 	const [input, setInput] = useState('');
 
 	const navigate = useNavigate();
@@ -39,26 +39,11 @@ export function List({ data, listPath }) {
 			<p>
 				Hello from the <code>/list</code> page!
 			</p>
-			<div className="soon">
-				<h2>Soon</h2>
-			</div>
-			<div className="kindOfSoon">
-				<h2>Kind of Soon</h2>
-			</div>
-			<div className="notSoon">
-				<h2>Not Soon</h2>
-			</div>
-			<div className="inactive">
-				<h2>Inactive</h2>
-			</div>
-			<div className="overdue">
-				<h2>Overdue</h2>
-			</div>
+			<button>Click me to sort by urgency!</button>
 			<ul>
 				{filteredItems.map((item) => (
 					<ListItem key={item.id} item={item} listPath={listPath} />
 				))}
-
 				{data.length === 0 && (
 					<div>
 						<p>There are no items in this list!</p>

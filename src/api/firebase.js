@@ -171,8 +171,6 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
 export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 	const listCollectionRef = collection(db, listPath, 'items');
 
-	const urgency = categorizePurchaseStatus(daysUntilNextPurchase);
-
 	const docRef = await addDoc(listCollectionRef, {
 		dateCreated: new Date(),
 		// NOTE: This is null because the item has just been created.
@@ -181,7 +179,6 @@ export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 		dateNextPurchased: getFutureDate(daysUntilNextPurchase),
 		name: itemName,
 		totalPurchases: 0,
-		urgency: urgency,
 	});
 
 	// Retrieve the added document by its reference
@@ -198,15 +195,12 @@ export async function updateItem(
 	listPath,
 	{ itemId, dateNextPurchased, totalPurchases },
 ) {
-	const numberOfDays = getDaysBetweenDates(new Date(), dateNextPurchased);
-	const urgency = categorizePurchaseStatus(numberOfDays);
 	const itemDoc = doc(db, listPath, 'items', itemId);
 
 	updateDoc(itemDoc, {
 		dateLastPurchased: new Date(),
 		dateNextPurchased,
 		totalPurchases: totalPurchases + 1,
-		urgency: urgency,
 	});
 	return 'Item purchased!';
 }
@@ -219,44 +213,74 @@ export async function deleteItem() {
 	 */
 }
 
-// ***Question for adit - how do we access listpath properties from firebase.js
+// export function comparePurchaseUrgency(data) {
+// 	let priority = {
+// 		'soon': 1,
+// 		'kindOf': 2,
+// 		'notSoon': 3,
+// 		'inactive': 4,
+// 	};
+// }
 
-export function comparePurchaseUrgency(data) {
-	let categories = {
-		soon: [],
-		kindOfSoon: [],
-		notSoon: [],
-		inactive: [],
-	};
-	data.map((item) => {
-		console.log(`${item.name} urgency`, item.urgency);
-		switch (item.urgency) {
-			case 'Soon':
-				categories.soon.push(item);
-				break;
-			case 'Kind of soon':
-				categories.kindOfSoon.push(item);
-				break;
-			case 'Not soon':
-				categories.notSoon.push(item);
-				break;
-			case 'Inactive':
-				categories.inactive.push(item);
-				break;
-			default:
-				console.log(`${item.name} does not have an associated urgency`);
+/* 
+A function that defines the sort order. The return value should be a number whose sign indicates the relative order of the two elements: 
+negative if a is less than b, positive if a is greater than b, and zero if they are equal. NaN is treated as 0. The function is called 
+with the following arguments*/
+
+// const urgency = categorizePurchaseStatus(numberOfDays);
+// data.map((item) => {
+// const numOfDays = getDaysBetweenDates(new Date(), item.dateNextPurchased);
+// }
+export function testFn() {
+	const items = [
+		{
+			dateCreated: 'February 9, 2024 at 1:05:32 PM UTC-6',
+			dateLastPurchased: null,
+			dateNextPurchased: 'March 27, 2024 at 2:05:32 PM UTC-5',
+			name: 'pear',
+			totalPurchases: 0,
+		},
+		{
+			dateCreated: 'February 16, 2024 at 1:05:32 PM UTC-6',
+			dateLastPurchased: null,
+			dateNextPurchased: 'March 17, 2024 at 2:05:32 PM UTC-5',
+			name: 'apple',
+			totalPurchases: 0,
+		},
+	];
+	items.sort((a, b) => {
+		const numOfDaysA = getDaysBetweenDates(a.dateCreated, a.dateNextPurchased);
+		const numOfDaysB = getDaysBetweenDates(b.dateCreated, b.dateNextPurchased);
+		console.log(numOfDaysA);
+		console.log(numOfDaysB);
+		if (numOfDaysA < numOfDaysB) {
+			console.log(items);
+			return -1;
 		}
+		if (numOfDaysA > numOfDaysB) {
+			console.log(items);
+			return 1;
+		}
+
+		// names must be equal
+		return 0;
 	});
 
-	console.log(categories);
-	// PSEUDO CODE:
-	// loop through list items
-	// place items into arrays, depending on the urgency
-	// use daysBetweenDates() to sort in ascending order of days
-	// sort items w same days alphabetically
-	// if inactive, last
-	// once each array is sorted, append to respective div
+	console.log(items);
 }
+
+// export function comparePurchaseUrgency(data) {
+// 	//
+// 	)};
+
+// PSEUDO CODE:
+// loop through list items
+// place items into arrays, depending on the urgency
+// use daysBetweenDates() to sort in ascending order of days
+// sort items w same days alphabetically
+// if inactive, last
+// once each array is sorted, append to respective div
+
 // dont need to add urgency property, calculate on demand
 // category display function
 // find and insert into sublist
