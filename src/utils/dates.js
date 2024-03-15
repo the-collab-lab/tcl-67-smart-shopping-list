@@ -68,6 +68,7 @@ export function getNextPurchasedDate({
 export function sortByDaysBetweenDates(data) {
 	let inactiveArr = [];
 	const activeMap = new Map();
+	let overDueArr = [];
 
 	data.forEach((item) => {
 		const daysBetween = getDaysBetweenDates(
@@ -77,6 +78,11 @@ export function sortByDaysBetweenDates(data) {
 
 		if (daysBetween > 60) {
 			inactiveArr.push(item);
+		} else if (
+			daysBetween < 60 &&
+			new Date() > item.dateNextPurchased?.toDate()
+		) {
+			overDueArr.push(item);
 		} else {
 			if (!activeMap.has(daysBetween)) {
 				activeMap.set(daysBetween, []);
@@ -99,5 +105,5 @@ export function sortByDaysBetweenDates(data) {
 	// Flatten the array of items grouped by daysBetween
 	const sortedActiveItems = Array.prototype.concat(...sortedActiveMap.values());
 
-	return [...sortedActiveItems, ...inactiveArr];
+	return [...overDueArr, ...sortedActiveItems, ...inactiveArr];
 }
