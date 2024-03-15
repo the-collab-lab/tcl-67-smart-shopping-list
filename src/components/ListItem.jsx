@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ListItem.css';
 import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
-import { getNextPurchasedDate } from '../utils';
+import { getNextPurchasedDate, getDaysBetweenDates } from '../utils';
 
 export function ListItem({ item, listPath }) {
 	const { id, totalPurchases, name, dateLastPurchased, dateNextPurchased } =
@@ -14,6 +14,26 @@ export function ListItem({ item, listPath }) {
 	const [isChecked, setIsChecked] = useState(
 		isLessThan24HoursSinceLastPurchased,
 	);
+
+	const [urgency, setUrgency] = useState('');
+
+	function determineUrgency(
+		a = dateLastPurchased.toDate(),
+		b = dateNextPurchased.toDate(),
+	) {
+		const daysBetween = getDaysBetweenDates(a, b);
+		if (new Date() > b) {
+			setUrgency('----------Overdue');
+		} else if (daysBetween <= 7) {
+			setUrgency('----------Purchase Soon');
+		} else if (daysBetween > 7 && daysBetween <= 30) {
+			setUrgency('----------Purchase kind of soon');
+		} else if (daysBetween > 30 && daysBetween < 60) {
+			setUrgency('----------Purchase Not Soon');
+		} else if (daysBetween > 60) {
+			setUrgency('----------Inactive');
+		}
+	}
 
 	function compareIfDateIsLessThan24Hours(date) {
 		// dividing millisecond difference by 3600000 to get difference in hours
@@ -56,6 +76,10 @@ export function ListItem({ item, listPath }) {
 		}
 	}
 
+	useEffect(() => {
+		determineUrgency(dateLastPurchased.toDate(), dateNextPurchased.toDate());
+	});
+
 	return (
 		<div>
 			<input
@@ -66,6 +90,7 @@ export function ListItem({ item, listPath }) {
 				onChange={handleCheckboxCheck}
 			/>
 			<label htmlFor="item">{name}</label>
+			<label>{urgency}</label>
 			{error && <p>Error marking as purchased</p>}
 			{isLoading && <p>Updating item as purchased...</p>}
 		</div>
