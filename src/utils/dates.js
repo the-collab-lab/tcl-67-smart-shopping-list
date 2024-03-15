@@ -94,13 +94,8 @@ export function sortByDaysBetweenDates(data) {
 }
 
 // export function sortByDaysBetweenDates(data) {
-// 	// let activeArr = [];
+// 	let activeArr = [];
 // 	let inactiveArr = [];
-// 	const activeMap = new Map();
-// 	let reorderedItems = [];
-// 	let currentIndex = 0;
-// 	let lowestNum = 0;
-// 	// const inActiveMap = new Map();
 
 // 	data.forEach((item) => {
 // 		if (
@@ -111,47 +106,28 @@ export function sortByDaysBetweenDates(data) {
 // 		) {
 // 			inactiveArr.push(item);
 // 		} else {
-// 			activeMap.set(
-// 				item,
-// 				getDaysBetweenDates(
-// 					item.dateLastPurchased?.toDate(),
-// 					item.dateNextPurchased?.toDate(),
-// 				),
-// 			);
+// 			activeArr.push(item);
 // 		}
 // 	});
 
-// 	for (let [key, value] of activeMap) {
-// 		for (let [key2, value2] of activeMap) {
-// 			if (value2 === lowestNum) {
-// 				continue;
-// 			} else if (value2 < lowestNum) {
-// 				lowestNum = value2;
-// 			}
+// 	activeArr.sort((a, b) => {
+// 		const numOfDaysA = getDaysBetweenDates(
+// 			a.dateLastPurchased?.toDate(),
+// 			a.dateNextPurchased?.toDate(),
+// 		);
+// 		const numOfDaysB = getDaysBetweenDates(
+// 			b.dateLastPurchased?.toDate(),
+// 			b.dateNextPurchased?.toDate(),
+// 		);
+
+// 		if (numOfDaysA < numOfDaysB) {
+// 			return -1;
 // 		}
-// 		// console.log(key.name);
-// 	}
+// 		if (numOfDaysA > numOfDaysB) {
+// 			return 1;
+// 		}
+// 		return 0;
+// 	});
 
-// 	console.log(activeMap.values());
-
-// 	// activeArr.sort((a, b) => {
-// 	// 	const numOfDaysA = getDaysBetweenDates(
-// 	// 		a.dateLastPurchased?.toDate(),
-// 	// 		a.dateNextPurchased?.toDate(),
-// 	// 	);
-// 	// 	const numOfDaysB = getDaysBetweenDates(
-// 	// 		b.dateLastPurchased?.toDate(),
-// 	// 		b.dateNextPurchased?.toDate(),
-// 	// 	);
-
-// 	// 	if (numOfDaysA < numOfDaysB) {
-// 	// 		return -1;
-// 	// 	}
-// 	// 	if (numOfDaysA > numOfDaysB) {
-// 	// 		return 1;
-// 	// 	}
-// 	// 	return 0;
-// 	// });
-
-// 	return [...activeMap.keys(), ...inactiveArr];
+// 	return [...activeArr, ...inactiveArr];
 // }
