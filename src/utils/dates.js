@@ -1,5 +1,4 @@
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
-import { act } from 'react-dom/test-utils';
 
 let ONE_DAY_IN_MILLISECONDS = 86400000;
 
@@ -79,55 +78,26 @@ export function sortByDaysBetweenDates(data) {
 		if (daysBetween > 60) {
 			inactiveArr.push(item);
 		} else {
-			activeMap.set(item, daysBetween);
+			if (!activeMap.has(daysBetween)) {
+				activeMap.set(daysBetween, []);
+			}
+			activeMap.get(daysBetween).push(item);
 		}
 	});
 
+	// Sort items alphabetically for each daysBetween value
+	activeMap.forEach((items) => {
+		items.sort((a, b) => a.name.localeCompare(b.name));
+	});
+
 	// Convert activeMap to an array of key-value pairs and sort it by the number of days between dates
-	const sortedActiveArray = Array.from(activeMap).sort((a, b) => a[1] - b[1]);
+	const sortedActiveArray = Array.from(activeMap).sort((a, b) => a[0] - b[0]);
 
 	// Reconstruct activeMap from the sorted array
 	const sortedActiveMap = new Map(sortedActiveArray);
 
-	console.log(...sortedActiveMap.values());
-	return [...sortedActiveMap.keys(), ...inactiveArr];
+	// Flatten the array of items grouped by daysBetween
+	const sortedActiveItems = Array.prototype.concat(...sortedActiveMap.values());
+
+	return [...sortedActiveItems, ...inactiveArr];
 }
-
-// export function sortByDaysBetweenDates(data) {
-// 	let activeArr = [];
-// 	let inactiveArr = [];
-
-// 	data.forEach((item) => {
-// 		if (
-// 			getDaysBetweenDates(
-// 				item.dateLastPurchased?.toDate(),
-// 				item.dateNextPurchased?.toDate(),
-// 			) > 60
-// 		) {
-// 			inactiveArr.push(item);
-// 		} else {
-// 			activeArr.push(item);
-// 		}
-// 	});
-
-// 	activeArr.sort((a, b) => {
-// 		const numOfDaysA = getDaysBetweenDates(
-// 			a.dateLastPurchased?.toDate(),
-// 			a.dateNextPurchased?.toDate(),
-// 		);
-// 		const numOfDaysB = getDaysBetweenDates(
-// 			b.dateLastPurchased?.toDate(),
-// 			b.dateNextPurchased?.toDate(),
-// 		);
-
-// 		if (numOfDaysA < numOfDaysB) {
-// 			return -1;
-// 		}
-// 		if (numOfDaysA > numOfDaysB) {
-// 			return 1;
-// 		}
-// 		return 0;
-// 	});
-
-// 	return [...activeArr, ...inactiveArr];
-// }
