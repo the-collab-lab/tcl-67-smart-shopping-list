@@ -22,7 +22,7 @@ export function getDaysBetweenDates(date1, date2) {
 	const date2Milliseconds = date2.getTime();
 
 	const milliDiff = Math.abs(date2Milliseconds - date1Milliseconds);
-	return milliDiff / ONE_DAY_IN_MILLISECONDS;
+	return Math.floor(milliDiff / ONE_DAY_IN_MILLISECONDS);
 }
 
 export function getNextPurchasedDate({
@@ -66,7 +66,23 @@ export function getNextPurchasedDate({
 }
 
 export function sortByDaysBetweenDates(data) {
-	data.sort((a, b) => {
+	let activeArr = [];
+	let inactiveArr = [];
+
+	data.forEach((item) => {
+		if (
+			getDaysBetweenDates(
+				item.dateLastPurchased?.toDate(),
+				item.dateNextPurchased?.toDate(),
+			) > 60
+		) {
+			inactiveArr.push(item);
+		} else {
+			activeArr.push(item);
+		}
+	});
+
+	activeArr.sort((a, b) => {
 		const numOfDaysA = getDaysBetweenDates(
 			a.dateLastPurchased?.toDate(),
 			a.dateNextPurchased?.toDate(),
@@ -75,6 +91,7 @@ export function sortByDaysBetweenDates(data) {
 			b.dateLastPurchased?.toDate(),
 			b.dateNextPurchased?.toDate(),
 		);
+
 		if (numOfDaysA < numOfDaysB) {
 			return -1;
 		}
@@ -83,5 +100,6 @@ export function sortByDaysBetweenDates(data) {
 		}
 		return 0;
 	});
-	return data;
+
+	return [...activeArr, ...inactiveArr];
 }

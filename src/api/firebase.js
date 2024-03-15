@@ -210,8 +210,7 @@ export async function deleteItem() {
 }
 
 export function comparePurchaseUrgency(data) {
-	sortByDaysBetweenDates(data);
-	return data;
+	return sortByDaysBetweenDates(data);
 }
 
 // calculate urgency on demand
