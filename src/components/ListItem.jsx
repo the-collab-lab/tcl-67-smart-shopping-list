@@ -17,10 +17,7 @@ export function ListItem({ item, listPath }) {
 
 	const [urgency, setUrgency] = useState('');
 
-	function determineUrgency(
-		a = dateLastPurchased.toDate(),
-		b = dateNextPurchased.toDate(),
-	) {
+	function determineUrgency(a, b) {
 		const daysBetween = getDaysBetweenDates(a, b);
 		if (new Date() > b) {
 			setUrgency('----------Overdue');
@@ -34,6 +31,10 @@ export function ListItem({ item, listPath }) {
 			setUrgency('----------Inactive');
 		}
 	}
+
+	useEffect(() => {
+		determineUrgency(dateLastPurchased?.toDate(), dateNextPurchased?.toDate());
+	}, [isChecked, dateLastPurchased, dateNextPurchased]);
 
 	function compareIfDateIsLessThan24Hours(date) {
 		// dividing millisecond difference by 3600000 to get difference in hours
@@ -75,10 +76,6 @@ export function ListItem({ item, listPath }) {
 			});
 		}
 	}
-
-	useEffect(() => {
-		determineUrgency(dateLastPurchased.toDate(), dateNextPurchased.toDate());
-	});
 
 	return (
 		<div>
