@@ -3,7 +3,7 @@ import { ListItem } from '../components';
 import { useNavigate } from 'react-router-dom';
 
 export function List({ data, listPath }) {
-	console.log(data);
+	console.log(data.data, listPath);
 	const [input, setInput] = useState('');
 
 	const navigate = useNavigate();

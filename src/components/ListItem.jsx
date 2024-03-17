@@ -65,11 +65,9 @@ export function ListItem({ item, listPath }) {
 
 	async function handleDeleteItem() {
 		if (window.confirm(`Do you really want to delete ${name}?`)) {
-			try {
-				await markItemAsDeleteMutation(listPath, id);
-			} catch (error) {
+			await markItemAsDeleteMutation(listPath, id).catch((e) => {
 				throw new Error('There was an error deleting the item');
-			}
+			});
 		}
 	}
 

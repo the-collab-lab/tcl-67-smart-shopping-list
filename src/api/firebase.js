@@ -75,7 +75,6 @@ export function useShoppingListData(listPath) {
 				// The document's id is not in the data,
 				// but it is very useful, so we add it to the data ourselves.
 				item.id = docSnapshot.id;
-
 				return item;
 			});
 
