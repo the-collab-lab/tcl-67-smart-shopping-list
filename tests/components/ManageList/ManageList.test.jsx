@@ -19,7 +19,7 @@ describe('ManageList', () => {
 	};
 
 	it('renders AddItemForm and ShareForm if listPath is passed in', async () => {
-		const data = [{ name: 'apple' }];
+		const data = { data: [{ name: 'apple' }], loading: false };
 		renderManageList({ listPath: '/test-list', data });
 
 		const addItemForm = screen.queryByTestId('addItemForm-header');
