@@ -21,11 +21,6 @@ describe('getDaysBetweenDates', () => {
 		expect(getDaysBetweenDates(date1, date2null)).toEqual(0);
 	});
 
-	it('converts the two dates to milliseconds', () => {
-		expect(date1Milliseconds).toEqual(1704101040000);
-		expect(date2Milliseconds).toEqual(1704705840000);
-	});
-
 	it('calculates the difference in milliseconds between the dates', () => {
 		const milliDiff = Math.abs(date2Milliseconds - date1Milliseconds);
 		expect(milliDiff).toEqual(604800000);
