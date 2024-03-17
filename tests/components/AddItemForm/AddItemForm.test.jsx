@@ -126,7 +126,7 @@ describe('AddItemForm', () => {
 		expect(mockedAddItem).toHaveBeenCalledTimes(0);
 	});
 	it('Tries to add empty string but gets error', async () => {
-		const data = [{ name: 'apple' }];
+		const data = { data: [{ name: 'apple' }], loading: false };
 
 		const mockedAddItem = vi.spyOn(FirebaseFunctions, 'addItem');
 
