@@ -6,6 +6,7 @@ import {
 	doc,
 	onSnapshot,
 	updateDoc,
+	deleteDoc,
 	addDoc,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
@@ -57,6 +58,7 @@ export function useShoppingListData(listPath) {
 	/** @type {import('firebase/firestore').DocumentData[]} */
 	const initialState = [];
 	const [data, setData] = useState(initialState);
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		if (!listPath) return;
@@ -73,17 +75,17 @@ export function useShoppingListData(listPath) {
 				// The document's id is not in the data,
 				// but it is very useful, so we add it to the data ourselves.
 				item.id = docSnapshot.id;
-
 				return item;
 			});
 
 			// Update our React state with the new data.
 			setData(nextData);
+			setLoading(false);
 		});
 	}, [listPath]);
 
 	// Return the data so it can be used by our React components.
-	return data;
+	return { data, loading };
 }
 
 /**
@@ -201,7 +203,13 @@ export async function updateItem(
 	return 'Item purchased!';
 }
 
-export async function deleteItem() {
+export async function deleteItem(listPath, itemId) {
+	const itemDoc = doc(db, listPath, 'items', itemId);
+
+	deleteDoc(itemDoc);
+	return 'Item successfully deleted';
+	// throw new Error('Issue deleting item');
+
 	/**
 	 * TODO: Fill this out so that it uses the correct Firestore function
 	 * to delete an existing item. You'll need to figure out what arguments

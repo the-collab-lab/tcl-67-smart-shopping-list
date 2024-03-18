@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { comparePurchaseUrgency } from '../api/firebase';
 
 export function List({ data, listPath }) {
+	console.log(data.data, listPath);
 	const [input, setInput] = useState('');
 
 	const navigate = useNavigate();
@@ -11,6 +12,7 @@ export function List({ data, listPath }) {
 	const sortedItems = comparePurchaseUrgency(data);
 
 	const filteredItems = sortedItems.filter((item) => {
+
 		if (input) {
 			const lowerCaseItemName = item.name.toLowerCase();
 			return lowerCaseItemName.includes(input.toLowerCase());
@@ -25,6 +27,11 @@ export function List({ data, listPath }) {
 
 	function clearSearch() {
 		setInput('');
+	}
+
+	if (data.loading) {
+		// If data is not loaded yet, render a loading indicator
+		return <p>Loading...</p>;
 	}
 
 	return (
@@ -44,9 +51,11 @@ export function List({ data, listPath }) {
 			</p>
 
 			<ul>
+
 				{filteredItems.map((item) => (
 					<ListItem key={item.id} item={item} listPath={listPath} />
 				))}
+
 				{data.length === 0 && (
 					<div>
 						<p>There are no items in this list!</p>
@@ -55,13 +64,15 @@ export function List({ data, listPath }) {
 						</button>
 					</div>
 				)}
-
-				{data.length > 0 && filteredItems.length === 0 && (
-					<div>
-						<p>No match found for that filter query.</p>
-					</div>
-				)}
 			</ul>
+			{data.length > 0 && filteredItems.length === 0 && (
+				<div>
+					<p>No match found for that filter query.</p>
+				</div>
+			)}
+			{filteredItems.map((item) => (
+				<ListItem key={item.id} item={item} listPath={listPath} />
+			))}
 		</>
 	);
 }

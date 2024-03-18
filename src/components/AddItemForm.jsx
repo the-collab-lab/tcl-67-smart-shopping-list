@@ -18,8 +18,8 @@ export default function AddItemForm({ listPath, data }) {
 	const [itemDuration, setItemDuration] = useState(7);
 
 	const normalizedItemNames = useMemo(() => {
-		return data.map((item) => normalizeInput(item.name));
-	}, [data]);
+		return data.data.map((item) => normalizeInput(item.name));
+	}, [data.data]);
 
 	const {
 		isSuccess,
@@ -54,6 +54,7 @@ export default function AddItemForm({ listPath, data }) {
 
 	return (
 		<form onSubmit={handleSubmit}>
+			<h2 data-testid="addItemForm-header">Add an item to your list</h2>
 			<div>
 				<label htmlFor="itemName">Item Name: </label>
 				<input

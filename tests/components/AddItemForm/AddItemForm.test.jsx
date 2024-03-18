@@ -5,9 +5,7 @@ import { vi } from 'vitest';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from '../../../src/App';
 import userEvent from '@testing-library/user-event';
-
-const sleep = async (ms = 200) =>
-	await new Promise((resolve) => setTimeout(() => resolve(null), ms));
+import { sleep } from '../../testHelpers';
 
 describe('AddItemForm', () => {
 	afterEach(() => {
@@ -24,7 +22,7 @@ describe('AddItemForm', () => {
 	};
 
 	it('renders AddItemForm', () => {
-		const data = [{ name: 'apple' }];
+		const data = { data: [{ name: 'apple' }], loading: false };
 		renderAddItemForm({ listPath: '/test', data });
 	});
 
@@ -38,7 +36,7 @@ describe('AddItemForm', () => {
 			totalPurchases: 0,
 		};
 
-		const data = [{ name: 'apple' }];
+		const data = { data: [{ name: 'apple' }], loading: false };
 
 		const mockedAddItem = vi.spyOn(FirebaseFunctions, 'addItem');
 		mockedAddItem.mockImplementationOnce(async () => {
@@ -70,7 +68,7 @@ describe('AddItemForm', () => {
 	});
 
 	it('Adds item but get an error', async () => {
-		const data = [{ name: 'apple' }];
+		const data = { data: [{ name: 'apple' }], loading: false };
 
 		const mockedAddItem = vi.spyOn(FirebaseFunctions, 'addItem');
 
@@ -103,7 +101,7 @@ describe('AddItemForm', () => {
 	});
 
 	it('Tries to add duplicate item but gets error', async () => {
-		const data = [{ name: 'apple' }];
+		const data = { data: [{ name: 'apple' }], loading: false };
 
 		const mockedAddItem = vi.spyOn(FirebaseFunctions, 'addItem');
 
@@ -116,11 +114,37 @@ describe('AddItemForm', () => {
 		await userEvent.type(itemInput, 'apple');
 		await userEvent.click(submitButton);
 
-		const validationErrorMessage = screen.queryByTestId('addItemFormMessage');
+		const validationErrorMessage =
+			await screen.findByTestId('addItemFormMessage');
 		const errorMessage = screen.queryByTestId('addItemFormError');
 		const successMessage = screen.queryByTestId('addItemFormSuccess');
 
 		expect(validationErrorMessage.innerHTML).toBe('Item already exists');
+		expect(errorMessage).toBeFalsy();
+		expect(successMessage).toBeFalsy();
+
+		expect(mockedAddItem).toHaveBeenCalledTimes(0);
+	});
+	it('Tries to add empty string but gets error', async () => {
+		const data = { data: [{ name: 'apple' }], loading: false };
+
+		const mockedAddItem = vi.spyOn(FirebaseFunctions, 'addItem');
+
+		renderAddItemForm({ listPath: '/test-list', data });
+
+		const submitButton = screen.getByTestId('submit-button');
+
+		// Use userEvent for a more natural user interaction
+
+		await userEvent.click(submitButton);
+
+		const validationErrorMessage = screen.queryByTestId('addItemFormMessage');
+		const errorMessage = screen.queryByTestId('addItemFormError');
+		const successMessage = screen.queryByTestId('addItemFormSuccess');
+
+		expect(validationErrorMessage.innerHTML).toBe(
+			'Please enter a name for your item',
+		);
 		expect(errorMessage).toBeFalsy();
 		expect(successMessage).toBeFalsy();
 

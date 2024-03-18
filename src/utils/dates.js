@@ -13,6 +13,12 @@ export function getFutureDate(offset) {
 	return new Date(Date.now() + offset * ONE_DAY_IN_MILLISECONDS);
 }
 
+export function compareIfDateIsLessThan24Hours(date) {
+	// dividing millisecond difference by 3600000 to get difference in hours
+	// then checking if difference is less than 24 hours
+	return date && (new Date() - date.toDate()) / 3600000 < 24;
+}
+
 export function getDaysBetweenDates(date1, date2) {
 	if (!date1 || !date2) {
 		return 0;
