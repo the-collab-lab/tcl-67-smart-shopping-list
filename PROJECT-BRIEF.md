@@ -62,8 +62,8 @@ This document serves as your comprehensive guide to all available resources nece
 | Jenny & Tishtanya     | [6. As a user, I want to be able to invite others to an existing shopping list.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/6)                   |
 | Fredrick & Alexandra  | [7. As a user, I want to filter my shopping list to make it easier to locate an item in the list.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/7) |
 
-| 📖 Self-study learning modules                         | Description                                                                                                                                                                            |
-| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 📖 Self-study learning modules                                                  | Description                                                                                                                                                                            |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [How to tell your story](https://youtu.be/Zhtd-DdTwSs?si=XMPc7_JvWdzUUYPJ&t=83) | Refine the skill of effectively telling your story in interviews and when meeting new people, allowing you to leave a lasting impression and stand out during the application process. |
 
 ### Week 4, February 25 - March 2
@@ -96,8 +96,8 @@ This document serves as your comprehensive guide to all available resources nece
 | Alexandra & Jenny     | [10. As a user, I want to be alerted when I’m entering an empty item or an item that's already on my list.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/10)                                                                       |
 | Tishtanya & Fredrick  | [11. As an item, I want my estimated next purchase date to be computed at the time my purchase is recorded in the database so the app can learn how often I buy different items.](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/11) |
 
-| 📖 Self-study learning modules                                             | Description                                                                                                                                                           |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 📖 Self-study learning modules                                                    | Description                                                                                                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Navigating finances during a career change](https://youtu.be/xtkgOmFPUJU&t=202s) | This presentation will teach you invaluable techniques on how to effectively navigate finances during a career change, setting you up for success in your transition. |
 
 ### Week 6, March 10 - 16
@@ -128,9 +128,9 @@ This document serves as your comprehensive guide to all available resources nece
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | Full team             | [14. As a user, I want the app to look professional and welcoming](https://github.com/the-collab-lab/tcl-67-smart-shopping-list/issues/14) |
 
-| 📖 Self-study learning modules                                                     | Description                                                                                                                     |
-| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| [How to rock the technical interview](https://www.youtube.com/watch?v=X-7eKmYqM8M) | This video is packed with invaluable insights to enhance your success in a variety of technical interviews.                     |
+| 📖 Self-study learning modules                                                     | Description                                                                                                 |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| [How to rock the technical interview](https://www.youtube.com/watch?v=X-7eKmYqM8M) | This video is packed with invaluable insights to enhance your success in a variety of technical interviews. |
 
 ### Week 8, March 24 - 30
 
@@ -159,9 +159,9 @@ This document serves as your comprehensive guide to all available resources nece
 | --------------------- | --------------------------------------------------------------------------------------- |
 |                       | No assigned issues. This is a good chance to address any emergent work defined by team. |
 
-| 📖 Self-study learning modules                                                                                         | Description                                                                                       |
-| ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Job-Fit Mock Interview | We will be using Interviewable to practice responding to common interview questions. Stay tuned for login details.                                           |
+| 📖 Self-study learning modules | Description                                                                                                        |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Job-Fit Mock Interview         | We will be using Interviewable to practice responding to common interview questions. Stay tuned for login details. |
 
 ### Week 10, April 7 - 13
 
@@ -173,7 +173,6 @@ This document serves as your comprehensive guide to all available resources nece
 | --------------------- | --------------------------------------------------------------------------------------- |
 |                       | No assigned issues. This is a good chance to address any emergent work defined by team. |
 
-| 📖 Self-study learning modules                                                                                         | Description                                                                                       |
-| ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Technical Mock Interview | We will be using Interviewable to practice responding to common interview questions. Stay tuned for login details.                                           |
-
+| 📖 Self-study learning modules | Description                                                                                                        |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| Technical Mock Interview       | We will be using Interviewable to practice responding to common interview questions. Stay tuned for login details. |

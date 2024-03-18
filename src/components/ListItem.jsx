@@ -5,7 +5,7 @@ import { useMutation } from 'react-query';
 
 import { getNextPurchasedDate } from '../utils';
 import { deleteItem } from '../api/firebase';
-import { compareIfDateIsLessThan24Hours } from '../utils';
+import { compareIfDateIsLessThan24Hours, getDaysBetweenDates } from '../utils';
 
 export function ListItem({ item, listPath }) {
 	const { id, totalPurchases, name, dateLastPurchased, dateNextPurchased } =
@@ -39,14 +39,9 @@ export function ListItem({ item, listPath }) {
 		determineUrgency(dateLastPurchased?.toDate(), dateNextPurchased?.toDate());
 	}, [isChecked, dateLastPurchased, dateNextPurchased]);
 
-	function compareIfDateIsLessThan24Hours(date) {
-		// dividing millisecond difference by 3600000 to get difference in hours
-		// then checking if difference is less than 24 hours
-		return date && (new Date() - date.toDate()) / 3600000 < 24;
-	}
-
-
 	const {
+		error,
+		isLoading,
 		error: purchaseError,
 		isLoading: purchaseIsLoading,
 		mutateAsync: markAsPurchasedMutation,
@@ -123,7 +118,6 @@ export function ListItem({ item, listPath }) {
 			{deleteIsLoading && <p>Deleting item...</p>}
 			{purchaseError && <p>Error marking as purchased</p>}
 			{purchaseIsLoading && <p>Updating item as purchased...</p>}
-
 		</div>
 	);
 }

@@ -12,7 +12,6 @@ export function List({ data, listPath }) {
 	const sortedItems = comparePurchaseUrgency(data);
 
 	const filteredItems = sortedItems.filter((item) => {
-
 		if (input) {
 			const lowerCaseItemName = item.name.toLowerCase();
 			return lowerCaseItemName.includes(input.toLowerCase());
@@ -51,7 +50,6 @@ export function List({ data, listPath }) {
 			</p>
 
 			<ul>
-
 				{filteredItems.map((item) => (
 					<ListItem key={item.id} item={item} listPath={listPath} />
 				))}
