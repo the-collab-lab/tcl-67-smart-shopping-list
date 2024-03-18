@@ -1,6 +1,6 @@
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 
-export const ONE_DAY_IN_MILLISECONDS = 86400000;
+let ONE_DAY_IN_MILLISECONDS = 86400000;
 
 /**
  * Get a new JavaScript Date that is `offset` days in the future.
@@ -19,30 +19,16 @@ export function compareIfDateIsLessThan24Hours(date) {
 	return date && (new Date() - date.toDate()) / 3600000 < 24;
 }
 
-export function getDaysBetweenDates(dateLastPurchase, dateNextPurchase) {
-	// New items are created without a startDate. This avoids null type
-	// error on new item creation.
-	if (!dateLastPurchase) {
-		return;
+export function getDaysBetweenDates(date1, date2) {
+	if (!date1 || !date2) {
+		return 0;
 	}
 
-	// the .toDate method converts date formatting to milliseconds.
-	// divinding these days by ONE_DAY_IN_MILLISECONDS, gives you the total
-	// ammount of days after the difference is established.
-	if (dateLastPurchase && dateNextPurchase) {
-		const difference = dateLastPurchase - dateNextPurchase;
-		const numOfDaysBetweenCalculation = Math.floor(
-			difference / ONE_DAY_IN_MILLISECONDS,
-		);
+	const date1Milliseconds = date1.getTime();
+	const date2Milliseconds = date2.getTime();
 
-		// if number cannot divide evenly into a number more than 1, than less than a day has
-		// passed. Defaults to 0.
-		if (numOfDaysBetweenCalculation <= 0) {
-			return 0;
-		} else {
-			return numOfDaysBetweenCalculation;
-		}
-	}
+	const milliDiff = Math.abs(date2Milliseconds - date1Milliseconds);
+	return Math.floor(milliDiff / ONE_DAY_IN_MILLISECONDS);
 }
 
 export function getNextPurchasedDate({
@@ -83,4 +69,47 @@ export function getNextPurchasedDate({
 	}
 
 	return getFutureDate(smartNextPurchaseEstimate);
+}
+
+export function sortByDaysBetweenDates(data) {
+	let inactiveArr = [];
+	const activeMap = new Map();
+	let overDueArr = [];
+
+	data.data.forEach((item) => {
+		const daysBetween = getDaysBetweenDates(
+			item.dateLastPurchased?.toDate(),
+			item.dateNextPurchased?.toDate(),
+		);
+
+		if (daysBetween > 60) {
+			inactiveArr.push(item);
+		} else if (
+			daysBetween < 60 &&
+			new Date() > item.dateNextPurchased?.toDate()
+		) {
+			overDueArr.push(item);
+		} else {
+			if (!activeMap.has(daysBetween)) {
+				activeMap.set(daysBetween, []);
+			}
+			activeMap.get(daysBetween).push(item);
+		}
+	});
+
+	// Sort items alphabetically for each daysBetween value
+	activeMap.forEach((items) => {
+		items.sort((a, b) => a.name.localeCompare(b.name));
+	});
+
+	// Convert activeMap to an array of key-value pairs and sort it by the number of days between dates
+	const sortedActiveArray = Array.from(activeMap).sort((a, b) => a[0] - b[0]);
+
+	// Reconstruct activeMap from the sorted array
+	const sortedActiveMap = new Map(sortedActiveArray);
+
+	// Flatten the array of items grouped by daysBetween
+	const sortedActiveItems = Array.prototype.concat(...sortedActiveMap.values());
+
+	return [...overDueArr, ...sortedActiveItems, ...inactiveArr];
 }

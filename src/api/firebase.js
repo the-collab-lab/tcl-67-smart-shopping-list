@@ -11,7 +11,7 @@ import {
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
-import { getFutureDate } from '../utils/dates.js';
+import { getFutureDate, sortByDaysBetweenDates } from '../utils/dates.js';
 /**
  * A custom hook that subscribes to the user's shopping lists in our Firestore
  * database and returns new data whenever the lists change.
@@ -193,12 +193,6 @@ export async function updateItem(
 	listPath,
 	{ itemId, dateNextPurchased, totalPurchases },
 ) {
-	/**
-	 * TODO: Fill this out so that it uses the correct Firestore function
-	 * to update an existing item. You'll need to figure out what arguments
-	 * this function must accept!
-	 */
-
 	const itemDoc = doc(db, listPath, 'items', itemId);
 
 	updateDoc(itemDoc, {
@@ -222,3 +216,14 @@ export async function deleteItem(listPath, itemId) {
 	 * this function must accept!
 	 */
 }
+
+export function comparePurchaseUrgency(data) {
+	return sortByDaysBetweenDates(data);
+}
+
+// calculate urgency on demand
+// find and insert into sublist
+// if you modify array page re-renders
+// write a function that takes in one item and mutates the item's array to put it in the right order
+// separate data modification from view update
+// use badges to define urgency

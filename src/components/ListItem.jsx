@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ListItem.css';
 import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
+
 import { getNextPurchasedDate } from '../utils';
 import { deleteItem } from '../api/firebase';
-import { compareIfDateIsLessThan24Hours } from '../utils';
+import { compareIfDateIsLessThan24Hours, getDaysBetweenDates } from '../utils';
+
 export function ListItem({ item, listPath }) {
 	const { id, totalPurchases, name, dateLastPurchased, dateNextPurchased } =
 		item;
@@ -15,6 +17,27 @@ export function ListItem({ item, listPath }) {
 	const [isChecked, setIsChecked] = useState(
 		isLessThan24HoursSinceLastPurchased,
 	);
+
+	const [urgency, setUrgency] = useState('');
+
+	function determineUrgency(a, b) {
+		const daysBetween = getDaysBetweenDates(a, b);
+		if (new Date() > b) {
+			setUrgency('----------Overdue');
+		} else if (daysBetween <= 7) {
+			setUrgency('----------Purchase Soon');
+		} else if (daysBetween > 7 && daysBetween <= 30) {
+			setUrgency('----------Purchase kind of soon');
+		} else if (daysBetween > 30 && daysBetween < 60) {
+			setUrgency('----------Purchase Not Soon');
+		} else if (daysBetween > 60) {
+			setUrgency('----------Inactive');
+		}
+	}
+
+	useEffect(() => {
+		determineUrgency(dateLastPurchased?.toDate(), dateNextPurchased?.toDate());
+	}, [isChecked, dateLastPurchased, dateNextPurchased]);
 
 	const {
 		error: purchaseError,
@@ -80,7 +103,9 @@ export function ListItem({ item, listPath }) {
 				checked={isDisabled}
 				onChange={handleCheckboxCheck}
 			/>
+
 			<label htmlFor={id}>{name}</label>
+			<label>{urgency}</label>
 
 			<button onClick={handleDeleteItem}>Delete</button>
 			{deleteError && <p>Error deleting item</p>}
