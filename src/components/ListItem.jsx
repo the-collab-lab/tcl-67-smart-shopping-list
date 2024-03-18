@@ -40,8 +40,6 @@ export function ListItem({ item, listPath }) {
 	}, [isChecked, dateLastPurchased, dateNextPurchased]);
 
 	const {
-		error,
-		isLoading,
 		error: purchaseError,
 		isLoading: purchaseIsLoading,
 		mutateAsync: markAsPurchasedMutation,
@@ -106,12 +104,8 @@ export function ListItem({ item, listPath }) {
 				onChange={handleCheckboxCheck}
 			/>
 
-			<label htmlFor="item">{name}</label>
-			<label>{urgency}</label>
-			{error && <p>Error marking as purchased</p>}
-			{isLoading && <p>Updating item as purchased...</p>}
-
 			<label htmlFor={id}>{name}</label>
+			<label>{urgency}</label>
 
 			<button onClick={handleDeleteItem}>Delete</button>
 			{deleteError && <p>Error deleting item</p>}

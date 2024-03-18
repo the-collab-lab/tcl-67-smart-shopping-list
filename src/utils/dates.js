@@ -76,7 +76,7 @@ export function sortByDaysBetweenDates(data) {
 	const activeMap = new Map();
 	let overDueArr = [];
 
-	data.forEach((item) => {
+	data.data.forEach((item) => {
 		const daysBetween = getDaysBetweenDates(
 			item.dateLastPurchased?.toDate(),
 			item.dateNextPurchased?.toDate(),

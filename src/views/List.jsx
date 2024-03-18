@@ -50,10 +50,6 @@ export function List({ data, listPath }) {
 			</p>
 
 			<ul>
-				{filteredItems.map((item) => (
-					<ListItem key={item.id} item={item} listPath={listPath} />
-				))}
-
 				{data.length === 0 && (
 					<div>
 						<p>There are no items in this list!</p>
