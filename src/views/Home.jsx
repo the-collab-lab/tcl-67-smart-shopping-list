@@ -5,20 +5,25 @@ import { createList } from '../api/index.js';
 import { auth } from '../api/config.js';
 import { useNavigate } from 'react-router-dom';
 
-export function Home({ data, setListPath }) {
+export function Home({ data, setListPath, listName }) {
 	const navigate = useNavigate();
-	const [listName, setListName] = useState('');
+	const [newListName, setnewListName] = useState('');
 	const [message, setMessage] = useState('');
+	const [selectedList, setSelectedList] = useState(listName);
 
 	const handleChange = (e) => {
-		setListName(e.target.value);
+		setnewListName(e.target.value);
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		try {
-			await createList(auth.currentUser.uid, auth.currentUser.email, listName);
+			await createList(
+				auth.currentUser.uid,
+				auth.currentUser.email,
+				newListName,
+			);
 			setMessage('List created, redirecting in 1 second...');
 			setTimeout(() => {
 				navigate('/list');
@@ -29,33 +34,51 @@ export function Home({ data, setListPath }) {
 		}
 	};
 
+	const handleSelectChange = (e) => {
+		setSelectedList(e.target.value);
+	};
+
 	return (
 		<div className="Home">
-			<p>
-				Hello from the home (<code>/</code>) page!
-			</p>
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="listName" name="listName">
-					List Name
-				</label>
-				<input id="listName" name="listName" onChange={handleChange} />
-				<button type="submit">Submit</button>
-			</form>
+			<h4>Current List:</h4>
+			<h2>{listName}</h2>
+			<hr></hr>
+			<div>
+				<h3>Create a List</h3>
+				<form onSubmit={handleSubmit}>
+					<label htmlFor="newListName" name="newListName">
+						List Name
+					</label>
+					<input id="newListName" name="newListName" onChange={handleChange} />
+					<button type="submit">Create List</button>
+				</form>
 
-			<p>{message}</p>
+				<p>{message}</p>
+			</div>
+			<hr></hr>
 
-			<ul>
-				{data.map((data) => {
-					return (
-						<SingleList
-							key={data.name}
-							name={data.name}
-							path={data.path}
-							setListPath={setListPath}
-						/>
-					);
-				})}
-			</ul>
+			<div>
+				<h3>
+					<label htmlFor="listSelector">Select a List</label>
+				</h3>
+				<select
+					id="listSelector"
+					value={selectedList}
+					onChange={handleSelectChange}
+				>
+					{data.map((data) => {
+						return (
+							<SingleList
+								key={data.name}
+								name={data.name}
+								path={data.path}
+								setListPath={setListPath}
+							/>
+						);
+					})}
+				</select>
+				<button onClick={() => navigate('/list')}>View List</button>
+			</div>
 		</div>
 	);
 }

@@ -5,9 +5,5 @@ export function SingleList({ name, path, setListPath }) {
 		setListPath(path);
 	}
 
-	return (
-		<li className="SingleList">
-			<button onClick={handleClick}>{path}</button>
-		</li>
-	);
+	return <option onClick={handleClick}>{name}</option>;
 }
