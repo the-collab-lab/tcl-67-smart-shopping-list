@@ -102,6 +102,13 @@ export function sortByDaysBetweenDates(data) {
 		items.sort((a, b) => a.name.localeCompare(b.name));
 	});
 
+	if (overDueArr.length > 1) {
+		overDueArr.sort((a, b) => a.name.localeCompare(b.name));
+	}
+	if (inactiveArr.length > 1) {
+		inactiveArr.sort((a, b) => a.name.localeCompare(b.name));
+	}
+
 	// Convert activeMap to an array of key-value pairs and sort it by the number of days between dates
 	const sortedActiveArray = Array.from(activeMap).sort((a, b) => a[0] - b[0]);
 
