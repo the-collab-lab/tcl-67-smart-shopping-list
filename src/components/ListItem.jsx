@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './ListItem.css';
 import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
@@ -105,7 +105,6 @@ export function ListItem({ item, listPath }) {
 				{name}
 				{determineUrgency()}
 			</label>
-			{/* <label>{urgency}</label> */}
 
 			<button onClick={handleDeleteItem}>Delete</button>
 			{deleteError && <p>Error deleting item</p>}
