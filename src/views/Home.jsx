@@ -24,6 +24,8 @@ export function Home({ data, setListPath, listName }) {
 				auth.currentUser.email,
 				newListName,
 			);
+			const newestList = data[data.length - 1].path;
+			setListPath(newestList);
 			setMessage('List created, redirecting in 1 second...');
 			setTimeout(() => {
 				navigate('/list');
