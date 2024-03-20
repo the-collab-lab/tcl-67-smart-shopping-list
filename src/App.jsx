@@ -59,6 +59,7 @@ export function App() {
 								<Home
 									data={lists}
 									setListPath={setListPath}
+									listPath={listPath}
 									listName={listName}
 									exact
 								/>
@@ -66,7 +67,9 @@ export function App() {
 						/>
 						<Route
 							path="/list"
-							element={<List data={data} listPath={listPath} />}
+							element={
+								<List data={data} listPath={listPath} listName={listName} />
+							}
 						/>
 						<Route
 							path="/manage-list"
