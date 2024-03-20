@@ -18,26 +18,23 @@ export function ListItem({ item, listPath }) {
 		isLessThan24HoursSinceLastPurchased,
 	);
 
-	const [urgency, setUrgency] = useState('');
-
-	function determineUrgency(a, b) {
+	function determineUrgency(
+		a = dateLastPurchased.toDate(),
+		b = dateNextPurchased.toDate(),
+	) {
 		const daysBetween = getDaysBetweenDates(a, b);
 		if (new Date() > b) {
-			setUrgency('----------Overdue');
+			return '----------Overdue';
 		} else if (daysBetween <= 7) {
-			setUrgency('----------Purchase Soon');
+			return '----------Purchase Soon';
 		} else if (daysBetween > 7 && daysBetween <= 30) {
-			setUrgency('----------Purchase kind of soon');
+			return '----------Purchase kind of soon';
 		} else if (daysBetween > 30 && daysBetween < 60) {
-			setUrgency('----------Purchase Not Soon');
+			return '----------Purchase Not Soon';
 		} else if (daysBetween > 60) {
-			setUrgency('----------Inactive');
+			return '----------Inactive';
 		}
 	}
-
-	useEffect(() => {
-		determineUrgency(dateLastPurchased?.toDate(), dateNextPurchased?.toDate());
-	}, [isChecked, dateLastPurchased, dateNextPurchased]);
 
 	const {
 		error: purchaseError,
@@ -104,8 +101,11 @@ export function ListItem({ item, listPath }) {
 				onChange={handleCheckboxCheck}
 			/>
 
-			<label htmlFor={id}>{name}</label>
-			<label>{urgency}</label>
+			<label htmlFor={id}>
+				{name}
+				{determineUrgency()}
+			</label>
+			{/* <label>{urgency}</label> */}
 
 			<button onClick={handleDeleteItem}>Delete</button>
 			{deleteError && <p>Error deleting item</p>}
