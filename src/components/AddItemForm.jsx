@@ -18,8 +18,8 @@ export default function AddItemForm({ listPath, data }) {
 	const [itemDuration, setItemDuration] = useState(7);
 
 	const normalizedItemNames = useMemo(() => {
-		return data.data.map((item) => normalizeInput(item.name));
-	}, [data.data]);
+		return data?.data.map((item) => normalizeInput(item.name));
+	}, [data?.data]);
 
 	const {
 		isSuccess,

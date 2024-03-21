@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { ListItem } from '../components';
 import { useNavigate } from 'react-router-dom';
 import { comparePurchaseUrgency } from '../api/firebase';
+import './List.css';
+import AddItemForm from '../components/AddItemForm';
+import ShareForm from '../components/ShareForm';
 
 export function List({ data, listPath }) {
+	console.log(listPath);
 	const [input, setInput] = useState('');
 
 	const navigate = useNavigate();
@@ -20,6 +24,7 @@ export function List({ data, listPath }) {
 	});
 
 	function handleInputChange(e) {
+		e.preventDefault();
 		setInput(e.target.value);
 	}
 
@@ -32,40 +37,45 @@ export function List({ data, listPath }) {
 		return <p>Loading...</p>;
 	}
 
+	if (data.data.length === 0) {
+		return (
+			<>
+				<div>
+					<p>There are no items in this list!</p>
+					<button onClick={() => navigate('/manage-list')}>
+						Add item to list
+					</button>
+				</div>
+			</>
+		);
+	}
+
 	return (
 		<>
-			<form action="">
-				<label htmlFor="searchItems">Search Items: </label>
-				<input
-					onChange={handleInputChange}
-					id="searchItems"
-					value={input}
-					type="text"
-				/>
-			</form>
-			<button onClick={clearSearch}>X</button>
-			<p>
-				Hello from the <code>/list</code> page!
-			</p>
+			<h2>{listPath}</h2>
+			<div className="searchInput">
+				<form action="" onSubmit={(e) => e.preventDefault()}>
+					<label htmlFor="searchItems">Search your shopping list: </label>
+					<input
+						onChange={handleInputChange}
+						id="searchItems"
+						value={input}
+						type="text"
+					/>
+				</form>
+				<button onClick={clearSearch}>Clear</button>
+			</div>
 
-			<ul>
-				{data.length === 0 && (
-					<div>
-						<p>There are no items in this list!</p>
-						<button onClick={() => navigate('/manage-list')}>
-							Add item to list
-						</button>
-					</div>
-				)}
-			</ul>
-			{data.length > 0 && filteredItems.length === 0 && (
+			{data.data.length > 0 && filteredItems.length === 0 && (
 				<div>
 					<p>No match found for that filter query.</p>
 				</div>
 			)}
+			<AddItemForm />
 			{filteredItems.map((item) => (
 				<ListItem key={item.id} item={item} listPath={listPath} />
 			))}
+			<ShareForm />
 		</>
 	);
 }

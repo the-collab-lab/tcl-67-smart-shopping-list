@@ -76,8 +76,8 @@ export function ListItem({ item, listPath }) {
 	}
 
 	function determineUrgency(
-		a = dateLastPurchased.toDate(),
-		b = dateNextPurchased.toDate(),
+		a = dateLastPurchased?.toDate(),
+		b = dateNextPurchased?.toDate(),
 	) {
 		const daysBetween = getDaysBetweenDates(a, b);
 		if (new Date() > b) {
