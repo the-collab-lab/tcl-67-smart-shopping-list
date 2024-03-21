@@ -23,6 +23,7 @@ export function useShoppingLists(userId, userEmail) {
 	// Start with an empty array for our data.
 	const initialState = [];
 	const [data, setData] = useState(initialState);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		// If we don't have a userId or userEmail (the user isn't signed in),

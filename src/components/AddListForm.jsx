@@ -16,6 +16,11 @@ export default function AddListForm({ setListPath }) {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		if (newListName === '') {
+			setMessage('Please add a name for your list');
+			return;
+		}
+
 		try {
 			await createList(
 				auth.currentUser.uid,
