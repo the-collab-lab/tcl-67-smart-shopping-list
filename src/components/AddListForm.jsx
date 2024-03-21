@@ -22,6 +22,8 @@ export default function AddListForm({ setListPath }) {
 				auth.currentUser.email,
 				newListName,
 			);
+			const newList = `${auth.currentUser.uid}/${newListName}`;
+			setListPath(newList);
 			setMessage('List created, redirecting in 1 second...');
 			setTimeout(() => {
 				navigate('/list');
