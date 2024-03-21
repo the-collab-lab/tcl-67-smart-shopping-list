@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { comparePurchaseUrgency } from '../api/firebase';
 
 export function List({ data, listPath }) {
-	console.log(data.data, listPath);
 	const [input, setInput] = useState('');
 
 	const navigate = useNavigate();
