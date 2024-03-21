@@ -72,9 +72,12 @@ export function getNextPurchasedDate({
 }
 
 export function sortByDaysBetweenDates(data) {
-	let inactiveArr = [];
-	const activeMap = new Map();
+	let soonArr = [];
+	let notSoonArr = [];
+	let kindOfSoonArr = [];
 	let overDueArr = [];
+	let inactiveArr = [];
+	const alphabetSort = (a, b) => a.name.localeCompare(b.name);
 
 	data.data.forEach((item) => {
 		const daysBetween = getDaysBetweenDates(
@@ -85,38 +88,24 @@ export function sortByDaysBetweenDates(data) {
 		if (daysBetween > 60) {
 			inactiveArr.push(item);
 		} else if (
-			daysBetween < 60 &&
+			daysBetween <= 60 &&
 			new Date() > item.dateNextPurchased?.toDate()
 		) {
 			overDueArr.push(item);
-		} else {
-			if (!activeMap.has(daysBetween)) {
-				activeMap.set(daysBetween, []);
-			}
-			activeMap.get(daysBetween).push(item);
+		} else if (daysBetween < 7) {
+			soonArr.push(item);
+		} else if (daysBetween >= 7 && daysBetween < 30) {
+			kindOfSoonArr.push(item);
+		} else if (daysBetween > 30) {
+			notSoonArr.push(item);
 		}
 	});
 
-	// Sort items alphabetically for each daysBetween value
-	activeMap.forEach((items) => {
-		items.sort((a, b) => a.name.localeCompare(b.name));
-	});
-
-	if (overDueArr.length > 1) {
-		overDueArr.sort((a, b) => a.name.localeCompare(b.name));
-	}
-	if (inactiveArr.length > 1) {
-		inactiveArr.sort((a, b) => a.name.localeCompare(b.name));
-	}
-
-	// Convert activeMap to an array of key-value pairs and sort it by the number of days between dates
-	const sortedActiveArray = Array.from(activeMap).sort((a, b) => a[0] - b[0]);
-
-	// Reconstruct activeMap from the sorted array
-	const sortedActiveMap = new Map(sortedActiveArray);
-
-	// Flatten the array of items grouped by daysBetween
-	const sortedActiveItems = Array.prototype.concat(...sortedActiveMap.values());
-
-	return [...overDueArr, ...sortedActiveItems, ...inactiveArr];
+	return [
+		...overDueArr.sort(alphabetSort),
+		...soonArr.sort(alphabetSort),
+		...kindOfSoonArr.sort(alphabetSort),
+		...notSoonArr.sort(alphabetSort),
+		...inactiveArr.sort(alphabetSort),
+	];
 }

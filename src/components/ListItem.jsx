@@ -18,24 +18,6 @@ export function ListItem({ item, listPath }) {
 		isLessThan24HoursSinceLastPurchased,
 	);
 
-	function determineUrgency(
-		a = dateLastPurchased.toDate(),
-		b = dateNextPurchased.toDate(),
-	) {
-		const daysBetween = getDaysBetweenDates(a, b);
-		if (new Date() > b) {
-			return '----------Overdue';
-		} else if (daysBetween <= 7) {
-			return '----------Purchase Soon';
-		} else if (daysBetween > 7 && daysBetween <= 30) {
-			return '----------Purchase kind of soon';
-		} else if (daysBetween > 30 && daysBetween < 60) {
-			return '----------Purchase Not Soon';
-		} else if (daysBetween > 60) {
-			return '----------Inactive';
-		}
-	}
-
 	const {
 		error: purchaseError,
 		isLoading: purchaseIsLoading,
@@ -43,6 +25,18 @@ export function ListItem({ item, listPath }) {
 	} = useMutation({
 		mutationFn: markAsPurchased,
 	});
+
+	const {
+		error: deleteError,
+		isLoading: deleteIsLoading,
+		mutateAsync: markItemAsDeleteMutation,
+	} = useMutation({
+		mutationFn: markItemAsDelete,
+	});
+
+	const isDisabled = isChecked || purchaseIsLoading;
+
+	const urgency = determineUrgency();
 
 	async function markAsPurchased() {
 		const nextPurchasedDate = getNextPurchasedDate({
@@ -58,19 +52,9 @@ export function ListItem({ item, listPath }) {
 		});
 	}
 
-	const {
-		error: deleteError,
-		isLoading: deleteIsLoading,
-		mutateAsync: markItemAsDeleteMutation,
-	} = useMutation({
-		mutationFn: markItemAsDelete,
-	});
-
 	async function markItemAsDelete() {
 		await deleteItem(listPath, id);
 	}
-
-	const isDisabled = isChecked || purchaseIsLoading;
 
 	async function handleCheckboxCheck() {
 		setIsChecked(!isChecked);
@@ -91,6 +75,24 @@ export function ListItem({ item, listPath }) {
 		}
 	}
 
+	function determineUrgency(
+		a = dateLastPurchased.toDate(),
+		b = dateNextPurchased.toDate(),
+	) {
+		const daysBetween = getDaysBetweenDates(a, b);
+		if (new Date() > b) {
+			return '----------Overdue';
+		} else if (daysBetween <= 7) {
+			return '----------Purchase Soon';
+		} else if (daysBetween > 7 && daysBetween <= 30) {
+			return '----------Purchase kind of soon';
+		} else if (daysBetween > 30 && daysBetween < 60) {
+			return '----------Purchase Not Soon';
+		} else if (daysBetween > 60) {
+			return '----------Inactive';
+		}
+	}
+
 	return (
 		<div>
 			<input
@@ -103,7 +105,7 @@ export function ListItem({ item, listPath }) {
 
 			<label htmlFor={id}>
 				{name}
-				{determineUrgency()}
+				{urgency}
 			</label>
 
 			<button onClick={handleDeleteItem}>Delete</button>
