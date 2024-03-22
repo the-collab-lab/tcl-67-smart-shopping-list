@@ -6,8 +6,6 @@ import AddItemForm from '../components/AddItemForm';
 import ShareForm from '../components/ShareForm';
 
 export function List({ data, listPath }) {
-	console.log(data);
-
 	const [input, setInput] = useState('');
 
 	const sortedItems = comparePurchaseUrgency(data);
@@ -32,17 +30,7 @@ export function List({ data, listPath }) {
 
 	const listName = listPath?.substring(listPath.indexOf('/') + 1);
 
-	if (data.data.length === 0) {
-		return (
-			<>
-				<h2>You have no items in this list!</h2>
-				<AddItemForm listPath={listPath} data={data} />
-				<ShareForm listPath={listPath} />
-			</>
-		);
-	}
-
-	if (data.loading) {
+	if (data.data.loading) {
 		// If data is not loaded yet, render a loading indicator
 		return <p>Loading...</p>;
 	}
@@ -50,18 +38,21 @@ export function List({ data, listPath }) {
 	return (
 		<>
 			<h2>{listName}</h2>
-			<div className="searchInput">
-				<form action="" onSubmit={(e) => e.preventDefault()}>
-					<label htmlFor="searchItems">Search your shopping list: </label>
-					<input
-						onChange={handleInputChange}
-						id="searchItems"
-						value={input}
-						type="text"
-					/>
-				</form>
-				<button onClick={clearSearch}>Clear</button>
-			</div>
+			{data.data.length === 0 && <h2>You have no items in this list!</h2>}
+			{data.data.length !== 0 && (
+				<div className="searchInput">
+					<form action="" onSubmit={(e) => e.preventDefault()}>
+						<label htmlFor="searchItems">Search your shopping list: </label>
+						<input
+							onChange={handleInputChange}
+							id="searchItems"
+							value={input}
+							type="text"
+						/>
+					</form>
+					<button onClick={clearSearch}>Clear</button>
+				</div>
+			)}
 			<div>
 				{filteredItems.map((item) => (
 					<ListItem key={item.id} item={item} listPath={listPath} />

@@ -1,27 +1,26 @@
 // import { render, screen } from '@testing-library/react';
-// // import { ManageList } from '../../../src/views/ManageList';
+// import { List } from '../../../src/views';
 import { vi } from 'vitest';
 // import { QueryClientProvider } from 'react-query';
 // import { queryClient } from '../../../src/App';
 
-// describe('ManageList', () => {
+// describe('List', () => {
 // 	afterEach(() => {
 // 		vi.resetAllMocks();
 // 		vi.clearAllMocks();
 // 	});
-// });
 
-// 	const renderManageList = ({ listPath, data }) => {
+// 	const renderList = ({ listPath, data }) => {
 // 		return render(
 // 			<QueryClientProvider client={queryClient}>
-// 				<ManageList listPath={listPath} data={data} />
+// 				<List listPath={listPath} data={data} />
 // 			</QueryClientProvider>,
 // 		);
 // 	};
 
 // 	it('renders AddItemForm and ShareForm if listPath is passed in', async () => {
 // 		const data = { data: [{ name: 'apple' }], loading: false };
-// 		renderManageList({ listPath: '/test-list', data });
+// 		renderList({ listPath: '/test-list', data });
 
 // 		const addItemForm = screen.queryByTestId('addItemForm-header');
 // 		const shareForm = screen.queryByTestId('shareForm-header');
@@ -32,7 +31,7 @@ import { vi } from 'vitest';
 // 		expect(noListPathMessage).toBeFalsy();
 // 	});
 // 	it('does not render AddItemForm and ShareForm if listPath is not passed in', async () => {
-// 		renderManageList({});
+// 		renderList({});
 
 // 		const addItemForm = screen.queryByTestId('addItemForm-header');
 // 		const shareForm = screen.queryByTestId('shareForm-header');
@@ -44,14 +43,6 @@ import { vi } from 'vitest';
 // 	});
 // });
 
-// describe(('') => {
-// 	return null;
-// });
-
-// describe().skip('my test', () => '');
-
-test.skip('ManageList', () => {
+test.skip('List', () => {
 	return null;
 });
-
-// describe.skip(name, fn
