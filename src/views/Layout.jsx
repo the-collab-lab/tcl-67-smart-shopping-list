@@ -21,7 +21,7 @@ export function Layout() {
 					<h1>Smart shopping list</h1>
 					{!!user ? (
 						<div>
-							<span>Signed in as {auth.currentUser.displayName}</span> (
+							<span>Welcome, {auth.currentUser.displayName}</span> (
 							<SignOutButton />)
 						</div>
 					) : (
