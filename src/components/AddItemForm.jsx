@@ -42,7 +42,7 @@ export default function AddItemForm({ listPath, data }) {
 
 		const normalizedInput = normalizeInput(userItem);
 
-		if (normalizedItemNames.includes(normalizedInput)) {
+		if (normalizedItemNames?.includes(normalizedInput)) {
 			setMessage('Item already exists');
 			return;
 		}

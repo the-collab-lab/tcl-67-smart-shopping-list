@@ -7,7 +7,7 @@ export function SingleList({ name, path, setListPath }) {
 
 	return (
 		<li className="SingleList">
-			<button onClick={handleClick}>{path}</button>
+			<button onClick={handleClick}>{name}</button>
 		</li>
 	);
 }

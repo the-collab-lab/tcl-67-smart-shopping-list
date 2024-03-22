@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { ListItem } from '../components';
-import { useNavigate } from 'react-router-dom';
 import { comparePurchaseUrgency } from '../api/firebase';
 import './List.css';
 import AddItemForm from '../components/AddItemForm';
 import ShareForm from '../components/ShareForm';
 
-export function List({ data, listPath }) {
+export function List({ data, listPath, name }) {
 	console.log(listPath);
 	const [input, setInput] = useState('');
-
-	const navigate = useNavigate();
 
 	const sortedItems = comparePurchaseUrgency(data);
 
@@ -32,27 +29,25 @@ export function List({ data, listPath }) {
 		setInput('');
 	}
 
+	const listName = listPath?.substring(listPath.indexOf('/') + 1);
+
+	if (data.data.length === 0) {
+		return (
+			<>
+				<h2>{listName}</h2>
+				<AddItemForm listPath={listPath} />
+			</>
+		);
+	}
+
 	if (data.loading) {
 		// If data is not loaded yet, render a loading indicator
 		return <p>Loading...</p>;
 	}
 
-	if (data.data.length === 0) {
-		return (
-			<>
-				<div>
-					<p>There are no items in this list!</p>
-					<button onClick={() => navigate('/manage-list')}>
-						Add item to list
-					</button>
-				</div>
-			</>
-		);
-	}
-
 	return (
 		<>
-			<h2>{listPath}</h2>
+			<h2>{listName}</h2>
 			<div className="searchInput">
 				<form action="" onSubmit={(e) => e.preventDefault()}>
 					<label htmlFor="searchItems">Search your shopping list: </label>
@@ -72,9 +67,12 @@ export function List({ data, listPath }) {
 				</div>
 			)}
 			<AddItemForm />
+			<br />
+			<br />
 			{filteredItems.map((item) => (
 				<ListItem key={item.id} item={item} listPath={listPath} />
 			))}
+			<br />
 			<ShareForm />
 		</>
 	);
