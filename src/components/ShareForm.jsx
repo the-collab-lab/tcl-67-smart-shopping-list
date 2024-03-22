@@ -22,11 +22,6 @@ const ShareForm = ({ listPath }) => {
 		mutationFn: shareListWithUser,
 	});
 
-	// async function shareListWithUser() {
-	// 	console.log(listPath, user.uid, email);
-	// 	return await shareList(listPath, user.uid, email);
-	// }
-
 	const handleSubmit = async (e) => {
 		reset();
 		e.preventDefault();

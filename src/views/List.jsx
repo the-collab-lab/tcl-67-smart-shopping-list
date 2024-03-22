@@ -6,6 +6,8 @@ import AddItemForm from '../components/AddItemForm';
 import ShareForm from '../components/ShareForm';
 
 export function List({ data, listPath }) {
+	console.log(data);
+
 	const [input, setInput] = useState('');
 
 	const sortedItems = comparePurchaseUrgency(data);
@@ -34,7 +36,8 @@ export function List({ data, listPath }) {
 		return (
 			<>
 				<h2>You have no items in this list!</h2>
-				<AddItemForm listPath={listPath} />
+				<AddItemForm listPath={listPath} data={data} />
+				<ShareForm listPath={listPath} />
 			</>
 		);
 	}
@@ -70,7 +73,7 @@ export function List({ data, listPath }) {
 				</div>
 			)}
 			<div>
-				<AddItemForm listPath={listPath} />
+				<AddItemForm listPath={listPath} data={data} />
 			</div>
 			<ShareForm listPath={listPath} />
 		</>
