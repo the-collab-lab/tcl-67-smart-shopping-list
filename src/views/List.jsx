@@ -59,6 +59,10 @@ export function List({ data, listPath }) {
 				</form>
 				<button onClick={clearSearch}>Clear</button>
 			</div>
+			<br />
+			{filteredItems.map((item) => (
+				<ListItem key={item.id} item={item} listPath={listPath} />
+			))}
 
 			{data.data.length > 0 && filteredItems.length === 0 && (
 				<div>
@@ -66,11 +70,6 @@ export function List({ data, listPath }) {
 				</div>
 			)}
 			<AddItemForm listPath={listPath} />
-			<br />
-			<br />
-			{filteredItems.map((item) => (
-				<ListItem key={item.id} item={item} listPath={listPath} />
-			))}
 			<br />
 			<ShareForm listPath={listPath} />
 		</>
