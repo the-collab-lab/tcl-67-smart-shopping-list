@@ -59,18 +59,19 @@ export function List({ data, listPath }) {
 				</form>
 				<button onClick={clearSearch}>Clear</button>
 			</div>
-			<div></div>
-			{filteredItems.map((item) => (
-				<ListItem key={item.id} item={item} listPath={listPath} />
-			))}
-
+			<div>
+				{filteredItems.map((item) => (
+					<ListItem key={item.id} item={item} listPath={listPath} />
+				))}
+			</div>
 			{data.data.length > 0 && filteredItems.length === 0 && (
 				<div>
 					<p>No match found for that filter query.</p>
 				</div>
 			)}
-			<AddItemForm listPath={listPath} />
-			<div></div>
+			<div>
+				<AddItemForm listPath={listPath} />
+			</div>
 			<ShareForm listPath={listPath} />
 		</>
 	);
