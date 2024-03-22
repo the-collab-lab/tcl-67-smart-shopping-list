@@ -1,13 +1,9 @@
 import './SingleList.css';
 
 export function SingleList({ name, path, setListPath }) {
-	function handleClick() {
+	function handleChange() {
 		setListPath(path);
 	}
 
-	return (
-		<li className="SingleList">
-			<button onClick={handleClick}>{path}</button>
-		</li>
-	);
+	return <option onChange={handleChange}>{name}</option>;
 }
