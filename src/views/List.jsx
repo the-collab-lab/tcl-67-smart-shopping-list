@@ -33,7 +33,7 @@ export function List({ data, listPath }) {
 	if (data.data.length === 0) {
 		return (
 			<>
-				<h2>{listName}</h2>
+				<h2>You have no items in this list!</h2>
 				<AddItemForm listPath={listPath} />
 			</>
 		);
@@ -59,7 +59,7 @@ export function List({ data, listPath }) {
 				</form>
 				<button onClick={clearSearch}>Clear</button>
 			</div>
-			<br />
+			<div></div>
 			{filteredItems.map((item) => (
 				<ListItem key={item.id} item={item} listPath={listPath} />
 			))}
@@ -70,7 +70,7 @@ export function List({ data, listPath }) {
 				</div>
 			)}
 			<AddItemForm listPath={listPath} />
-			<br />
+			<div></div>
 			<ShareForm listPath={listPath} />
 		</>
 	);

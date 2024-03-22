@@ -54,7 +54,7 @@ export default function AddItemForm({ listPath, data }) {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<h2 data-testid="addItemForm-header">Add an item to your list</h2>
+			<h2 data-testid="addItemForm-header">Add an item to your list:</h2>
 			<div>
 				<label htmlFor="itemName">Item Name: </label>
 				<input
