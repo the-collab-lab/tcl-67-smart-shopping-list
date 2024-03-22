@@ -5,8 +5,7 @@ import './List.css';
 import AddItemForm from '../components/AddItemForm';
 import ShareForm from '../components/ShareForm';
 
-export function List({ data, listPath, name }) {
-	console.log(listPath);
+export function List({ data, listPath }) {
 	const [input, setInput] = useState('');
 
 	const sortedItems = comparePurchaseUrgency(data);
@@ -66,14 +65,14 @@ export function List({ data, listPath, name }) {
 					<p>No match found for that filter query.</p>
 				</div>
 			)}
-			<AddItemForm />
+			<AddItemForm listPath={listPath} />
 			<br />
 			<br />
 			{filteredItems.map((item) => (
 				<ListItem key={item.id} item={item} listPath={listPath} />
 			))}
 			<br />
-			<ShareForm />
+			<ShareForm listPath={listPath} />
 		</>
 	);
 }

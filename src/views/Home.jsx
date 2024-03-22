@@ -10,8 +10,6 @@ export function Home({ data, setListPath }) {
 	const [listName, setListName] = useState('');
 	const [message, setMessage] = useState('');
 
-	console.log(listName);
-
 	const handleChange = (e) => {
 		setListName(e.target.value);
 	};
@@ -48,7 +46,6 @@ export function Home({ data, setListPath }) {
 
 			<ul>
 				{data.map((data) => {
-					console.log(data);
 					return (
 						<SingleList
 							key={data.name}

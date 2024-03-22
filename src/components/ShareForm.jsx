@@ -34,7 +34,6 @@ const ShareForm = ({ listPath }) => {
 			setMessage('Please enter an email');
 			return;
 		}
-		console.log(shareListWithUserMutation);
 
 		await shareListWithUserMutation({ listPath, user, email }).catch((e) =>
 			console.error(e),
