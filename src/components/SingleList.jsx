@@ -5,7 +5,5 @@ export function SingleList({ name, path, setListPath }) {
 		setListPath(path);
 	}
 
-
 	return <option onChange={handleChange}>{name}</option>;
-
 }
