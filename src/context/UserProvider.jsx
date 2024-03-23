@@ -6,6 +6,8 @@ import { UserContext } from './user';
 export function UserProvider({ children }) {
 	const [user, setUser] = useState(null);
 
+	console.log(user);
+
 	useEffect(() => {
 		auth.onAuthStateChanged((fireBaseUser) => {
 			setUser(fireBaseUser);
