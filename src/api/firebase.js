@@ -221,10 +221,3 @@ export async function deleteItem(listPath, itemId) {
 export function comparePurchaseUrgency(data) {
 	return sortByDaysBetweenDates(data);
 }
-
-// calculate urgency on demand
-// find and insert into sublist
-// if you modify array page re-renders
-// write a function that takes in one item and mutates the item's array to put it in the right order
-// separate data modification from view update
-// use badges to define urgency
