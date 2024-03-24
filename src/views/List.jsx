@@ -35,6 +35,16 @@ export function List({ data, listPath }) {
 		return <p>Loading...</p>;
 	}
 
+	if (!listPath) {
+		return (
+			<>
+				<span data-testid="no-listpath-span">
+					Currently, there is no list set to manage items for.
+				</span>
+			</>
+		);
+	}
+
 	return (
 		<>
 			<h2>{listName}</h2>
