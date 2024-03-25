@@ -30,8 +30,6 @@ export function List({ data, listPath }) {
 
 	const listName = listPath?.substring(listPath.indexOf('/') + 1);
 
-	console.log(data);
-
 	if (data.data.loading) {
 		// If data is not loaded yet, render a loading indicator
 		return <p>Loading...</p>;
