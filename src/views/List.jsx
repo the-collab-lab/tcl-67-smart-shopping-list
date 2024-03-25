@@ -35,10 +35,20 @@ export function List({ data, listPath }) {
 		return <p>Loading...</p>;
 	}
 
+	if (!listPath) {
+		return (
+			<>
+				<h2 data-testid="noListErrorMsg">You don't have a list selected!</h2>
+			</>
+		);
+	}
+
 	return (
 		<>
 			<h2>{listName}</h2>
-			{data.data.length === 0 && <h2>You have no items in this list!</h2>}
+			{data.data.length === 0 && (
+				<h2 data-testid="noItemsErrorMsg">You have no items in this list!</h2>
+			)}
 			{data.data.length !== 0 && (
 				<div className="searchInput">
 					<form action="" onSubmit={(e) => e.preventDefault()}>
