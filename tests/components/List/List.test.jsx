@@ -35,7 +35,20 @@ describe('List', () => {
 		const data = { data: [] };
 		renderList({ listPath: '', data });
 
+		const addItemForm = screen.queryByTestId('addItemForm-header');
+		const shareForm = screen.queryByTestId('shareForm-header');
 		const errorMessage = screen.getByTestId('noListErrorMsg');
+
+		expect(errorMessage).toBeInTheDocument();
+		expect(addItemForm).not.toBeInTheDocument();
+		expect(shareForm).not.toBeInTheDocument();
+	});
+
+	it('renders error message when items are not passed in', async () => {
+		const data = { data: [] };
+		renderList({ listPath: '/test-list', data });
+		const errorMessage = screen.getByTestId('noItemsErrorMsg');
+
 		expect(errorMessage).toBeInTheDocument();
 	});
 });
