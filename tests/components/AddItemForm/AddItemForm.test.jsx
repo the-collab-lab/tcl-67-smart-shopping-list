@@ -47,7 +47,7 @@ import { vi } from 'vitest';
 // 		renderAddItemForm({ listPath: '/test-list', data });
 
 // 		const itemInput = screen.getByTestId('itemName');
-// 		const submitButton = screen.queryByTitle('submit-button');
+// 		const submitButton = screen.getByTestId('submit-button');
 
 // 		// Use userEvent for a more natural user interaction
 // 		await userEvent.type(itemInput, 'Hello, World!');
@@ -80,7 +80,7 @@ import { vi } from 'vitest';
 // 		renderAddItemForm({ listPath: '/test-list', data });
 
 // 		const itemInput = screen.getByTestId('itemName');
-// 		const submitButton = screen.queryByTitle('submit-button');
+// 		const submitButton = screen.getByTestId('submit-button');
 
 // 		// Use userEvent for a more natural user interaction
 // 		await userEvent.type(itemInput, 'Hello, World!');
@@ -108,7 +108,7 @@ import { vi } from 'vitest';
 // 		renderAddItemForm({ listPath: '/test-list', data });
 
 // 		const itemInput = screen.getByTestId('itemName');
-// 		const submitButton = screen.queryByTitle('submit-button');
+// 		const submitButton = screen.getByTestId('submit-button');
 
 // 		// Use userEvent for a more natural user interaction
 // 		await userEvent.type(itemInput, 'apple');
@@ -132,7 +132,7 @@ import { vi } from 'vitest';
 
 // 		renderAddItemForm({ listPath: '/test-list', data });
 
-// 		const submitButton = screen.queryByTitle('submit-button');
+// 		const submitButton = screen.getByTestId('submit-button');
 
 // 		// Use userEvent for a more natural user interaction
 

@@ -65,15 +65,11 @@ export default function AddItemForm({ listPath, data }) {
 			</div>
 			<span>When would you like a reminder to buy this item?</span>
 			<div>
-				<button onClick={() => setItemDuration(7)} title="submit-button">
+				<button onClick={() => setItemDuration(7)} data-testid="submit-button">
 					7 Days
 				</button>
-				<button onClick={() => setItemDuration(14)} title="submit-button">
-					14 Days
-				</button>
-				<button onClick={() => setItemDuration(30)} title="submit-button">
-					30 Days
-				</button>
+				<button onClick={() => setItemDuration(14)}>14 Days</button>
+				<button onClick={() => setItemDuration(30)}>30 Days</button>
 			</div>
 			{/* <select
 				data-testid="replaceTime"
