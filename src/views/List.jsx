@@ -30,6 +30,8 @@ export function List({ data, listPath }) {
 
 	const listName = listPath?.substring(listPath.indexOf('/') + 1);
 
+	console.log(data);
+
 	if (data.data.loading) {
 		// If data is not loaded yet, render a loading indicator
 		return <p>Loading...</p>;
@@ -38,7 +40,9 @@ export function List({ data, listPath }) {
 	return (
 		<>
 			<h2>{listName}</h2>
-			{data.data.length === 0 && <h2>You have no items in this list!</h2>}
+			{data.data.length === 0 && (
+				<h2 data-testid="noListErrorMsg">You have no items in this list!</h2>
+			)}
 			{data.data.length !== 0 && (
 				<div className="searchInput">
 					<form action="" onSubmit={(e) => e.preventDefault()}>
