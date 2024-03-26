@@ -22,8 +22,8 @@ import { getFutureDate, sortByDaysBetweenDates } from '../utils/dates.js';
 export function useShoppingLists(userId, userEmail) {
 	// Start with an empty array for our data.
 	const initialState = [];
-	const [data, setData] = useState(initialState);
-	const [isLoading, setIsLoading] = useState(true);
+	const [listsData, setListsData] = useState(initialState);
+	const [areListsLoading, setAreListsLoading] = useState(true);
 
 	useEffect(() => {
 		// If we don't have a userId or userEmail (the user isn't signed in),
@@ -40,12 +40,13 @@ export function useShoppingLists(userId, userEmail) {
 					// We keep the list's id and path so we can use them later.
 					return { name: listRef.id, path: listRef.path };
 				});
-				setData(newData);
+				setListsData(newData);
+				setAreListsLoading(false);
 			}
 		});
 	}, [userId, userEmail]);
 
-	return data;
+	return { listsData, areListsLoading };
 }
 
 /**
@@ -58,8 +59,8 @@ export function useShoppingListData(listPath) {
 	// Start with an empty array for our data.
 	/** @type {import('firebase/firestore').DocumentData[]} */
 	const initialState = [];
-	const [data, setData] = useState(initialState);
-	const [loading, setLoading] = useState(true);
+	const [shoppingListData, setData] = useState(initialState);
+	const [isShoppingListLoading, setIsShoppingListLoading] = useState(true);
 
 	useEffect(() => {
 		if (!listPath) return;
@@ -81,12 +82,12 @@ export function useShoppingListData(listPath) {
 
 			// Update our React state with the new data.
 			setData(nextData);
-			setLoading(false);
+			setIsShoppingListLoading(false);
 		});
 	}, [listPath]);
 
 	// Return the data so it can be used by our React components.
-	return { data, loading };
+	return { shoppingListData, isShoppingListLoading };
 }
 
 /**

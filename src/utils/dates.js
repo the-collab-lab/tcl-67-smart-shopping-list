@@ -79,7 +79,7 @@ export function sortByDaysBetweenDates(data) {
 	let inactiveArr = [];
 	const alphabetSort = (a, b) => a.name.localeCompare(b.name);
 
-	data.data.forEach((item) => {
+	data.forEach((item) => {
 		const daysBetween = getDaysBetweenDates(
 			item.dateLastPurchased?.toDate(),
 			item.dateNextPurchased?.toDate(),
