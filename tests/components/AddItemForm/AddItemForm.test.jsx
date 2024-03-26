@@ -47,10 +47,12 @@ describe('AddItemForm', () => {
 		renderAddItemForm({ listPath: '/test-list', data });
 
 		const itemInput = screen.getByTestId('itemName');
+		const replaceTimeSelect = screen.getByTestId('replaceTime');
 		const submitButton = screen.getByTestId('submit-button');
 
 		// Use userEvent for a more natural user interaction
 		await userEvent.type(itemInput, 'Hello, World!');
+		await userEvent.click(replaceTimeSelect);
 		await userEvent.click(submitButton);
 
 		const loading = await screen.findByTestId('addItemFormLoading');
@@ -80,10 +82,13 @@ describe('AddItemForm', () => {
 		renderAddItemForm({ listPath: '/test-list', data });
 
 		const itemInput = screen.getByTestId('itemName');
+		const replaceTimeSelect = screen.getByTestId('replaceTime');
+
 		const submitButton = screen.getByTestId('submit-button');
 
 		// Use userEvent for a more natural user interaction
 		await userEvent.type(itemInput, 'Hello, World!');
+		await userEvent.click(replaceTimeSelect);
 		await userEvent.click(submitButton);
 
 		const loading = await screen.findByTestId('addItemFormLoading');
