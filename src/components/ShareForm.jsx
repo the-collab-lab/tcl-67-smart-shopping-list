@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { shareList } from '../api/firebase';
 import { useAuth } from '../api';
 import { useMutation } from 'react-query';
+import './ShareForm.css';
 
 async function shareListWithUser({ listPath, user, email }) {
 	return await shareList(listPath, user.uid, email);
@@ -36,7 +37,7 @@ const ShareForm = ({ listPath }) => {
 	};
 	return (
 		<div>
-			<h2 data-testid="shareForm-header">Share your list</h2>
+			<h2 data-testid="shareForm-header">Share your list with a Collabie!</h2>
 			<form onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor="email">Email: </label>
@@ -48,9 +49,11 @@ const ShareForm = ({ listPath }) => {
 						value={email}
 					/>
 				</div>
-				<span>Enter the email of an existing user...</span> <br />
+				<div className="shareSpan">
+					<span>Enter the email of another existing user.</span>
+				</div>
 				<div>
-					<button data-testid="shareForm-submit-button">Submit</button>
+					<button data-testid="shareForm-submit-button">Send List</button>
 				</div>
 				<span data-testid="shareForm-validation-message">{message}</span>
 				{isSuccess && (
