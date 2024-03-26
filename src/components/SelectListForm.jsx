@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
 export default function SelectListForm({ data, listPath, setListPath }) {
-	const [selectedList, setSelectedList] = useState(listPath);
+	const [selectedList, setSelectedList] = useState('');
 	const navigate = useNavigate();
 	const handleSelectChange = (e) => {
 		const input = e.target.value;
