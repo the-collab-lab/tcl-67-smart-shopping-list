@@ -47,6 +47,9 @@ describe('AddItemForm', () => {
 		renderAddItemForm({ listPath: '/test-list', data });
 
 		const itemInput = screen.getByTestId('itemName');
+		const selectTime = screen.getByTestId('replaceTime');
+
+		await userEvent.selectOptions(selectTime, '14');
 		const submitButton = screen.getByTestId('submit-button');
 
 		// Use userEvent for a more natural user interaction
@@ -63,7 +66,7 @@ describe('AddItemForm', () => {
 		expect(successMessage).toBeTruthy();
 		expect(mockedAddItem).toHaveBeenCalledWith('/test-list', {
 			itemName: 'Hello, World!',
-			daysUntilNextPurchase: 7,
+			daysUntilNextPurchase: 14,
 		});
 	});
 
@@ -81,6 +84,9 @@ describe('AddItemForm', () => {
 
 		const itemInput = screen.getByTestId('itemName');
 		const submitButton = screen.getByTestId('submit-button');
+		const selectTime = screen.getByTestId('replaceTime');
+
+		await userEvent.selectOptions(selectTime, '7');
 
 		// Use userEvent for a more natural user interaction
 		await userEvent.type(itemInput, 'Hello, World!');
@@ -151,7 +157,3 @@ describe('AddItemForm', () => {
 		expect(mockedAddItem).toHaveBeenCalledTimes(0);
 	});
 });
-
-// test.skip('AddItemForm', () => {
-// 	return null;
-// });
