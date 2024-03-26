@@ -64,19 +64,26 @@ export default function AddItemForm({ listPath, data }) {
 				/>
 			</div>
 			<span>When would you like a reminder to buy this item?</span>
-			<select
+			<div>
+				<button onClick={() => setItemDuration(7)} data-testid="submit-button">
+					7 Days
+				</button>
+				<button onClick={() => setItemDuration(14)}>14 Days</button>
+				<button onClick={() => setItemDuration(30)}>30 Days</button>
+			</div>
+			{/* <select
 				data-testid="replaceTime"
-				onChange={(e) => setItemDuration(Number(e.target.value))}
+				onChange={(e) => setItemDuration(e.target.value)}
 				name="replaceTime"
 				value={itemDuration}
 			>
 				<option value={7}>7 days</option>
 				<option value={14}>14 days</option>
 				<option value={30}>30 days</option>
-			</select>
-			<div>
+			</select> */}
+			{/* <div>
 				<button data-testid="submit-button">Submit</button>
-			</div>
+			</div> */}
 			<div>
 				<span data-testid="addItemFormMessage">{message}</span>
 				{isSuccess && <span data-testid="addItemFormSuccess">Success!!</span>}

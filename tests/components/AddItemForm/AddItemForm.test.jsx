@@ -151,3 +151,7 @@ describe('AddItemForm', () => {
 		expect(mockedAddItem).toHaveBeenCalledTimes(0);
 	});
 });
+
+// test.skip('AddItemForm', () => {
+// 	return null;
+// });
