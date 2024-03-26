@@ -34,6 +34,7 @@ export default function AddItemForm({ listPath, data }) {
 	const handleSubmit = async (e) => {
 		reset();
 		e.preventDefault();
+		setUserItem('');
 		setMessage('');
 		if (!userItem.trim()) {
 			setMessage('Please enter a name for your item');
