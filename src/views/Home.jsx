@@ -1,8 +1,13 @@
 import './Home.css';
 import AddListForm from '../components/AddListForm.jsx';
 import SelectListForm from '../components/SelectListForm.jsx';
-export function Home({ data, setListPath, listPath, listName }) {
-	console.log(data);
+export function Home({
+	data,
+	areListsLoading,
+	setListPath,
+	listPath,
+	listName,
+}) {
 	return (
 		<div className="Home">
 			<h4>Current List:</h4>
@@ -12,11 +17,15 @@ export function Home({ data, setListPath, listPath, listName }) {
 			<div>
 				<p>----- OR -----</p>
 			</div>
-			<SelectListForm
-				data={data}
-				listPath={listPath}
-				setListPath={setListPath}
-			/>
+			{areListsLoading ? (
+				<div>Loading lists...</div>
+			) : (
+				<SelectListForm
+					data={data}
+					listPath={listPath}
+					setListPath={setListPath}
+				/>
+			)}
 		</div>
 	);
 }
