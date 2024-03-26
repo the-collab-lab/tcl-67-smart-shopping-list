@@ -13,7 +13,7 @@ async function addItemToList({ listPath, userItem, itemDuration }) {
 export default function AddItemForm({ listPath, data }) {
 	const [message, setMessage] = useState('');
 	const [userItem, setUserItem] = useState('');
-	const [itemDuration, setItemDuration] = useState(0);
+	const [itemDuration, setItemDuration] = useState(7);
 
 	const normalizedItemNames = useMemo(() => {
 		return data?.data.map((item) => normalizeInput(item.name));
