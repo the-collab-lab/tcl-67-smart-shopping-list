@@ -13,8 +13,6 @@ async function addItemToList({ listPath, userItem, itemDuration }) {
 export default function AddItemForm({ listPath, data }) {
 	const [message, setMessage] = useState('');
 	const [userItem, setUserItem] = useState('');
-	// Presetting item duration to 7, as that option starts
-	// selected on page rendering.
 	const [itemDuration, setItemDuration] = useState(7);
 
 	const normalizedItemNames = useMemo(() => {
@@ -52,6 +50,11 @@ export default function AddItemForm({ listPath, data }) {
 		);
 	};
 
+	const handleSelection = async (e) => {
+		e.preventDefault();
+		setItemDuration(Number(e.target.value));
+	};
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<h2 data-testid="addItemForm-header">Add an item to your list:</h2>
@@ -65,19 +68,24 @@ export default function AddItemForm({ listPath, data }) {
 					value={userItem}
 				/>
 			</div>
-			<span>Remind me to replace the item in...</span> <br />
-			<select
-				data-testid="replaceTime"
-				onChange={(e) => setItemDuration(e.target.value)}
-				name="replaceTime"
-				value={itemDuration}
-			>
-				<option value={7}>7 days</option>
-				<option value={14}>14 days</option>
-				<option value={30}>30 days</option>
-			</select>
+			<span>When would you like a reminder to buy this item?</span>
 			<div>
-				<button data-testid="submit-button">Submit</button>
+				<button
+					value={7}
+					onClick={(e) => handleSelection(e)}
+					data-testid="replaceTime"
+				>
+					7 Days
+				</button>
+				<button value={14} onClick={(e) => handleSelection(e)}>
+					14 Days
+				</button>
+				<button value={30} onClick={(e) => handleSelection(e)}>
+					30 Days
+				</button>
+			</div>
+			<div>
+				<button data-testid="submit-button">Add Item</button>
 			</div>
 			<div>
 				<span data-testid="addItemFormMessage">{message}</span>
