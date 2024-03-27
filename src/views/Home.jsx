@@ -9,7 +9,6 @@ export function Home({
 	listPath,
 	listName,
 }) {
-
 	return (
 		<div className="Home">
 			{!listPath ? (
