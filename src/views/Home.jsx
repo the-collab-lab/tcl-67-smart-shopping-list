@@ -10,6 +10,7 @@ export function Home({ data, setListPath, listPath, listName }) {
 			) : (
 				<h4>Current List:</h4>
 			)}
+
 			<h2>{listName}</h2>
 			<hr></hr>
 			<AddListForm setListPath={setListPath} />
