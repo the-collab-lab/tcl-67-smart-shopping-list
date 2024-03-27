@@ -52,9 +52,14 @@ input {
 	gap: 1em;
 }
 
-.addItemForm .addItemButtonGroup button {
+.addItemForm .addItemButtonGroup button,
+.submitButton {
 	width: 45%;
 	height: 3em;
+}
+
+.submitButton {
+	margin-top: 1.5em;
 }
 
 /* List Search Items */
@@ -124,17 +129,14 @@ input {
 	margin-bottom: -3em;
 }
 
-/* .ListItem {
-	align-items: baseline;
-	display: flex;
-	flex-direction: row;
-	font-size: 1.2em;
-}
+@media screen and (min-width: 780px) {
+	.addItemButtonGroup {
+		display: flex;
+		width: 300%;
+		margin: auto;
+	}
 
-.ListItem-checkbox {
-	accent-color: var(--color-accent);
+	/* .addItemForm .addItemButtonGroup button {
+		width: 500em;
+	} */
 }
-
-.ListItem-label {
-	margin-left: 0.2em;
-} */

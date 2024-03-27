@@ -85,7 +85,11 @@ export default function AddItemForm({ listPath, data }) {
 				<button value={30} onClick={(e) => handleSelection(e)}>
 					30 Days
 				</button>
-				<button data-testid="submit-button">Add Item</button>
+			</div>
+			<div>
+				<button className="submitButton" data-testid="submit-button">
+					Add Item
+				</button>
 			</div>
 			<div>
 				<span data-testid="addItemFormMessage">{message}</span>
