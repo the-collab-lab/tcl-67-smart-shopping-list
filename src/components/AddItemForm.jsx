@@ -56,20 +56,22 @@ export default function AddItemForm({ listPath, data }) {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<h2 data-testid="addItemForm-header">Add an item to your list:</h2>
+		<form className="addItemForm" onSubmit={handleSubmit}>
+			<h2 data-testid="addItemForm-header">Add Item</h2>
 			<div>
 				<label htmlFor="itemName">Item Name: </label>
-				<input
-					data-testid="itemName"
-					onChange={(e) => setUserItem(e.target.value)}
-					type="text"
-					id="itemName"
-					value={userItem}
-				/>
+				<div>
+					<input
+						data-testid="itemName"
+						onChange={(e) => setUserItem(e.target.value)}
+						type="text"
+						id="itemName"
+						value={userItem}
+					/>
+				</div>
 			</div>
 			<span>When would you like a reminder to buy this item?</span>
-			<div>
+			<div className="addItemButtonGroup">
 				<button
 					value={7}
 					onClick={(e) => handleSelection(e)}
@@ -83,8 +85,6 @@ export default function AddItemForm({ listPath, data }) {
 				<button value={30} onClick={(e) => handleSelection(e)}>
 					30 Days
 				</button>
-			</div>
-			<div>
 				<button data-testid="submit-button">Add Item</button>
 			</div>
 			<div>

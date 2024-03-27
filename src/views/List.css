@@ -1,3 +1,40 @@
-.searchInput {
+body {
 	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-bottom-width: 1px;
+	border-bottom-color: white;
+	border-bottom-style: solid;
+	padding-bottom: 2.5em;
+	margin-bottom: auto;
+}
+
+.addItemForm form {
+	display: flex;
+	gap: 1em;
+	text-align: center;
+	padding: 0;
+}
+
+.addItemForm input {
+	width: 100%;
+	height: 4em;
+}
+
+.addItemForm .addItemButtonGroup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1em;
+}
+
+.addItemForm .addItemButtonGroup button {
+	width: 45%;
+	height: 3em;
 }

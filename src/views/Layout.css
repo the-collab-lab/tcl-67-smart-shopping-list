@@ -7,35 +7,36 @@
  *
  * @see: https://developer.mozilla.org/en-US/docs/Web/CSS/env
  */
-.Layout {
+
+/* .Layout {
 	display: flex;
 	flex-direction: column;
 	height: 100dvh;
-}
+} */
 
-.Layout > * {
+/* .Layout > * {
 	padding-inline: min(5dvw, 3.2rem);
-}
+} */
 
-.Layout-header {
+/* .Layout-header {
 	background-color: var(--color-bg);
 	padding-bottom: 0.5rem;
 	padding-top: max(env(safe-area-inset-top), 1rem);
 	text-align: center;
-}
+} */
 
-.Layout-header > h1 {
+/* .Layout-header > h1 {
 	margin: 0;
-}
+} */
 
-.Layout-main {
+/* .Layout-main {
 	margin: 0 auto;
 	padding-block: 0;
 	padding-block-end: 6.26rem;
 	width: min(72ch, 100%);
-}
+} */
 
-.Nav {
+/* .Nav {
 	background-color: var(--color-bg);
 	border-top: 1px solid var(--color-border);
 	bottom: 0;
@@ -46,16 +47,16 @@
 	place-content: center;
 	position: fixed;
 	width: 100%;
-}
+} */
 
-.Nav-container {
+/* .Nav-container {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 	width: min(72ch, 100%);
-}
+} */
 
-.Nav-link {
+/* .Nav-link {
 	--color-text: var(--color-accent);
 
 	color: var(--color-text);
@@ -65,9 +66,9 @@
 	padding: 0.8rem;
 	text-align: center;
 	text-underline-offset: 0.1em;
-}
+} */
 
-.Nav-link.active {
+/* .Nav-link.active {
 	text-decoration-thickness: 0.22em;
 	text-underline-offset: 0.1em;
-}
+} */

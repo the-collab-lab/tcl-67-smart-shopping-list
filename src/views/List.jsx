@@ -3,7 +3,7 @@ import AddItemForm from '../components/AddItemForm';
 import ShareForm from '../components/ShareForm';
 import ListSearchItems from '../components/ListSearchItems';
 
-export function List({ data, isShoppingListLoading, listPath }) {
+export function List({ data, isShoppingListLoading, listPath, listName }) {
 	if (!listPath) {
 		return (
 			<>
@@ -18,14 +18,19 @@ export function List({ data, isShoppingListLoading, listPath }) {
 	}
 
 	return (
-		<>
-			<div>
-				<ListSearchItems listPath={listPath} data={data} />
-			</div>
-			<div>
+		<body>
+			<section>
+				<h2>{listName}</h2>
+			</section>
+			<section>
 				<AddItemForm listPath={listPath} data={data} />
-			</div>
-			<ShareForm listPath={listPath} />
-		</>
+			</section>
+			<section>
+				<ListSearchItems listPath={listPath} data={data} />
+			</section>
+			<section>
+				<ShareForm listPath={listPath} />
+			</section>
+		</body>
 	);
 }

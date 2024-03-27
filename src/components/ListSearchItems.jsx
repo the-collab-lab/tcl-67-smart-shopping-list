@@ -2,7 +2,7 @@ import { comparePurchaseUrgency } from '../api';
 import { ListItem } from './ListItem';
 import { useState } from 'react';
 
-export default function ListSearchItems({ data, listPath, listName }) {
+export default function ListSearchItems({ data, listPath }) {
 	const [input, setInput] = useState('');
 	const sortedItems = comparePurchaseUrgency(data);
 
@@ -25,8 +25,7 @@ export default function ListSearchItems({ data, listPath, listName }) {
 	}
 
 	return (
-		<>
-			<h2>{listName}</h2>
+		<section>
 			{data.length === 0 && (
 				<h2 data-testid="noItemsErrorMsg">You have no items in this list!</h2>
 			)}
@@ -54,6 +53,6 @@ export default function ListSearchItems({ data, listPath, listName }) {
 					<p>No match found for that filter query.</p>
 				</div>
 			)}
-		</>
+		</section>
 	);
 }

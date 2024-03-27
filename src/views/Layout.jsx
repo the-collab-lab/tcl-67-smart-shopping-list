@@ -18,7 +18,9 @@ export function Layout() {
 		<>
 			<div className="Layout">
 				<header className="Layout-header">
-					<h1>Smart shopping list</h1>
+					<NavLink to="/">
+						<h1>Smart shopping list</h1>
+					</NavLink>
 					{!!user ? (
 						<div>
 							<span>Welcome, {auth.currentUser.displayName}</span> (
@@ -31,16 +33,6 @@ export function Layout() {
 				<main className="Layout-main">
 					<Outlet />
 				</main>
-				<nav className="Nav">
-					<div className="Nav-container">
-						<NavLink to="/" className="Nav-link">
-							Home
-						</NavLink>
-						<NavLink to="/list" className="Nav-link">
-							List
-						</NavLink>
-					</div>
-				</nav>
 			</div>
 		</>
 	);
