@@ -5,7 +5,7 @@ import './List.css';
 import AddItemForm from '../components/AddItemForm';
 import ShareForm from '../components/ShareForm';
 
-export function List({ data, listPath }) {
+export function List({ data, isShoppingListLoading, listPath, listName }) {
 	const [input, setInput] = useState('');
 
 	const sortedItems = comparePurchaseUrgency(data);
@@ -28,13 +28,6 @@ export function List({ data, listPath }) {
 		setInput('');
 	}
 
-	const listName = listPath?.substring(listPath.indexOf('/') + 1);
-
-	if (data.data.loading) {
-		// If data is not loaded yet, render a loading indicator
-		return <p>Loading...</p>;
-	}
-
 	if (!listPath) {
 		return (
 			<>
@@ -43,13 +36,18 @@ export function List({ data, listPath }) {
 		);
 	}
 
+	if (isShoppingListLoading) {
+		// If data is not loaded yet, render a loading indicator
+		return <p>Loading...</p>;
+	}
+
 	return (
 		<>
 			<h2>{listName}</h2>
-			{data.data.length === 0 && (
+			{data.length === 0 && (
 				<h2 data-testid="noItemsErrorMsg">You have no items in this list!</h2>
 			)}
-			{data.data.length !== 0 && (
+			{data.length !== 0 && (
 				<div className="searchInput">
 					<form action="" onSubmit={(e) => e.preventDefault()}>
 						<label htmlFor="searchItems">Search your shopping list: </label>
@@ -68,7 +66,7 @@ export function List({ data, listPath }) {
 					<ListItem key={item.id} item={item} listPath={listPath} />
 				))}
 			</div>
-			{data.data.length > 0 && filteredItems.length === 0 && (
+			{data.length > 0 && filteredItems.length === 0 && (
 				<div>
 					<p>No match found for that filter query.</p>
 				</div>

@@ -41,12 +41,13 @@ export function App() {
 	 * the shopping lists that the user has access to.
 	 * Check ./api/firestore.js for its implementation.
 	 */
-	const lists = useShoppingLists(userId, userEmail);
+	const { listsData, areListsLoading } = useShoppingLists(userId, userEmail);
 	/**
 	 * This custom hook takes our token and fetches the data for our list.
 	 * Check ./api/firestore.js for its implementation.
 	 */
-	const data = useShoppingListData(listPath);
+	const { shoppingListData, isShoppingListLoading } =
+		useShoppingListData(listPath);
 
 	return (
 		<QueryClientProvider client={queryClient}>
@@ -57,7 +58,8 @@ export function App() {
 							index
 							element={
 								<Home
-									data={lists}
+									data={listsData}
+									areListsLoading={areListsLoading}
 									setListPath={setListPath}
 									listPath={listPath}
 									listName={listName}
@@ -68,7 +70,12 @@ export function App() {
 						<Route
 							path="/list"
 							element={
-								<List data={data} listPath={listPath} listName={listName} />
+								<List
+									data={shoppingListData}
+									isShoppingListLoading={isShoppingListLoading}
+									listPath={listPath}
+									listName={listName}
+								/>
 							}
 						/>
 					</Route>
