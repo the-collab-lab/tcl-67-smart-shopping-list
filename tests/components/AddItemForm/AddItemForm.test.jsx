@@ -22,7 +22,7 @@ describe('AddItemForm', () => {
 	};
 
 	it('renders AddItemForm', () => {
-		const data = { data: [{ name: 'apple' }], loading: false };
+		const data = [{ name: 'apple' }];
 		renderAddItemForm({ listPath: '/test', data });
 	});
 
@@ -36,7 +36,7 @@ describe('AddItemForm', () => {
 			totalPurchases: 0,
 		};
 
-		const data = { data: [{ name: 'apple' }], loading: false };
+		const data = [{ name: 'apple' }];
 
 		const mockedAddItem = vi.spyOn(FirebaseFunctions, 'addItem');
 		mockedAddItem.mockImplementationOnce(async () => {
@@ -70,7 +70,7 @@ describe('AddItemForm', () => {
 	});
 
 	it('Adds item but get an error', async () => {
-		const data = { data: [{ name: 'apple' }], loading: false };
+		const data = [{ name: 'apple' }];
 
 		const mockedAddItem = vi.spyOn(FirebaseFunctions, 'addItem');
 
@@ -106,7 +106,7 @@ describe('AddItemForm', () => {
 	});
 
 	it('Tries to add duplicate item but gets error', async () => {
-		const data = { data: [{ name: 'apple' }], loading: false };
+		const data = [{ name: 'apple' }];
 
 		const mockedAddItem = vi.spyOn(FirebaseFunctions, 'addItem');
 
@@ -131,7 +131,7 @@ describe('AddItemForm', () => {
 		expect(mockedAddItem).toHaveBeenCalledTimes(0);
 	});
 	it('Tries to add empty string but gets error', async () => {
-		const data = { data: [{ name: 'apple' }], loading: false };
+		const data = [{ name: 'apple' }];
 
 		const mockedAddItem = vi.spyOn(FirebaseFunctions, 'addItem');
 

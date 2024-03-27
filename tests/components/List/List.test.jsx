@@ -10,17 +10,27 @@ describe('List', () => {
 		vi.clearAllMocks();
 	});
 
-	const renderList = ({ listPath, data }) => {
+	const renderList = ({ data, isShoppingListLoading, listPath, listName }) => {
 		return render(
 			<QueryClientProvider client={queryClient}>
-				<List listPath={listPath} data={data} />
+				<List
+					data={data}
+					isShoppingListLoading={isShoppingListLoading}
+					listPath={listPath}
+					listName={listName}
+				/>
 			</QueryClientProvider>,
 		);
 	};
 
 	it('renders AddItemForm and ShareForm if listPath is passed in', async () => {
-		const data = { data: [{ name: 'apple' }], loading: false };
-		renderList({ listPath: '/test-list', data });
+		const listProps = {
+			data: [{ name: 'apple' }],
+			isShoppingListLoading: false,
+			listPath: '/test-list',
+			listName: 'test-list',
+		};
+		renderList(listProps);
 
 		const addItemForm = screen.queryByTestId('addItemForm-header');
 		const shareForm = screen.queryByTestId('shareForm-header');
@@ -32,8 +42,13 @@ describe('List', () => {
 	});
 
 	it('renders error message when listPath is not passed in', async () => {
-		const data = { data: [] };
-		renderList({ listPath: '', data });
+		const listProps = {
+			data: [{ name: 'apple' }],
+			isShoppingListLoading: false,
+			listPath: '',
+			listName: 'test-list',
+		};
+		renderList(listProps);
 
 		const addItemForm = screen.queryByTestId('addItemForm-header');
 		const shareForm = screen.queryByTestId('shareForm-header');
@@ -45,8 +60,13 @@ describe('List', () => {
 	});
 
 	it('renders error message when items are not passed in', async () => {
-		const data = { data: [] };
-		renderList({ listPath: '/test-list', data });
+		const listProps = {
+			data: [],
+			isShoppingListLoading: false,
+			listPath: '/test-list',
+			listName: 'test-list',
+		};
+		renderList(listProps);
 		const errorMessage = screen.getByTestId('noItemsErrorMsg');
 
 		expect(errorMessage).toBeInTheDocument();
