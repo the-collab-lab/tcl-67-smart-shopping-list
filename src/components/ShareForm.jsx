@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { shareList } from '../api/firebase';
 import { useAuth } from '../api';
 import { useMutation } from 'react-query';
-import './ShareForm.css';
 
 async function shareListWithUser({ listPath, user, email }) {
 	return await shareList(listPath, user.uid, email);

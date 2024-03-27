@@ -25,14 +25,16 @@ export default function ListSearchItems({ data, listPath }) {
 	}
 
 	return (
-		<section>
+		<div className="listSearchItems">
 			{data.length === 0 && (
 				<h2 data-testid="noItemsErrorMsg">You have no items in this list!</h2>
 			)}
 			{data.length !== 0 && (
 				<div className="searchInput">
+					<label className="searchLabel" htmlFor="searchItems">
+						Search your shopping list:{' '}
+					</label>
 					<form action="" onSubmit={(e) => e.preventDefault()}>
-						<label htmlFor="searchItems">Search your shopping list: </label>
 						<input
 							onChange={handleInputChange}
 							id="searchItems"
@@ -53,6 +55,6 @@ export default function ListSearchItems({ data, listPath }) {
 					<p>No match found for that filter query.</p>
 				</div>
 			)}
-		</section>
+		</div>
 	);
 }

@@ -18,7 +18,7 @@ export function List({ data, isShoppingListLoading, listPath, listName }) {
 	}
 
 	return (
-		<body>
+		<main>
 			<section>
 				<h2>{listName}</h2>
 			</section>
@@ -31,6 +31,6 @@ export function List({ data, isShoppingListLoading, listPath, listName }) {
 			<section>
 				<ShareForm listPath={listPath} />
 			</section>
-		</body>
+		</main>
 	);
 }
