@@ -15,33 +15,41 @@ import { useAuth, SignInButton, SignOutButton } from '../api/useAuth.jsx';
 export function Layout() {
 	const { user } = useAuth();
 	return (
-		<>
-			<div className="Layout">
-				<header className="Layout-header">
-					<h1>Smart shopping list</h1>
-					{!!user ? (
+		<div className="Layout">
+			{!!user ? (
+				<>
+					<header className="Layout-header">
+						<h1>Smart shopping list</h1>
 						<div>
 							<span>Welcome, {auth.currentUser.displayName}</span> (
 							<SignOutButton />)
 						</div>
-					) : (
-						<SignInButton />
-					)}
-				</header>
-				<main className="Layout-main">
-					<Outlet />
-				</main>
-				<nav className="Nav">
-					<div className="Nav-container">
-						<NavLink to="/" className="Nav-link">
-							Home
-						</NavLink>
-						<NavLink to="/list" className="Nav-link">
-							List
-						</NavLink>
-					</div>
-				</nav>
-			</div>
-		</>
+					</header>
+					<main className="Layout-main">
+						<Outlet />
+					</main>
+					<nav className="Nav">
+						<div className="Nav-container">
+							<NavLink to="/" className="Nav-link">
+								Home
+							</NavLink>
+							<NavLink to="/list" className="Nav-link">
+								List
+							</NavLink>
+						</div>
+					</nav>
+				</>
+			) : (
+				<>
+					<header className="Layout-header">
+						<h1>Smart shopping list</h1>
+						<div>
+							<SignInButton />
+						</div>
+					</header>
+					<div>Please sign in to view lists.</div>
+				</>
+			)}
+		</div>
 	);
 }
