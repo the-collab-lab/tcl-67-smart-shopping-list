@@ -105,8 +105,8 @@ export function ListItem({ item, listPath }) {
 			</div>
 
 			<div className="nameAndUrgency">
-				<span>{name}</span>
-				<span>{urgency}</span>
+				<span className="listItemName">{name}</span>
+				<span className="listItemUrgency">{urgency}</span>
 			</div>
 
 			<div className="listDelete">

@@ -35,7 +35,7 @@ const ShareForm = ({ listPath }) => {
 		);
 	};
 	return (
-		<div>
+		<div className="shareForm">
 			<h2 data-testid="shareForm-header">Share your list with a Collabie!</h2>
 			<form onSubmit={handleSubmit}>
 				<div>
@@ -47,10 +47,9 @@ const ShareForm = ({ listPath }) => {
 						id="email"
 						value={email}
 					/>
-				</div>
-				<div className="shareSpan">
 					<span>Enter the email of another existing user.</span>
 				</div>
+
 				<div>
 					<button data-testid="shareForm-submit-button">Send List</button>
 				</div>

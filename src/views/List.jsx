@@ -2,6 +2,7 @@ import './List.css';
 import AddItemForm from '../components/AddItemForm';
 import ShareForm from '../components/ShareForm';
 import ListSearchItems from '../components/ListSearchItems';
+import { SignOutButton } from '../api/useAuth';
 
 export function List({ data, isShoppingListLoading, listPath, listName }) {
 	if (!listPath) {
@@ -30,6 +31,9 @@ export function List({ data, isShoppingListLoading, listPath, listName }) {
 			</section>
 			<section>
 				<ShareForm listPath={listPath} />
+			</section>
+			<section className="logOutFooter">
+				<SignOutButton />
 			</section>
 		</main>
 	);
