@@ -1,6 +1,7 @@
 import './Home.css';
 import AddListForm from '../components/AddListForm.jsx';
 import SelectListForm from '../components/SelectListForm.jsx';
+
 export function Home({
 	data,
 	areListsLoading,
@@ -8,9 +9,14 @@ export function Home({
 	listPath,
 	listName,
 }) {
+
 	return (
 		<div className="Home">
-			<h4>Current List:</h4>
+			{!listPath ? (
+				<h4>No list currently selected!</h4>
+			) : (
+				<h4>Current List:</h4>
+			)}
 			<h2>{listName}</h2>
 			<hr></hr>
 			<AddListForm setListPath={setListPath} />
