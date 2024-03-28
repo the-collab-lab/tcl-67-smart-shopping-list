@@ -15,7 +15,6 @@ import { useAuth, SignInButton, SignOutButton } from '../api/useAuth.jsx';
 export function Layout() {
 	const { user } = useAuth();
 	return (
-
 		<div className="Layout">
 			{!!user ? (
 				<>
