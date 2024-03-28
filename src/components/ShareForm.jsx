@@ -37,11 +37,6 @@ const ShareForm = ({ listPath }) => {
 	return (
 		<>
 			<div className="div1">
-				<h2 data-testid="shareForm-header">Share your list with a Collabie!</h2>
-				<span>Enter the email of another existing user.</span>
-			</div>
-
-			<div className="div2">
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label htmlFor="email">Email: </label>
@@ -66,6 +61,11 @@ const ShareForm = ({ listPath }) => {
 					{error && <span>Unable to share item with user</span>}
 					{isLoading && <span>Sharing...</span>}
 				</form>
+			</div>
+
+			<div className="div2">
+				<h2 data-testid="shareForm-header">Share your list with a Collabie!</h2>
+				<span>Enter the email of another existing user.</span>
 			</div>
 		</>
 	);
