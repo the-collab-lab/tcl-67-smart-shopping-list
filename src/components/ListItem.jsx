@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './ListItem.css';
 import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
 
@@ -81,34 +80,38 @@ export function ListItem({ item, listPath }) {
 	) {
 		const daysBetween = getDaysBetweenDates(a, b);
 		if (new Date() > b) {
-			return '----------Overdue';
+			return 'Overdue';
 		} else if (daysBetween <= 7) {
-			return '----------Purchase Soon';
+			return 'Soon';
 		} else if (daysBetween > 7 && daysBetween <= 30) {
-			return '----------Purchase kind of soon';
+			return 'Kind of soon';
 		} else if (daysBetween > 30 && daysBetween < 60) {
-			return '----------Purchase Not Soon';
+			return 'Not Soon';
 		} else if (daysBetween > 60) {
-			return '----------Inactive';
+			return 'Inactive';
 		}
 	}
 
 	return (
-		<div>
-			<input
-				type="checkbox"
-				id={id}
-				name="item"
-				checked={isDisabled}
-				onChange={handleCheckboxCheck}
-			/>
+		<div className="listItem">
+			<div className="listCheckBox">
+				<input
+					type="checkbox"
+					id={id}
+					name="item"
+					checked={isDisabled}
+					onChange={handleCheckboxCheck}
+				/>
+			</div>
 
-			<label htmlFor={id}>
-				{name}
-				{urgency}
-			</label>
+			<div className="nameAndUrgency">
+				<span className="listItemName">{name}</span>
+				<span className="listItemUrgency">{urgency}</span>
+			</div>
 
-			<button onClick={handleDeleteItem}>Delete</button>
+			<div className="listDelete">
+				<button onClick={handleDeleteItem}>X</button>
+			</div>
 			{deleteError && <p>Error deleting item</p>}
 			{deleteIsLoading && <p>Deleting item...</p>}
 			{purchaseError && <p>Error marking as purchased</p>}
