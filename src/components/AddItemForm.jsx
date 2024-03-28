@@ -57,7 +57,10 @@ export default function AddItemForm({ listPath, data }) {
 
 	return (
 		<form className="addItemForm" onSubmit={handleSubmit}>
-			<h2 data-testid="addItemForm-header">Add Item</h2>
+			<div className="addItemHeader">
+				<button>----</button>
+				<h2 data-testid="addItemForm-header">Add Item</h2>
+			</div>
 			<div>
 				<label htmlFor="itemName">Item Name: </label>
 				<div>

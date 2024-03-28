@@ -35,6 +35,14 @@ input {
 	text-align: center;
 }
 
+.addItemHeader {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1em;
+	margin: auto;
+}
+
 .addItemForm input {
 	width: 100%;
 	height: 4em;
@@ -45,14 +53,14 @@ input {
 	margin-bottom: 1em;
 }
 
-.addItemForm .addItemButtonGroup {
+.addItemButtonGroup {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 1em;
 }
 
-.addItemForm .addItemButtonGroup button,
+.addItemButtonGroup button,
 .submitButton {
 	width: 45%;
 	height: 3em;
@@ -130,13 +138,32 @@ input {
 }
 
 @media screen and (min-width: 780px) {
-	.addItemButtonGroup {
-		display: flex;
-		width: 300%;
-		margin: auto;
+	.addItemForm {
+		min-width: 100%;
 	}
 
-	/* .addItemForm .addItemButtonGroup button {
-		width: 500em;
-	} */
+	.addItemForm input {
+		width: 30%;
+		margin-bottom: 1em;
+	}
+
+	.addItemButtonGroup {
+		margin-top: 3em;
+		display: flex;
+		flex-direction: row;
+		gap: 0;
+		width: 100%;
+	}
+
+	.addItemButtonGroup button,
+	.submitButton {
+		height: 7em;
+		width: 50em;
+		font-size: larger;
+		margin-bottom: 2em;
+	}
+
+	.submitButton {
+		width: 14em;
+	}
 }
