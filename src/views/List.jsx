@@ -29,7 +29,7 @@ export function List({ data, isShoppingListLoading, listPath, listName }) {
 			<section>
 				<ListSearchItems listPath={listPath} data={data} />
 			</section>
-			<section>
+			<section className="share">
 				<ShareForm listPath={listPath} />
 			</section>
 			<section className="logOutFooter">

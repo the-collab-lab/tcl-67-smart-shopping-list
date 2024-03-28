@@ -35,37 +35,39 @@ const ShareForm = ({ listPath }) => {
 		);
 	};
 	return (
-		<div className="shareForm">
-			<div className="shareHeader">
+		<>
+			<div className="div1">
 				<h2 data-testid="shareForm-header">Share your list with a Collabie!</h2>
 				<span>Enter the email of another existing user.</span>
 			</div>
 
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="email">Email: </label>
-					<input
-						data-testid="shareForm-email-input"
-						onChange={(e) => setEmail(e.target.value)}
-						type="text"
-						id="email"
-						value={email}
-					/>
-				</div>
+			<div className="div2">
+				<form onSubmit={handleSubmit}>
+					<div>
+						<label htmlFor="email">Email: </label>
+						<input
+							data-testid="shareForm-email-input"
+							onChange={(e) => setEmail(e.target.value)}
+							type="text"
+							id="email"
+							value={email}
+						/>
+					</div>
 
-				<div>
-					<button data-testid="shareForm-submit-button">Send List</button>
-				</div>
-				<span data-testid="shareForm-validation-message">{message}</span>
-				{isSuccess && (
-					<span data-testid="shareForm-success-message">
-						Successfully shared item with user
-					</span>
-				)}
-				{error && <span>Unable to share item with user</span>}
-				{isLoading && <span>Sharing...</span>}
-			</form>
-		</div>
+					<div>
+						<button data-testid="shareForm-submit-button">Send List</button>
+					</div>
+					<span data-testid="shareForm-validation-message">{message}</span>
+					{isSuccess && (
+						<span data-testid="shareForm-success-message">
+							Successfully shared item with user
+						</span>
+					)}
+					{error && <span>Unable to share item with user</span>}
+					{isLoading && <span>Sharing...</span>}
+				</form>
+			</div>
+		</>
 	);
 };
 
