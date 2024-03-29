@@ -35,6 +35,42 @@ input {
 	text-align: center;
 }
 
+@keyframes slideDown {
+	from {
+		height: 5em;
+	}
+	to {
+		height: auto;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		height: auto;
+	}
+	to {
+		height: 5em;
+	}
+}
+
+.addItemMinimized {
+	height: 5em;
+	overflow: hidden;
+	/* animation-name: slideDown;
+	animation-duration: 2s; */
+}
+
+.addItemMaximized {
+	height: auto;
+	/* animation-name: slideDown;
+	animation-duration: 4s;
+	animation-timing-function: linear; */
+}
+
+.addItemButton {
+	width: 2em;
+}
+
 .addItemHeader {
 	display: flex;
 	flex-direction: row;
