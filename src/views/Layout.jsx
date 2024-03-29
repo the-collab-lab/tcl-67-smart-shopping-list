@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import './Layout.css';
 import { auth } from '../api/config.js';
@@ -32,16 +32,6 @@ export function Layout() {
 					<main className="Layout-main">
 						<Outlet />
 					</main>
-					{/* <nav className="Nav">
-						<div className="Nav-container">
-							<NavLink to="/" className="Nav-link">
-								Home
-							</NavLink>
-							<NavLink to="/list" className="Nav-link">
-								List
-							</NavLink>
-						</div>
-					</nav> */}
 				</>
 			) : (
 				<>
