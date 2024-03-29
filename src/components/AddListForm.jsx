@@ -40,17 +40,20 @@ export default function AddListForm({ setListPath }) {
 	};
 
 	return (
-		<div>
-			<h3>Create a List</h3>
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="newListName" name="newListName">
-					List Name
-				</label>
-				<input id="newListName" name="newListName" onChange={handleChange} />
-				<button type="submit">Create List</button>
-			</form>
-
-			<p>{message}</p>
+		<div className="sideBySide-section">
+			<div>
+				<h3>Create a List</h3>
+			</div>
+			<div>
+				<form onSubmit={handleSubmit}>
+					<label htmlFor="newListName" name="newListName">
+						List Name
+					</label>
+					<input id="newListName" name="newListName" onChange={handleChange} />
+					<button type="submit">Create List</button>
+					<p>{message}</p>
+				</form>
+			</div>
 		</div>
 	);
 }

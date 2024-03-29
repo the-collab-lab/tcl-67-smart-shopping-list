@@ -23,18 +23,9 @@ export function List({ data, isShoppingListLoading, listPath, listName }) {
 			<section>
 				<h2>{listName}</h2>
 			</section>
-			<section>
-				<AddItemForm listPath={listPath} data={data} />
-			</section>
-			<section>
-				<ListSearchItems listPath={listPath} data={data} />
-			</section>
-			<section className="share">
-				<ShareForm listPath={listPath} />
-			</section>
-			<section className="logOutFooter">
-				<SignOutButton />
-			</section>
+			<AddItemForm listPath={listPath} data={data} />
+			<ListSearchItems listPath={listPath} data={data} />
+			<ShareForm listPath={listPath} />
 		</main>
 	);
 }
