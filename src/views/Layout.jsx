@@ -3,6 +3,7 @@ import { Outlet, NavLink } from 'react-router-dom';
 import './Layout.css';
 import { auth } from '../api/config.js';
 import { useAuth, SignInButton, SignOutButton } from '../api/useAuth.jsx';
+import LoggedOut from '../components/LoggedOut.jsx';
 
 /**
  * TODO: The links defined in this file don't work!
@@ -19,7 +20,10 @@ export function Layout() {
 			{!!user ? (
 				<>
 					<header className="Layout-header">
-						<h1>Smart shopping list</h1>
+						<a href="/">
+							<h1>Smart shopping list</h1>
+						</a>
+
 						<div>
 							<span>Welcome, {auth.currentUser.displayName}</span> (
 							<SignOutButton />)
@@ -28,7 +32,7 @@ export function Layout() {
 					<main className="Layout-main">
 						<Outlet />
 					</main>
-					<nav className="Nav">
+					{/* <nav className="Nav">
 						<div className="Nav-container">
 							<NavLink to="/" className="Nav-link">
 								Home
@@ -37,7 +41,7 @@ export function Layout() {
 								List
 							</NavLink>
 						</div>
-					</nav>
+					</nav> */}
 				</>
 			) : (
 				<>
@@ -47,7 +51,7 @@ export function Layout() {
 							<SignInButton />
 						</div>
 					</header>
-					<div>Please sign in to view lists.</div>
+					<LoggedOut />
 				</>
 			)}
 		</div>

@@ -35,8 +35,8 @@ const ShareForm = ({ listPath }) => {
 		);
 	};
 	return (
-		<>
-			<div className="div1">
+		<section className="sideBySide-section">
+			<div>
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label htmlFor="email">Email: </label>
@@ -63,11 +63,11 @@ const ShareForm = ({ listPath }) => {
 				</form>
 			</div>
 
-			<div className="div2">
+			<div>
 				<h2 data-testid="shareForm-header">Share your list with a Collabie!</h2>
 				<span>Enter the email of another existing user.</span>
 			</div>
-		</>
+		</section>
 	);
 };
 

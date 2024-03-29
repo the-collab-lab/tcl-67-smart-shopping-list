@@ -57,52 +57,56 @@ export default function AddItemForm({ listPath, data }) {
 	};
 
 	return (
-		<form className="addItemForm" onSubmit={handleSubmit}>
-			<div className="addItemHeader">
-				<button>----</button>
-				<h2 data-testid="addItemForm-header">Add Item</h2>
-			</div>
-			<div>
-				<label htmlFor="itemName">Item Name: </label>
-				<div>
-					<input
-						data-testid="itemName"
-						onChange={(e) => setUserItem(e.target.value)}
-						type="text"
-						id="itemName"
-						value={userItem}
-					/>
+		<section>
+			<form className="addItemForm" onSubmit={handleSubmit}>
+				<div className="addItemHeader">
+					<button>----</button>
+					<h2 data-testid="addItemForm-header">Add Item</h2>
 				</div>
-			</div>
-			<span>When would you like a reminder to buy this item?</span>
-			<div className="addItemButtonGroup">
-				<button
-					value={7}
-					onClick={(e) => handleSelection(e)}
-					data-testid="replaceTime"
-				>
-					7 Days
-				</button>
-				<button value={14} onClick={(e) => handleSelection(e)}>
-					14 Days
-				</button>
-				<button value={30} onClick={(e) => handleSelection(e)}>
-					30 Days
-				</button>
-			</div>
-			<div>
-				<button className="submitButton" data-testid="submit-button">
-					Add Item
-				</button>
-			</div>
-			<div>
-				<span data-testid="addItemFormMessage">{message}</span>
-				{isSuccess && <span data-testid="addItemFormSuccess">Success!!</span>}
-				{error && (
-					<span data-testid="addItemFormError">Unable to add item to list</span>
-				)}
-				{isLoading && <span data-testid="addItemFormLoading">Adding...</span>}
-			</div>
-		</form>
+				<div>
+					<label htmlFor="itemName">Item Name: </label>
+					<div>
+						<input
+							data-testid="itemName"
+							onChange={(e) => setUserItem(e.target.value)}
+							type="text"
+							id="itemName"
+							value={userItem}
+						/>
+					</div>
+				</div>
+				<span>When would you like a reminder to buy this item?</span>
+				<div className="addItemButtonGroup">
+					<button
+						value={7}
+						onClick={(e) => handleSelection(e)}
+						data-testid="replaceTime"
+					>
+						7 Days
+					</button>
+					<button value={14} onClick={(e) => handleSelection(e)}>
+						14 Days
+					</button>
+					<button value={30} onClick={(e) => handleSelection(e)}>
+						30 Days
+					</button>
+				</div>
+				<div>
+					<button className="submitButton" data-testid="submit-button">
+						Add Item
+					</button>
+				</div>
+				<div>
+					<span data-testid="addItemFormMessage">{message}</span>
+					{isSuccess && <span data-testid="addItemFormSuccess">Success!!</span>}
+					{error && (
+						<span data-testid="addItemFormError">
+							Unable to add item to list
+						</span>
+					)}
+					{isLoading && <span data-testid="addItemFormLoading">Adding...</span>}
+				</div>
+			</form>
+		</section>
 	);
 }

@@ -38,6 +38,11 @@
 	box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
 /**
  * Make sure the app fills the height of the screen.
  */
@@ -114,4 +119,43 @@ form {
 }
 button {
 	width: 100px;
+}
+
+@media screen and (min-width: 780px) {
+	/* List Share */
+
+	.sideBySide-section {
+		display: flex;
+		flex-direction: row;
+		height: 50vh;
+		width: 100%;
+	}
+	.sideBySide-section > div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		padding: 50px;
+		border: 1px solid black;
+	}
+}
+
+.sideBySide-loggedOut {
+	display: flex;
+	flex-direction: row;
+	height: 90vh;
+	width: 100%;
+}
+
+.sideBySide-loggedOut > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	padding: 50px;
+	border: 1px solid black;
 }
