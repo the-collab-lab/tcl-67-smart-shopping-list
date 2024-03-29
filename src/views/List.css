@@ -40,13 +40,13 @@ input {
 		height: 5em;
 	}
 	to {
-		height: auto;
+		height: 28em;
 	}
 }
 
 @keyframes slideUp {
 	from {
-		height: auto;
+		height: 28em;
 	}
 	to {
 		height: 5em;
@@ -54,17 +54,18 @@ input {
 }
 
 .addItemMinimized {
-	height: 5em;
 	overflow: hidden;
-	/* animation-name: slideDown;
-	animation-duration: 2s; */
+	animation-name: slideUp;
+	animation-duration: 0.2;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
 }
 
 .addItemMaximized {
-	height: auto;
-	/* animation-name: slideDown;
-	animation-duration: 4s;
-	animation-timing-function: linear; */
+	overflow: hidden;
+	animation-name: slideDown;
+	animation-duration: 0.2s;
+	animation-timing-function: linear;
 }
 
 .addItemButton {
@@ -202,6 +203,41 @@ input {
 
 	.submitButton {
 		width: 14em;
+	}
+
+	@keyframes slideDown {
+		from {
+			height: 5em;
+		}
+
+		to {
+			height: 42em;
+		}
+	}
+
+	@keyframes slideUp {
+		from {
+			height: 42em;
+		}
+		to {
+			height: 5em;
+		}
+	}
+
+	.addItemMinimized {
+		overflow: hidden;
+		animation-name: slideUp;
+		animation-duration: 0.2;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+	}
+
+	.addItemMaximized {
+		overflow: hidden;
+		animation-name: slideDown;
+		animation-duration: 0.2s;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
 	}
 
 	/* Search List */

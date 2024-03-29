@@ -57,13 +57,12 @@ export default function AddItemForm({ listPath, data }) {
 		setItemDuration(Number(e.target.value));
 	};
 
-	function handleAddItemToggle(e) {
+	function handleAddItemToggle() {
 		addItemToggle === '+' ? setAddItemToggle('-') : setAddItemToggle('+');
 	}
 
 	return (
 		<section
-			id="addItemToggle"
 			className={
 				addItemToggle === '+' ? 'addItemMinimized' : 'addItemMaximized'
 			}
@@ -72,8 +71,8 @@ export default function AddItemForm({ listPath, data }) {
 				<div className="addItemHeader">
 					<button
 						className={(addItemToggle, 'addItemButton')}
-						onClick={(e) => {
-							handleAddItemToggle(e);
+						onClick={() => {
+							handleAddItemToggle();
 						}}
 					>
 						{addItemToggle}
