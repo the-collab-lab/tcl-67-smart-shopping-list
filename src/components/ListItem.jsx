@@ -93,20 +93,17 @@ export function ListItem({ item, listPath }) {
 	}
 
 	return (
-		<div className="listItem">
-			<div className="listCheckBox">
-				<input
-					type="checkbox"
-					id={id}
-					name="item"
-					checked={isDisabled}
-					onChange={handleCheckboxCheck}
-				/>
-			</div>
-
+		<div className="listItemRow">
+			<input
+				type="checkbox"
+				id={id}
+				name="item"
+				checked={isDisabled}
+				onChange={handleCheckboxCheck}
+			/>
 			<div className="nameAndUrgency">
-				<span className="listItemName">{name}</span>
-				<span className="listItemUrgency">{urgency}</span>
+				<h4>{name}</h4>
+				<h4>{urgency}</h4>
 			</div>
 
 			<div className="listDelete">

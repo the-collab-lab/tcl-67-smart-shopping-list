@@ -13,7 +13,7 @@ export const SignInButton = () => (
 		type="button"
 		onClick={() => signInWithPopup(auth, new GoogleAuthProvider())}
 	>
-		Sign In
+		<small>Sign In</small>
 	</button>
 );
 
@@ -22,7 +22,7 @@ export const SignInButton = () => (
  */
 export const SignOutButton = () => (
 	<button type="button" onClick={() => auth.signOut()}>
-		Sign Out
+		<small>Sign Out</small>
 	</button>
 );
 

@@ -18,14 +18,7 @@ section {
 	border-bottom-width: 1px;
 	border-bottom-color: black;
 	border-bottom-style: solid;
-	padding-bottom: 2.5em;
 	margin-bottom: auto;
-}
-
-input {
-	width: 100%;
-	height: 4em;
-	text-align: center;
 }
 
 /* Add Item Form */
@@ -46,7 +39,6 @@ input {
 .addItemForm input {
 	width: 100%;
 	height: 4em;
-	text-align: center;
 }
 
 .addItemForm span {
@@ -71,11 +63,6 @@ input {
 }
 
 /* List Search Items */
-.searchLabel {
-	font-size: larger;
-	font-weight: bold;
-}
-
 .listSearchItems {
 	width: 100%;
 }
@@ -84,50 +71,19 @@ input {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1em;
-	margin-bottom: 2em;
-	margin-top: 2em;
 }
 
 /* List Item */
-.listItem {
+.listItemRow {
 	display: flex;
-	width: 100;
-}
-
-.listCheckBox,
-.listDelete {
-	width: 5em;
+	width: 100%;
 }
 
 .nameAndUrgency {
 	display: flex;
 	flex-direction: column;
 	text-align: left;
-	margin-left: 1em;
 	width: 100%;
-}
-
-.listItemName {
-	font-weight: bold;
-	font-size: large;
-}
-
-.listItemUrgency {
-	font-style: italic;
-	font-size: small;
-}
-
-.listDelete button {
-	height: 90%;
-	width: 90%;
-}
-
-/* ShareForm */
-.shareForm form {
-	gap: 1em;
-	margin: auto;
-	margin-bottom: -1em;
 }
 
 /* Log Out */
@@ -135,6 +91,18 @@ input {
 	margin-top: 2em;
 	border-bottom: 0;
 	margin-bottom: -3em;
+}
+
+.nameAndUrgency :nth-child(1) {
+	width: 100%;
+	font-size: 25px;
+	font-weight: 400;
+}
+
+.nameAndUrgency :nth-child(2) {
+	width: 50%;
+	font-size: 15px;
+	font-weight: 400;
 }
 
 @media screen and (min-width: 780px) {
@@ -160,7 +128,6 @@ input {
 	.submitButton {
 		height: 7em;
 		width: 50em;
-		font-size: larger;
 		margin-bottom: 2em;
 	}
 
@@ -170,95 +137,76 @@ input {
 
 	/* Search List */
 	.listSearchItems {
+		display: flex;
 		min-width: 100%;
 	}
 
 	.searchInput {
+		display: flex;
 		flex-direction: row;
+		height: max-content;
 		gap: 0;
 		margin: 0;
+		width: 100%;
 	}
 
 	.searchInput label {
-		flex-grow: 2;
-		border: 1px solid black;
-		padding-top: 2em;
-		padding-bottom: 2em;
-		height: 6em;
-		border-top: 0;
+		font-size: 30px;
+		font-weight: 500;
 	}
 
 	.searchInput form {
-		flex-grow: 3;
+		height: 100%;
+		width: 100%;
 	}
 
 	.searchInput input {
-		height: 10em;
 		border-width: 3px;
+		padding: 20px;
+		border: solid 1px black;
+		line-height: 150%;
 	}
 
 	.searchInput button {
-		flex-grow: 1;
-		height: 10em;
+		height: 100%;
 	}
 
 	/* Items */
 
-	.listItem {
-		height: 4em;
+	.listItemRow {
+		height: max-content;
+	}
+	.listItemRow > * {
+		border: solid 1px black;
+	}
+
+	input[type='checkbox'],
+	.listDelete {
+		aspect-ratio: 1 / 1;
 	}
 
 	.nameAndUrgency {
-		flex-direction: row;
-		align-items: center;
-		margin: 0;
-	}
-
-	.listItemName {
-		width: 30%;
-		border: solid 1px black;
-		padding-top: 1.3em;
-		padding-bottom: 1.3em;
-	}
-
-	.listItemUrgency {
-		font-style: normal;
-		flex-grow: 5;
-		border: solid 1px black;
-		text-align: center;
-		padding-top: 1.5em;
-		padding-bottom: 1.1em;
-		font-size: large;
-	}
-
-	.listCheckBox,
-	.listDelete {
-		flex-grow: 1;
-	}
-
-	.listCheckBox input {
-		margin: 0;
-		height: 100%;
-	}
-
-	/* List Share */
-
-	/* .share {
 		display: flex;
 		flex-direction: row;
-		height: 30vh;
 		width: 100%;
 	}
 
-	.div1,
-	.div2 {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+	.nameAndUrgency > * {
 		height: 100%;
+		padding: 20px;
+		border: solid 1px black;
+	}
+
+	.nameAndUrgency :nth-child(1),
+	.nameAndUrgency :nth-child(2) {
+		font-size: 50px;
+		font-weight: 400;
+	}
+
+	/* Share List*/
+	#email {
 		width: 100%;
-		padding: 50px;
-		border: 1px solid black;
-	} */
+		padding: 20px;
+		border: solid 3px black;
+	}
 }
