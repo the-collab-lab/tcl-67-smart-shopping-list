@@ -18,12 +18,15 @@
 	padding-inline: min(5dvw, 3.2rem);
 } */
 
-/* .Layout-header {
+.Layout-header {
 	background-color: var(--color-bg);
 	padding-bottom: 0.5rem;
 	padding-top: max(env(safe-area-inset-top), 1rem);
 	text-align: center;
-} */
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
 
 /* .Layout-header > h1 {
 	margin: 0;

@@ -14,24 +14,17 @@ export function Home({
 			{!listPath ? (
 				<h4>No list currently selected!</h4>
 			) : (
-				<h4>Current List:</h4>
+				<h4>Current List:{listName}</h4>
 			)}
 
-			<h2>{listName}</h2>
-			<hr></hr>
 			<AddListForm setListPath={setListPath} />
-			<div>
-				<p>----- OR -----</p>
-			</div>
-			{areListsLoading ? (
-				<div>Loading lists...</div>
-			) : (
-				<SelectListForm
-					data={data}
-					listPath={listPath}
-					setListPath={setListPath}
-				/>
-			)}
+
+			<SelectListForm
+				data={data}
+				listPath={listPath}
+				areListsLoading={areListsLoading}
+				setListPath={setListPath}
+			/>
 		</div>
 	);
 }
