@@ -14,6 +14,7 @@ export default function AddItemForm({ listPath, data }) {
 	const [message, setMessage] = useState('');
 	const [userItem, setUserItem] = useState('');
 	const [itemDuration, setItemDuration] = useState(7);
+	const [addItemToggle, setAddItemToggle] = useState('+');
 
 	const normalizedItemNames = useMemo(() => {
 		return data?.map((item) => normalizeInput(item.name));
@@ -56,13 +57,29 @@ export default function AddItemForm({ listPath, data }) {
 		setItemDuration(Number(e.target.value));
 	};
 
+	function handleAddItemToggle(e) {
+		e.preventDefault();
+		addItemToggle === '+' ? setAddItemToggle('-') : setAddItemToggle('+');
+	}
+
 	return (
-		<section>
-			<form className="addItemForm" onSubmit={handleSubmit}>
-				<div className="addItemHeader">
-					<button>----</button>
-					<h2 data-testid="addItemForm-header">Add Item</h2>
-				</div>
+		<section className="addItemSection">
+			<header className="addItemHeader">
+				<button
+					className={(addItemToggle, 'addItemButton')}
+					onClick={(e) => handleAddItemToggle(e)}
+				>
+					{addItemToggle}
+				</button>
+				<h2 data-testid="addItemForm-header">Add Item</h2>
+			</header>
+			<form
+				className={
+					(addItemToggle === '+' ? 'addItemMinimized' : 'addItemMaximized') +
+					' addItemForm'
+				}
+				onSubmit={handleSubmit}
+			>
 				<div>
 					<label htmlFor="itemName">Item Name: </label>
 					<div>

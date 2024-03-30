@@ -29,10 +29,52 @@ input {
 }
 
 /* Add Item Form */
+
+.addItemSection {
+	padding: 0;
+}
+
 .addItemForm form {
 	display: flex;
 	gap: 1em;
 	text-align: center;
+}
+
+@keyframes slideDown {
+	from {
+		height: 5em;
+	}
+	to {
+		height: 28em;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		height: 28em;
+	}
+	to {
+		height: 5em;
+	}
+}
+
+.addItemMinimized {
+	display: none;
+	animation-name: slideUp;
+	animation-duration: 0.2;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+.addItemMaximized {
+	overflow: hidden;
+	animation-name: slideDown;
+	animation-duration: 0.2s;
+	animation-timing-function: linear;
+}
+
+.addItemButton {
+	width: 2em;
 }
 
 .addItemHeader {
@@ -166,6 +208,41 @@ input {
 
 	.submitButton {
 		width: 14em;
+	}
+
+	@keyframes slideDown {
+		from {
+			height: 5em;
+		}
+
+		to {
+			height: 42em;
+		}
+	}
+
+	@keyframes slideUp {
+		from {
+			height: 42em;
+		}
+		to {
+			height: 5em;
+		}
+	}
+
+	.addItemMinimized {
+		overflow: hidden;
+		animation-name: slideUp;
+		animation-duration: 0.2;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+	}
+
+	.addItemMaximized {
+		overflow: hidden;
+		animation-name: slideDown;
+		animation-duration: 0.2s;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
 	}
 
 	/* Search List */
