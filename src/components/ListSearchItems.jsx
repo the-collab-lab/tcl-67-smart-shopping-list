@@ -46,7 +46,7 @@ export default function ListSearchItems({ data, listPath }) {
 						<button onClick={clearSearch}>Clear</button>
 					</div>
 				)}
-				<div>
+				<div className="listContainer">
 					{filteredItems.map((item) => (
 						<ListItem key={item.id} item={item} listPath={listPath} />
 					))}

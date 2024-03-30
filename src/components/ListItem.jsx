@@ -94,14 +94,16 @@ export function ListItem({ item, listPath }) {
 
 	return (
 		<div className="listItem">
-			<div className="listCheckBox">
-				<input
-					type="checkbox"
-					id={id}
-					name="item"
-					checked={isDisabled}
-					onChange={handleCheckboxCheck}
-				/>
+			<div className="checkBackground">
+				<div className="listCheckBox">
+					<input
+						type="checkbox"
+						id={id}
+						name="item"
+						checked={isDisabled}
+						onChange={handleCheckboxCheck}
+					/>
+				</div>
 			</div>
 
 			<div className="nameAndUrgency">
@@ -109,8 +111,10 @@ export function ListItem({ item, listPath }) {
 				<span className="listItemUrgency">{urgency}</span>
 			</div>
 
-			<div className="listDelete">
-				<button onClick={handleDeleteItem}>X</button>
+			<div className="deleteBackground">
+				<div className="listDelete">
+					<button onClick={handleDeleteItem}>X</button>
+				</div>
 			</div>
 			{deleteError && <p>Error deleting item</p>}
 			{deleteIsLoading && <p>Deleting item...</p>}

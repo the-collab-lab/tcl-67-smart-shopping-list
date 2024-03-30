@@ -132,22 +132,45 @@ input {
 }
 
 /* List Item */
+.listContainer {
+	border: 3px solid black;
+}
+
 .listItem {
 	display: flex;
 	width: 100;
 }
 
+.checkBackground,
+.deleteBackground {
+	background-color: black;
+}
+
 .listCheckBox,
 .listDelete {
-	width: 5em;
+	width: 4em;
+	border: black 6px solid;
+}
+
+.listCheckBox {
+	position: relative;
+	right: 0.4em;
+}
+
+.listCheckBox input {
+	cursor: pointer;
+	width: 100%;
+	transform: scale(1.2);
 }
 
 .nameAndUrgency {
 	display: flex;
 	flex-direction: column;
+	padding-left: 1.5em;
+	padding-top: 0.7em;
 	text-align: left;
-	margin-left: 1em;
 	width: 100%;
+	border: black solid 2px;
 }
 
 .listItemName {
@@ -161,8 +184,13 @@ input {
 }
 
 .listDelete button {
-	height: 90%;
-	width: 90%;
+	height: 2em;
+	width: 100%;
+	position: relative;
+	right: 0.1em;
+	bottom: 0.1em;
+	font-size: xx-large;
+	font-weight: bolder;
 }
 
 /* ShareForm */
@@ -254,29 +282,29 @@ input {
 		flex-direction: row;
 		gap: 0;
 		margin: 0;
+		height: 3.2em;
 	}
 
 	.searchInput label {
 		flex-grow: 2;
-		border: 1px solid black;
-		padding-top: 2em;
-		padding-bottom: 2em;
+		padding-top: 2.2em;
+		padding-bottom: 1em;
 		height: 6em;
 		border-top: 0;
 	}
 
 	.searchInput form {
-		flex-grow: 3;
+		flex-grow: 30;
 	}
 
 	.searchInput input {
-		height: 10em;
+		height: 4em;
 		border-width: 3px;
 	}
 
 	.searchInput button {
 		flex-grow: 1;
-		height: 10em;
+		height: 4em;
 	}
 
 	/* Items */
@@ -289,22 +317,24 @@ input {
 		flex-direction: row;
 		align-items: center;
 		margin: 0;
+		padding: 0;
 	}
 
 	.listItemName {
-		width: 30%;
-		border: solid 1px black;
+		width: 75%;
 		padding-top: 1.3em;
 		padding-bottom: 1.3em;
+		padding-left: 1.5em;
+		/* flex-grow: 3 */
 	}
 
 	.listItemUrgency {
 		font-style: normal;
-		flex-grow: 5;
-		border: solid 1px black;
+		border-left: solid 3px black;
 		text-align: center;
 		padding-top: 1.5em;
 		padding-bottom: 1.1em;
+		padding-left: 1.2em;
 		font-size: large;
 	}
 
@@ -315,7 +345,8 @@ input {
 
 	.listCheckBox input {
 		margin: 0;
-		height: 100%;
+		position: relative;
+		left: 0.4em;
 	}
 
 	/* List Share */
