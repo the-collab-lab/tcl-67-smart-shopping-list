@@ -29,6 +29,11 @@ input {
 }
 
 /* Add Item Form */
+
+.addItemSection {
+	padding: 0;
+}
+
 .addItemForm form {
 	display: flex;
 	gap: 1em;
@@ -54,7 +59,7 @@ input {
 }
 
 .addItemMinimized {
-	overflow: hidden;
+	display: none;
 	animation-name: slideUp;
 	animation-duration: 0.2;
 	animation-timing-function: linear;

@@ -57,28 +57,29 @@ export default function AddItemForm({ listPath, data }) {
 		setItemDuration(Number(e.target.value));
 	};
 
-	function handleAddItemToggle() {
+	function handleAddItemToggle(e) {
+		e.preventDefault();
 		addItemToggle === '+' ? setAddItemToggle('-') : setAddItemToggle('+');
 	}
 
 	return (
-		<section
-			className={
-				addItemToggle === '+' ? 'addItemMinimized' : 'addItemMaximized'
-			}
-		>
-			<form className="addItemForm" onSubmit={handleSubmit}>
-				<div className="addItemHeader">
-					<button
-						className={(addItemToggle, 'addItemButton')}
-						onClick={() => {
-							handleAddItemToggle();
-						}}
-					>
-						{addItemToggle}
-					</button>
-					<h2 data-testid="addItemForm-header">Add Item</h2>
-				</div>
+		<section className="addItemSection">
+			<header className="addItemHeader">
+				<button
+					className={(addItemToggle, 'addItemButton')}
+					onClick={(e) => handleAddItemToggle(e)}
+				>
+					{addItemToggle}
+				</button>
+				<h2 data-testid="addItemForm-header">Add Item</h2>
+			</header>
+			<form
+				className={
+					(addItemToggle === '+' ? 'addItemMinimized' : 'addItemMaximized') +
+					' addItemForm'
+				}
+				onSubmit={handleSubmit}
+			>
 				<div>
 					<label htmlFor="itemName">Item Name: </label>
 					<div>
