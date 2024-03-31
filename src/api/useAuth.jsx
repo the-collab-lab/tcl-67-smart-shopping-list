@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { auth } from './config.js';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { UserContext } from '../context/user.js';
+import Button from '../components/Button.jsx';
 
 /**
  * A button that signs the user in using Google OAuth. When clicked,
@@ -9,21 +10,24 @@ import { UserContext } from '../context/user.js';
  * After the user signs in, they are redirected back to the app.
  */
 export const SignInButton = () => (
-	<button
+	<Button
+		text="Sign in"
 		type="button"
-		onClick={() => signInWithPopup(auth, new GoogleAuthProvider())}
-	>
-		<small>Sign In</small>
-	</button>
+		fn={() => signInWithPopup(auth, new GoogleAuthProvider())}
+		color="yellow"
+	/>
 );
 
 /**
  * A button that signs the user out of the app using Firebase Auth.
  */
 export const SignOutButton = () => (
-	<button type="button" onClick={() => auth.signOut()}>
-		<small>Sign Out</small>
-	</button>
+	<Button
+		text="Sign out"
+		type="button"
+		fn={() => auth.signOut()}
+		color="yellow"
+	/>
 );
 
 /**

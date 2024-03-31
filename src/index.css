@@ -113,7 +113,24 @@ form {
 	width: 70%;
 }
 button {
-	width: 100px;
+	width: 150px;
+	height: 55px;
+	font-size: 20px;
+	border: 1px solid black;
+	box-shadow: 3px 3px 0px 3px rgba(0, 0, 0, 1);
+}
+
+button.square {
+	height: 55px;
+	width: 55px;
+}
+
+button:hover {
+	box-shadow: -3px -3px 0px 3px rgba(0, 0, 0, 1);
+}
+
+input {
+	border: solid 2px black;
 }
 
 input:focus {

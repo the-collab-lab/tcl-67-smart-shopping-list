@@ -1,6 +1,7 @@
 import { comparePurchaseUrgency } from '../api';
 import { ListItem } from './ListItem';
 import { useState } from 'react';
+import Button from './Button';
 
 export default function ListSearchItems({ data, listPath }) {
 	const [input, setInput] = useState('');
@@ -30,7 +31,7 @@ export default function ListSearchItems({ data, listPath }) {
 				<h3 data-testid="noItemsErrorMsg">You have no items in this list!</h3>
 			)}
 			{data.length !== 0 && (
-				<div className="searchInput">
+				<div className="searchSection">
 					<label htmlFor="searchItems">Search your shopping list: </label>
 					<form action="" onSubmit={(e) => e.preventDefault()}>
 						<input
@@ -40,7 +41,8 @@ export default function ListSearchItems({ data, listPath }) {
 							type="text"
 						/>
 					</form>
-					<button onClick={clearSearch}>Clear</button>
+
+					<Button text="Clear" fn={clearSearch} color="#DCFF4B" />
 				</div>
 			)}
 
