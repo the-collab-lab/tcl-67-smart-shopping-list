@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import Button from './Button';
 
 export default function SelectListForm({
 	data,
@@ -20,6 +21,7 @@ export default function SelectListForm({
 				<div>Loading lists...</div>
 			) : (
 				<div>
+					<label htmlFor="listSelector">Select List</label>
 					<select
 						id="listSelector"
 						value={selectedList}
@@ -33,13 +35,15 @@ export default function SelectListForm({
 							);
 						})}
 					</select>
-					<button onClick={() => navigate('/list')}>View List</button>
+					<Button
+						text="View List"
+						fn={() => navigate('/list')}
+						color="#DCFF4B"
+					/>
 				</div>
 			)}
 			<div>
-				<h3>
-					<label htmlFor="listSelector">Select a List</label>
-				</h3>
+				<h2>Select a List</h2>
 			</div>
 		</section>
 	);
