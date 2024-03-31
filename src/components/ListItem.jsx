@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { updateItem } from '../api/firebase';
 import { useMutation } from 'react-query';
-
+import Button from './Button';
 import { getNextPurchasedDate } from '../utils';
 import { deleteItem } from '../api/firebase';
 import { compareIfDateIsLessThan24Hours, getDaysBetweenDates } from '../utils';
@@ -102,12 +102,17 @@ export function ListItem({ item, listPath }) {
 				onChange={handleCheckboxCheck}
 			/>
 			<div className="nameAndUrgency">
-				<h4>{name}</h4>
-				<h4>{urgency}</h4>
+				<p>{name}</p>
+				<p>{urgency}</p>
 			</div>
 
 			<div className="listDelete">
-				<button onClick={handleDeleteItem}>X</button>
+				<Button
+					className="square"
+					fn={handleDeleteItem}
+					text="X"
+					color="#89D2FF"
+				></Button>
 			</div>
 			{deleteError && <p>Error deleting item</p>}
 			{deleteIsLoading && <p>Deleting item...</p>}

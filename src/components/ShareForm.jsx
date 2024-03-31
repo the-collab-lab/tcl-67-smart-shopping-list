@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { shareList } from '../api/firebase';
 import { useAuth } from '../api';
 import { useMutation } from 'react-query';
+import Button from './Button';
 
 async function shareListWithUser({ listPath, user, email }) {
 	return await shareList(listPath, user.uid, email);
@@ -52,7 +53,11 @@ const ShareForm = ({ listPath }) => {
 					</div>
 
 					<div>
-						<button data-testid="shareForm-submit-button">Send List</button>
+						<Button
+							text="Send List"
+							color="#89D2FF"
+							testId="shareForm-submit-button"
+						/>
 					</div>
 					<h6 data-testid="shareForm-validation-message">{message}</h6>
 					{isSuccess && (

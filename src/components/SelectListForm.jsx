@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import Button from './Button';
 
 export default function SelectListForm({
 	data,
@@ -34,7 +35,11 @@ export default function SelectListForm({
 							);
 						})}
 					</select>
-					<button onClick={() => navigate('/list')}>View List</button>
+					<Button
+						text="View List"
+						fn={() => navigate('/list')}
+						color="#DCFF4B"
+					/>
 				</div>
 			)}
 			<div>

@@ -17,9 +17,9 @@ export function Layout() {
 						</a>
 
 						<div>
-							<span>Welcome, {auth.currentUser.displayName}</span> (
-							<SignOutButton />)
+							<span>Welcome, {auth.currentUser.displayName}</span>
 						</div>
+						<SignOutButton />
 					</header>
 					<main className="Layout-main">
 						<Outlet />
