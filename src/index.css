@@ -1,41 +1,26 @@
 :root {
-	--color-black: hsla(220, 13%, 18%, 1);
-	--color-gray-dark: hsla(220, 13%, 25%, 1);
-	--color-white: hsla(220, 13%, 98%, 1);
-	--color-gray-light: hsla(220, 13%, 94%, 1);
-	--color-emerald-green: hsla(168, 92%, 25%, 1);
-	--color-vermillion-green: hsla(168, 92%, 43%, 1);
-	--color-cobalt-blue: hsla(215, 100%, 34%, 1);
-	--color-pastel-blue: hsla(215, 100%, 73%, 1);
-	--color-red: hsl(0, 68%, 42%);
-
-	--color-accent: var(--color-pastel-blue);
-	--color-bg: var(--color-black);
-	--color-border: hsla(220, 13%, 32%, 1);
-	--color-error: var(--color-red);
-	--color-text: var(--color-white);
-}
-
-@media screen and (prefers-color-scheme: light) {
-	:root {
-		--color-accent: var(--color-cobalt-blue);
-		--color-bg: var(--color-white);
-		--color-border: hsla(220, 13%, 78%, 1);
-		--color-text: var(--color-black);
-	}
-}
-
-:root.theme-light {
-	--color-accent: var(--color-cobalt-blue);
-	--color-bg: var(--color-white);
-	--color-border: hsla(220, 13%, 78%, 1);
-	--color-text: var(--color-black);
+	--blue: #89d2ff;
+	--blue-light: #ddf2ff;
+	--blue-dark: #89b2ff;
+	--white: #ffffff;
+	--black: #000000;
+	--green: #dcff4b;
+	--green-light: #f9ffde;
+	--green-dark: #8ede21;
+	--yellow: #fdfd18;
+	--yellow-dark: #dde51c;
 }
 
 *,
 *::after,
 *::before {
 	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font: inherit;
 }
 
 a {
@@ -60,68 +45,113 @@ html {
 }
 
 body {
-	background-color: var(--color-bg);
-	color: var(--color-text);
-	font-family:
-		-apple-system,
-		BlinkMacSystemFont,
-		avenir next,
-		avenir,
-		segoe ui,
-		helvetica neue,
-		helvetica,
-		Ubuntu,
-		roboto,
-		noto,
-		arial,
-		sans-serif;
-	font-size: 1.8rem;
-	line-height: 1.4;
-	margin: 0;
-
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
-code {
-	--color-bg: var(--color-gray-dark);
-	--color-text: var(--color-accent);
-
-	background-color: var(--color-bg);
-	border-radius: 4px;
-	color: var(--color-text);
-	display: inline-block;
-	font-family:
-		Menlo,
-		Consolas,
-		Monaco,
-		Liberation Mono,
-		Lucida Console,
-		monospace;
-	font-size: 0.9em;
-	padding: 0.15em 0.15em;
+h1 {
+	font-size: 30px;
+	font-weight: 700;
+	font-family: 'Syncopate';
+	margin: 0px;
 }
 
-@media screen and (prefers-color-scheme: light) {
-	code {
-		--color-bg: var(--color-gray-light);
-	}
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+select,
+option,
+label,
+small {
+	font-family: 'Work Sans';
+	margin: 0px;
 }
 
-:root.theme-light code {
-	--color-bg: var(--color-gray-light);
+h2 {
+	font-size: 30px;
+	font-weight: 500;
+}
+
+h3,
+select,
+option {
+	font-size: 30px;
+	font-weight: 400;
+}
+
+h4,
+input,
+label {
+	font-size: 25px;
+	font-weight: 400;
+}
+
+h5,
+label[for='email'],
+label[for='itemName'],
+label[for='searchInput'] {
+	font-size: 20px;
+	font-weight: 500;
+}
+
+h6 {
+	font-size: 40px;
+	font-weight: 400;
+}
+
+small {
+	font-size: 30px;
+	font-weight: 400;
 }
 
 form {
 	display: flex;
 	flex-direction: column;
-	width: 300px;
+	width: 70%;
 }
 button {
 	width: 100px;
 }
 
+input:focus {
+	outline: var(--black);
+}
+
 @media screen and (min-width: 780px) {
+	h1 {
+		font-size: 70px;
+	}
+
+	h2 {
+		font-size: 60px;
+	}
+
+	h3,
+	select,
+	option {
+		font-size: 60px;
+	}
+
+	h4,
+	input,
+	label {
+		font-size: 50px;
+	}
+
+	h5,
+	label[for='email'],
+	label[for='itemName'],
+	label[for='searchInput'] {
+		font-size: 40px;
+	}
+
+	h6 {
+		font-size: 40px;
+	}
+
 	/* List Share */
 
 	.sideBySide-section {

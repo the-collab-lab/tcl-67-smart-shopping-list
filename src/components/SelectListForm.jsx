@@ -20,6 +20,7 @@ export default function SelectListForm({
 				<div>Loading lists...</div>
 			) : (
 				<div>
+					<label htmlFor="listSelector">Select List</label>
 					<select
 						id="listSelector"
 						value={selectedList}
@@ -37,9 +38,7 @@ export default function SelectListForm({
 				</div>
 			)}
 			<div>
-				<h3>
-					<label htmlFor="listSelector">Select a List</label>
-				</h3>
+				<h2>Select a List</h2>
 			</div>
 		</section>
 	);

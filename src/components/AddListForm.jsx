@@ -42,7 +42,7 @@ export default function AddListForm({ setListPath }) {
 	return (
 		<div className="sideBySide-section">
 			<div>
-				<h3>Create a List</h3>
+				<h2>Create a List</h2>
 			</div>
 			<div>
 				<form onSubmit={handleSubmit}>
@@ -51,7 +51,7 @@ export default function AddListForm({ setListPath }) {
 					</label>
 					<input id="newListName" name="newListName" onChange={handleChange} />
 					<button type="submit">Create List</button>
-					<p>{message}</p>
+					<h6>{message}</h6>
 				</form>
 			</div>
 		</div>

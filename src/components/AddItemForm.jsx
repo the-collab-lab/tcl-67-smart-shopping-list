@@ -92,7 +92,7 @@ export default function AddItemForm({ listPath, data }) {
 						/>
 					</div>
 				</div>
-				<span>When would you like a reminder to buy this item?</span>
+				<h4>When would you like a reminder to buy this item?</h4>
 				<div className="addItemButtonGroup">
 					<button
 						value={7}
@@ -114,14 +114,12 @@ export default function AddItemForm({ listPath, data }) {
 					</button>
 				</div>
 				<div>
-					<span data-testid="addItemFormMessage">{message}</span>
-					{isSuccess && <span data-testid="addItemFormSuccess">Success!!</span>}
+					<h6 data-testid="addItemFormMessage">{message}</h6>
+					{isSuccess && <h6 data-testid="addItemFormSuccess">Success!!</h6>}
 					{error && (
-						<span data-testid="addItemFormError">
-							Unable to add item to list
-						</span>
+						<h6 data-testid="addItemFormError">Unable to add item to list</h6>
 					)}
-					{isLoading && <span data-testid="addItemFormLoading">Adding...</span>}
+					{isLoading && <h6 data-testid="addItemFormLoading">Adding...</h6>}
 				</div>
 			</form>
 		</section>
