@@ -19,13 +19,13 @@ export function List({ data, isShoppingListLoading, listPath, listName }) {
 	}
 
 	return (
-		<>
+		<main>
 			<section>
 				<h2>{listName}</h2>
 			</section>
 			<AddItemForm listPath={listPath} data={data} />
 			<ListSearchItems listPath={listPath} data={data} />
 			<ShareForm listPath={listPath} />
-		</>
+		</main>
 	);
 }

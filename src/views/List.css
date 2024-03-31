@@ -18,7 +18,14 @@ section {
 	border-bottom-width: 1px;
 	border-bottom-color: black;
 	border-bottom-style: solid;
+	padding-bottom: 2.5em;
 	margin-bottom: auto;
+}
+
+input {
+	width: 100%;
+	height: 4em;
+	text-align: center;
 }
 
 /* Add Item Form */
@@ -78,6 +85,12 @@ section {
 	margin: auto;
 }
 
+.addItemForm input {
+	width: 100%;
+	height: 4em;
+	text-align: center;
+}
+
 .addItemForm span {
 	margin-bottom: 1em;
 }
@@ -89,19 +102,36 @@ section {
 	gap: 1em;
 }
 
+.addItemButtonGroup button,
+.submitButton {
+	width: 45%;
+	height: 3em;
+}
+
+.submitButton {
+	margin-top: 1.5em;
+}
+
 /* List Search Items */
+.searchLabel {
+	font-size: larger;
+	font-weight: bold;
+}
+
 .listSearchItems {
 	width: 100%;
 }
 
-.searchSection {
+.searchInput {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	gap: 1em;
+	margin-bottom: 2em;
+	margin-top: 2em;
 }
 
 /* List Item */
-
 .listContainer {
 	border: 3px solid black;
 }
@@ -131,11 +161,6 @@ section {
 	cursor: pointer;
 	width: 100%;
 	transform: scale(1.2);
-
-.listItemRow {
-	display: flex;
-	width: 100%;
-
 }
 
 .nameAndUrgency {
@@ -147,7 +172,6 @@ section {
 	width: 100%;
 	border: black solid 2px;
 }
-
 
 .listItemName {
 	font-weight: bold;
@@ -176,24 +200,11 @@ section {
 	margin-bottom: -1em;
 }
 
-
 /* Log Out */
 .logOutFooter {
 	margin-top: 2em;
 	border-bottom: 0;
 	margin-bottom: -3em;
-}
-
-.nameAndUrgency :nth-child(1) {
-	width: 100%;
-	font-size: 25px;
-	font-weight: 400;
-}
-
-.nameAndUrgency :nth-child(2) {
-	width: 50%;
-	font-size: 15px;
-	font-weight: 400;
 }
 
 @media screen and (min-width: 780px) {
@@ -211,9 +222,16 @@ section {
 		margin-top: 3em;
 		display: flex;
 		flex-direction: row;
-		justify-content: space-around;
 		gap: 0;
 		width: 100%;
+	}
+
+	.addItemButtonGroup button,
+	.submitButton {
+		height: 7em;
+		width: 50em;
+		font-size: larger;
+		margin-bottom: 2em;
 	}
 
 	.submitButton {
@@ -257,18 +275,13 @@ section {
 
 	/* Search List */
 	.listSearchItems {
-		display: flex;
 		min-width: 100%;
 	}
 
-	.searchSection {
-		display: flex;
+	.searchInput {
 		flex-direction: row;
-		height: max-content;
-		justify-content: space-between;
 		gap: 0;
 		margin: 0;
-
 		height: 3.2em;
 	}
 
@@ -292,38 +305,16 @@ section {
 	.searchInput button {
 		flex-grow: 1;
 		height: 4em;
-		width: 100%;
-	}
-
-	.searchSection label {
-		font-size: 30px;
-		font-weight: 500;
-		width: 50%;
-	}
-
-	.searchSection form {
-		height: 100%;
-		width: 100%;
 	}
 
 	/* Items */
 
-	.listItemRow {
-		height: max-content;
-	}
-
-	input[type='checkbox'] {
-		accent-color: #89d2ff;
-		width: 60px;
-		height: 55px;
-		border: 1px solid black;
-		box-shadow: 3px 3px 0px 3px rgba(0, 0, 0, 1);
+	.listItem {
+		height: 4em;
 	}
 
 	.nameAndUrgency {
-		display: flex;
 		flex-direction: row;
-
 		align-items: center;
 		margin: 0;
 		padding: 0;
@@ -345,22 +336,12 @@ section {
 		padding-bottom: 1.1em;
 		padding-left: 1.2em;
 		font-size: large;
-		width: 100%;
 	}
 
-	.nameAndUrgency > * {
-		height: 100%;
-		padding: 10px;
-		border: solid 1px black;
-
+	.listCheckBox,
+	.listDelete {
+		flex-grow: 1;
 	}
-
-	.nameAndUrgency :nth-child(1),
-	.nameAndUrgency :nth-child(2) {
-		font-size: 30px;
-		font-weight: 400;
-	}
-
 
 	.listCheckBox input {
 		margin: 0;
@@ -388,5 +369,4 @@ section {
 		padding: 50px;
 		border: 1px solid black;
 	} */
-
 }

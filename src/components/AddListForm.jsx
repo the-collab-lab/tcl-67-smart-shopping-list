@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { createList } from '../api/index.js';
 import { auth } from '../api/config.js';
 import { useNavigate } from 'react-router-dom';
-import Button from './Button.jsx';
 
 export default function AddListForm({ setListPath }) {
 	const [newListName, setNewListName] = useState('');
@@ -43,7 +42,7 @@ export default function AddListForm({ setListPath }) {
 	return (
 		<div className="sideBySide-section">
 			<div>
-				<h2>Create a List</h2>
+				<h3>Create a List</h3>
 			</div>
 			<div>
 				<form onSubmit={handleSubmit}>
@@ -51,8 +50,8 @@ export default function AddListForm({ setListPath }) {
 						List Name
 					</label>
 					<input id="newListName" name="newListName" onChange={handleChange} />
-					<Button text="Create List" type="submit" color="#89D2FF" />
-					<h6>{message}</h6>
+					<button type="submit">Create List</button>
+					<p>{message}</p>
 				</form>
 			</div>
 		</div>

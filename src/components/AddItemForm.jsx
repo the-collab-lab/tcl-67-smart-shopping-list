@@ -2,7 +2,6 @@ import { addItem } from '../api/firebase';
 import { useState, useMemo } from 'react';
 import { useMutation } from 'react-query';
 import { normalizeInput } from '../utils';
-import Button from './Button';
 
 async function addItemToList({ listPath, userItem, itemDuration }) {
 	return await addItem(listPath, {
@@ -93,40 +92,36 @@ export default function AddItemForm({ listPath, data }) {
 						/>
 					</div>
 				</div>
-				<h4>When would you like a reminder to buy this item?</h4>
+				<span>When would you like a reminder to buy this item?</span>
 				<div className="addItemButtonGroup">
-					<Button
+					<button
 						value={7}
-						fn={(e) => handleSelection(e)}
-						text="7 Days"
-						color="#FDFD18"
-						testId="replaceTime"
-					/>
-
-					<Button
-						value={14}
-						fn={(e) => handleSelection(e)}
-						text="14 Days"
-						color="#FDFD18"
-					/>
-
-					<Button
-						value={30}
-						fn={(e) => handleSelection(e)}
-						text="30 Days"
-						color="#FDFD18"
-					/>
+						onClick={(e) => handleSelection(e)}
+						data-testid="replaceTime"
+					>
+						7 Days
+					</button>
+					<button value={14} onClick={(e) => handleSelection(e)}>
+						14 Days
+					</button>
+					<button value={30} onClick={(e) => handleSelection(e)}>
+						30 Days
+					</button>
 				</div>
 				<div>
-					<Button text="Add Item" testId="submit-button" color="#DCFF4B" />
+					<button className="submitButton" data-testid="submit-button">
+						Add Item
+					</button>
 				</div>
 				<div>
-					<h6 data-testid="addItemFormMessage">{message}</h6>
-					{isSuccess && <h6 data-testid="addItemFormSuccess">Success!!</h6>}
+					<span data-testid="addItemFormMessage">{message}</span>
+					{isSuccess && <span data-testid="addItemFormSuccess">Success!!</span>}
 					{error && (
-						<h6 data-testid="addItemFormError">Unable to add item to list</h6>
+						<span data-testid="addItemFormError">
+							Unable to add item to list
+						</span>
 					)}
-					{isLoading && <h6 data-testid="addItemFormLoading">Adding...</h6>}
+					{isLoading && <span data-testid="addItemFormLoading">Adding...</span>}
 				</div>
 			</form>
 		</section>
