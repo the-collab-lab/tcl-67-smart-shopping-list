@@ -122,17 +122,16 @@ input[type='checkbox'] {
 }
 
 .checkboxBackground {
-	border: black solid 0.2em;
+	border: black solid 2px;
 	background-color: black;
 }
 
 .nameAndUrgency {
 	display: flex;
 	flex-direction: column;
-	padding-left: 1.5em;
+	padding-left: 28px;
 	text-align: left;
 	width: 100%;
-	/* border: black solid 3px; */
 	justify-content: center;
 	border-top: 3px solid black;
 }
