@@ -2,6 +2,7 @@ import { addItem } from '../api/firebase';
 import { useState, useMemo } from 'react';
 import { useMutation } from 'react-query';
 import { normalizeInput } from '../utils';
+import Button from './Button';
 
 async function addItemToList({ listPath, userItem, itemDuration }) {
 	return await addItem(listPath, {
@@ -14,6 +15,7 @@ export default function AddItemForm({ listPath, data }) {
 	const [message, setMessage] = useState('');
 	const [userItem, setUserItem] = useState('');
 	const [itemDuration, setItemDuration] = useState(7);
+	const [addItemToggle, setAddItemToggle] = useState('+');
 
 	const normalizedItemNames = useMemo(() => {
 		return data?.map((item) => normalizeInput(item.name));
@@ -56,13 +58,29 @@ export default function AddItemForm({ listPath, data }) {
 		setItemDuration(Number(e.target.value));
 	};
 
+	function handleAddItemToggle(e) {
+		e.preventDefault();
+		addItemToggle === '+' ? setAddItemToggle('-') : setAddItemToggle('+');
+	}
+
 	return (
-		<section>
-			<form className="addItemForm" onSubmit={handleSubmit}>
-				<div className="addItemHeader">
-					<button>----</button>
-					<h2 data-testid="addItemForm-header">Add Item</h2>
-				</div>
+		<section className="addItemSection">
+			<header className="addItemHeader">
+				<button
+					className={(addItemToggle, 'addItemButton')}
+					onClick={(e) => handleAddItemToggle(e)}
+				>
+					{addItemToggle}
+				</button>
+				<h2 data-testid="addItemForm-header">Add Item</h2>
+			</header>
+			<form
+				className={
+					(addItemToggle === '+' ? 'addItemMinimized' : 'addItemMaximized') +
+					' addItemForm'
+				}
+				onSubmit={handleSubmit}
+			>
 				<div>
 					<label htmlFor="itemName">Item Name: </label>
 					<div>
@@ -75,36 +93,40 @@ export default function AddItemForm({ listPath, data }) {
 						/>
 					</div>
 				</div>
-				<span>When would you like a reminder to buy this item?</span>
+				<h4>When would you like a reminder to buy this item?</h4>
 				<div className="addItemButtonGroup">
-					<button
+					<Button
 						value={7}
-						onClick={(e) => handleSelection(e)}
-						data-testid="replaceTime"
-					>
-						7 Days
-					</button>
-					<button value={14} onClick={(e) => handleSelection(e)}>
-						14 Days
-					</button>
-					<button value={30} onClick={(e) => handleSelection(e)}>
-						30 Days
-					</button>
+						fn={(e) => handleSelection(e)}
+						text="7 Days"
+						color="#FDFD18"
+						testId="replaceTime"
+					/>
+
+					<Button
+						value={14}
+						fn={(e) => handleSelection(e)}
+						text="14 Days"
+						color="#FDFD18"
+					/>
+
+					<Button
+						value={30}
+						fn={(e) => handleSelection(e)}
+						text="30 Days"
+						color="#FDFD18"
+					/>
 				</div>
 				<div>
-					<button className="submitButton" data-testid="submit-button">
-						Add Item
-					</button>
+					<Button text="Add Item" testId="submit-button" color="#DCFF4B" />
 				</div>
 				<div>
-					<span data-testid="addItemFormMessage">{message}</span>
-					{isSuccess && <span data-testid="addItemFormSuccess">Success!!</span>}
+					<h6 data-testid="addItemFormMessage">{message}</h6>
+					{isSuccess && <h6 data-testid="addItemFormSuccess">Success!!</h6>}
 					{error && (
-						<span data-testid="addItemFormError">
-							Unable to add item to list
-						</span>
+						<h6 data-testid="addItemFormError">Unable to add item to list</h6>
 					)}
-					{isLoading && <span data-testid="addItemFormLoading">Adding...</span>}
+					{isLoading && <h6 data-testid="addItemFormLoading">Adding...</h6>}
 				</div>
 			</form>
 		</section>

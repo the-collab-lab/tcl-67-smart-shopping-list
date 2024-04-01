@@ -2,8 +2,8 @@ export default function LoggedOut() {
 	return (
 		<section className="sideBySide-loggedOut">
 			<div>
-				<p>Log in to view your lists.</p>
-				<p>Plan your next grocery run with smart shopping list.</p>
+				<h2>Log in to view your lists.</h2>
+				<h2>Plan your next grocery run with smart shopping list.</h2>
 			</div>
 			<div>IMAGE PLACEHOLDER</div>
 		</section>

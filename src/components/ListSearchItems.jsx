@@ -1,6 +1,7 @@
 import { comparePurchaseUrgency } from '../api';
 import { ListItem } from './ListItem';
 import { useState } from 'react';
+import Button from './Button';
 
 export default function ListSearchItems({ data, listPath }) {
 	const [input, setInput] = useState('');
@@ -25,38 +26,35 @@ export default function ListSearchItems({ data, listPath }) {
 	}
 
 	return (
-		<section>
-			<div className="listSearchItems">
-				{data.length === 0 && (
-					<h2 data-testid="noItemsErrorMsg">You have no items in this list!</h2>
-				)}
-				{data.length !== 0 && (
-					<div className="searchInput">
-						<label className="searchLabel" htmlFor="searchItems">
-							Search your shopping list:{' '}
-						</label>
-						<form action="" onSubmit={(e) => e.preventDefault()}>
-							<input
-								onChange={handleInputChange}
-								id="searchItems"
-								value={input}
-								type="text"
-							/>
-						</form>
-						<button onClick={clearSearch}>Clear</button>
-					</div>
-				)}
-				<div>
-					{filteredItems.map((item) => (
-						<ListItem key={item.id} item={item} listPath={listPath} />
-					))}
+		<section className="listSearchItems">
+			{data.length === 0 && (
+				<h3 data-testid="noItemsErrorMsg">You have no items in this list!</h3>
+			)}
+			{data.length !== 0 && (
+				<div className="searchSection">
+					<label htmlFor="searchItems">Search your shopping list: </label>
+					<form action="" onSubmit={(e) => e.preventDefault()}>
+						<input
+							onChange={handleInputChange}
+							id="searchItems"
+							value={input}
+							type="text"
+						/>
+					</form>
+
+					<Button text="Clear" fn={clearSearch} color="#DCFF4B" />
 				</div>
-				{data.length > 0 && filteredItems.length === 0 && (
-					<div>
-						<p>No match found for that filter query.</p>
-					</div>
-				)}
-			</div>
+			)}
+
+			{filteredItems.map((item) => (
+				<ListItem key={item.id} item={item} listPath={listPath} />
+			))}
+
+			{data.length > 0 && filteredItems.length === 0 && (
+				<div>
+					<p>No match found for that filter query.</p>
+				</div>
+			)}
 		</section>
 	);
 }

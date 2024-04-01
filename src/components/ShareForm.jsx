@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { shareList } from '../api/firebase';
 import { useAuth } from '../api';
 import { useMutation } from 'react-query';
+import Button from './Button';
 
 async function shareListWithUser({ listPath, user, email }) {
 	return await shareList(listPath, user.uid, email);
@@ -39,7 +40,9 @@ const ShareForm = ({ listPath }) => {
 			<div>
 				<form onSubmit={handleSubmit}>
 					<div>
-						<label htmlFor="email">Email: </label>
+						<label htmlFor="email">
+							Enter the email of another existing user
+						</label>
 						<input
 							data-testid="shareForm-email-input"
 							onChange={(e) => setEmail(e.target.value)}
@@ -50,22 +53,25 @@ const ShareForm = ({ listPath }) => {
 					</div>
 
 					<div>
-						<button data-testid="shareForm-submit-button">Send List</button>
+						<Button
+							text="Send List"
+							color="#89D2FF"
+							testId="shareForm-submit-button"
+						/>
 					</div>
-					<span data-testid="shareForm-validation-message">{message}</span>
+					<h6 data-testid="shareForm-validation-message">{message}</h6>
 					{isSuccess && (
-						<span data-testid="shareForm-success-message">
+						<h6 data-testid="shareForm-success-message">
 							Successfully shared item with user
-						</span>
+						</h6>
 					)}
-					{error && <span>Unable to share item with user</span>}
-					{isLoading && <span>Sharing...</span>}
+					{error && <h6>Unable to share item with user</h6>}
+					{isLoading && <h6>Sharing...</h6>}
 				</form>
 			</div>
 
 			<div>
 				<h2 data-testid="shareForm-header">Share your list with a Collabie!</h2>
-				<span>Enter the email of another existing user.</span>
 			</div>
 		</section>
 	);

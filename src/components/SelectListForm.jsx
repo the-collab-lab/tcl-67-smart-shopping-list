@@ -1,21 +1,15 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import Button from './Button';
 
-export default function SelectListForm({
-	data,
-	areListsLoading,
-	listName,
-	setListPath,
-}) {
-	const [selectedList, setSelectedList] = useState(listName);
+export default function SelectListForm({ data, areListsLoading, setListPath }) {
+	const [selectedList, setSelectedList] = useState('');
 	const navigate = useNavigate();
 	const handleSelectChange = (e) => {
-		e.preventDefault();
 		const input = e.target.value;
 		setListPath(input);
 		setSelectedList(input?.split('/')[1]);
 	};
-
 	return (
 		<section className="sideBySide-section">
 			{areListsLoading ? (
@@ -27,7 +21,7 @@ export default function SelectListForm({
 						value={selectedList}
 						onChange={handleSelectChange}
 					>
-						<option value={selectedList}>{selectedList}</option>
+						<option>{selectedList ? selectedList : 'Select a list'}</option>
 						{data.map((data) => {
 							return (
 								<option key={data.path} value={data.path}>
@@ -36,13 +30,15 @@ export default function SelectListForm({
 							);
 						})}
 					</select>
-					<button onClick={() => navigate('/list')}>View List</button>
+					<Button
+						text="View List"
+						fn={() => navigate('/list')}
+						color="#DCFF4B"
+					/>
 				</div>
 			)}
 			<div>
-				<h3>
-					<label htmlFor="listSelector">Select a List</label>
-				</h3>
+				<h2>Select a List</h2>
 			</div>
 		</section>
 	);

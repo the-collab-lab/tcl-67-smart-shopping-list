@@ -12,9 +12,9 @@ export function Home({
 	return (
 		<div className="Home">
 			{!listPath ? (
-				<h4>No list currently selected!</h4>
+				<h2>No list currently selected!</h2>
 			) : (
-				<h4>Current List:{listName}</h4>
+				<h5>Current List:{listName}</h5>
 			)}
 
 			<AddListForm setListPath={setListPath} />
