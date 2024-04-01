@@ -67,7 +67,8 @@ section {
 }
 
 .addItemButton {
-	width: 2em;
+	width: 30px;
+	height: 30px;
 }
 
 .addItemHeader {
@@ -98,15 +99,9 @@ section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-top: 2em;
-	padding-bottom: 2em;
 }
 
 /* List Item */
-.listContainer {
-	width: 100%;
-	border: black 3px solid;
-}
 
 .listItemRow {
 	display: flex;
@@ -114,9 +109,8 @@ section {
 }
 
 .listItemRow input {
-	height: 2em;
 	cursor: pointer;
-	width: 2em;
+	width: 60px;
 }
 
 input[type='checkbox'] {
@@ -138,8 +132,16 @@ input[type='checkbox'] {
 	padding-left: 1.5em;
 	text-align: left;
 	width: 100%;
-	border: black solid 3px;
-	border-top: 3px;
+	/* border: black solid 3px; */
+	justify-content: center;
+	border-top: 3px solid black;
+}
+
+.listDelete {
+	padding-left: 2px;
+	padding-top: 2px;
+	padding-right: 5px;
+	background-color: black;
 }
 
 /* Log Out */
@@ -159,6 +161,11 @@ input[type='checkbox'] {
 	width: 50%;
 	font-size: 15px;
 	font-weight: 400;
+}
+
+/* ShareForm */
+.shareForm {
+	border: 3px black solid;
 }
 
 @media screen and (min-width: 780px) {

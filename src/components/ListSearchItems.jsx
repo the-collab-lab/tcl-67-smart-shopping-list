@@ -46,17 +46,15 @@ export default function ListSearchItems({ data, listPath }) {
 				</div>
 			)}
 
-			<div className="listContainer">
-				{filteredItems.map((item) => (
-					<ListItem key={item.id} item={item} listPath={listPath} />
-				))}
+			{filteredItems.map((item) => (
+				<ListItem key={item.id} item={item} listPath={listPath} />
+			))}
 
-				{data.length > 0 && filteredItems.length === 0 && (
-					<div>
-						<p>No match found for that filter query.</p>
-					</div>
-				)}
-			</div>
+			{data.length > 0 && filteredItems.length === 0 && (
+				<div>
+					<p>No match found for that filter query.</p>
+				</div>
+			)}
 		</section>
 	);
 }
