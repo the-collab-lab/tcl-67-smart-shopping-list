@@ -8,15 +8,19 @@ export default function Button({
 	testId,
 }) {
 	return (
-		<button
-			className={className}
-			value={value}
-			type={type}
-			onClick={fn}
-			style={{ backgroundColor: color }}
-			data-testid={testId}
-		>
-			{text}
-		</button>
+		<div class="buttonContainer">
+			<span className="buttonBack"></span>
+
+			<button
+				className={className}
+				value={value}
+				type={type}
+				onClick={fn}
+				style={{ backgroundColor: color }}
+				data-testid={testId}
+			>
+				{text}
+			</button>
+		</div>
 	);
 }
