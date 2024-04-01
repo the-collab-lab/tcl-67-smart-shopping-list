@@ -41,7 +41,7 @@ export default function AddListForm({ setListPath }) {
 	};
 
 	return (
-		<div className="sideBySide-section">
+		<div className="sideBySide-section" data-testid="addListForm">
 			<div>
 				<h2>Create a List</h2>
 			</div>

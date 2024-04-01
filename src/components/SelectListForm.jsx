@@ -11,7 +11,7 @@ export default function SelectListForm({ data, areListsLoading, setListPath }) {
 		setSelectedList(input?.split('/')[1]);
 	};
 	return (
-		<section className="sideBySide-section">
+		<section className="sideBySide-section" data-testid="selectListForm">
 			{areListsLoading ? (
 				<div>Loading lists...</div>
 			) : (
