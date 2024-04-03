@@ -36,7 +36,7 @@ const ShareForm = ({ listPath }) => {
 		);
 	};
 	return (
-		<section className="sideBySide-section">
+		<section className="sideBySide-section shareForm">
 			<div>
 				<form onSubmit={handleSubmit}>
 					<div>
