@@ -72,9 +72,13 @@ export default function AddItemForm({ listPath, data }) {
 				>
 					{addItemToggle}
 				</button>
-				<h2 data-testid="addItemForm-header">Add Item</h2>
+
+				<h2 data-testid="addItemForm-header" id="addItemH2">
+					Add Item
+				</h2>
 			</header>
 			<form
+				id="addItemForm"
 				className={
 					(addItemToggle === '+' ? 'addItemMinimized' : 'addItemMaximized') +
 					' addItemForm'
@@ -83,39 +87,44 @@ export default function AddItemForm({ listPath, data }) {
 			>
 				<div>
 					<label htmlFor="itemName">Item Name: </label>
-					<div>
-						<input
-							data-testid="itemName"
-							onChange={(e) => setUserItem(e.target.value)}
-							type="text"
-							id="itemName"
-							value={userItem}
-						/>
-					</div>
+					<input
+						data-testid="itemName"
+						onChange={(e) => setUserItem(e.target.value)}
+						type="text"
+						id="itemName"
+						value={userItem}
+					/>
 				</div>
 				<h4>When would you like a reminder to buy this item?</h4>
 				<div className="addItemButtonGroup">
-					<Button
+					<button
+						className={'durationButton'}
+						onClick={(e) => {
+							handleSelection(e);
+						}}
 						value={7}
-						fn={(e) => handleSelection(e)}
-						text="7 Days"
-						color="#FDFD18"
-						testId="replaceTime"
-					/>
-
-					<Button
+						data-testId="replaceTime"
+					>
+						7 Days
+					</button>
+					<button
+						className={'durationButton'}
+						onClick={(e) => {
+							handleSelection(e);
+						}}
 						value={14}
-						fn={(e) => handleSelection(e)}
-						text="14 Days"
-						color="#FDFD18"
-					/>
-
-					<Button
+					>
+						14 Days
+					</button>
+					<button
+						className={'durationButton'}
+						onClick={(e) => {
+							handleSelection(e);
+						}}
 						value={30}
-						fn={(e) => handleSelection(e)}
-						text="30 Days"
-						color="#FDFD18"
-					/>
+					>
+						30 Days
+					</button>
 				</div>
 				<div>
 					<Button text="Add Item" testId="submit-button" color="#DCFF4B" />
