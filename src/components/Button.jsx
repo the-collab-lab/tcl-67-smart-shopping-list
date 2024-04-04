@@ -6,6 +6,7 @@ export default function Button({
 	color,
 	fn,
 	testId,
+	buttonWidth,
 }) {
 	return (
 		<button
@@ -13,7 +14,7 @@ export default function Button({
 			value={value}
 			type={type}
 			onClick={fn}
-			style={{ backgroundColor: color }}
+			style={{ backgroundColor: color, width: buttonWidth }}
 			data-testid={testId}
 		>
 			{text}
