@@ -137,6 +137,19 @@ input:focus {
 	outline: var(--black);
 }
 
+.mobileLogFooter {
+	display: flex;
+	justify-content: center;
+	border-bottom: 0;
+	/* height: 72px; */
+}
+
+.mobileLogFooter button {
+	width: 99%;
+	font-size: 30px;
+	height: 72px;
+}
+
 @media screen and (min-width: 780px) {
 	h1 {
 		font-size: 70px;
