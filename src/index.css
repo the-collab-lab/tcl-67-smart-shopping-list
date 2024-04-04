@@ -137,16 +137,9 @@ input:focus {
 	outline: var(--black);
 }
 
-.mobileLogFooter {
-	display: flex;
-	justify-content: center;
-	border-bottom: 0;
-}
-
-.mobileLogFooter button {
-	width: 99%;
-	font-size: 30px;
-	height: 72px;
+.logIn,
+.logOut {
+	font-size: 18px;
 }
 
 @media screen and (min-width: 780px) {

@@ -2,9 +2,11 @@ import { Outlet } from 'react-router-dom';
 
 import './Layout.css';
 import { auth } from '../api/config.js';
-import { useAuth, SignInButton, SignOutButton } from '../api/useAuth.jsx';
+import { useAuth } from '../api/useAuth.jsx';
 import LoggedOut from '../components/LoggedOut.jsx';
 import { useState } from 'react';
+import Button from '../components/Button.jsx';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 export function Layout() {
 	const initialWindowSize = window.innerWidth;
@@ -39,7 +41,12 @@ export function Layout() {
 								<div>
 									<span>Welcome, {auth.currentUser.displayName}</span>
 								</div>
-								<SignOutButton />
+								<Button
+									fn={() => auth.signOut()}
+									color={'yellow'}
+									className={'logOut'}
+									text={'Log Out'}
+								/>
 							</div>
 						)}
 					</header>
@@ -47,9 +54,13 @@ export function Layout() {
 						<Outlet />
 					</main>
 					{isMobile && (
-						<div className="mobileLogFooter">
-							<SignOutButton />
-						</div>
+						<Button
+							fn={() => auth.signOut()}
+							color={'yellow'}
+							className={'logOut'}
+							text={'Log Out'}
+							buttonWidth={'100%'}
+						/>
 					)}
 				</>
 			) : (
@@ -57,16 +68,23 @@ export function Layout() {
 					<header className="Layout-header">
 						<h1>Smart shopping list</h1>
 						{!isMobile && (
-							<div>
-								<SignInButton />
-							</div>
+							<Button
+								fn={() => signInWithPopup(auth, new GoogleAuthProvider())}
+								color={'yellow'}
+								className={'logIn'}
+								text={'Log In'}
+							/>
 						)}
 					</header>
 					<LoggedOut />
 					{isMobile && (
-						<div className="mobileLogFooter">
-							<SignInButton />
-						</div>
+						<Button
+							fn={() => signInWithPopup(auth, new GoogleAuthProvider())}
+							color={'yellow'}
+							className={'logIn'}
+							text={'Log In'}
+							buttonWidth={'98%'}
+						/>
 					)}
 				</>
 			)}
