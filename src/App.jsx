@@ -60,8 +60,8 @@ export function App() {
 								<Home
 									data={listsData}
 									areListsLoading={areListsLoading}
-									setListPath={setListPath}
 									listPath={listPath}
+									setListPath={setListPath}
 									listName={listName}
 									exact
 								/>
