@@ -21,9 +21,9 @@ export function Home({
 
 			<SelectListForm
 				data={data}
-				listPath={listPath}
 				areListsLoading={areListsLoading}
 				setListPath={setListPath}
+				listName={listName}
 			/>
 		</div>
 	);

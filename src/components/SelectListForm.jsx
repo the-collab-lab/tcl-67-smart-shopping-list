@@ -2,8 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Button from './Button';
 
-export default function SelectListForm({ data, areListsLoading, setListPath }) {
-	const [selectedList, setSelectedList] = useState('');
+export default function SelectListForm({
+	data,
+	areListsLoading,
+	setListPath,
+	listName,
+}) {
+	const initialListState = listName ? listName : 'Select a list';
+	const [selectedList, setSelectedList] = useState(initialListState);
 	const navigate = useNavigate();
 	const handleSelectChange = (e) => {
 		const input = e.target.value;
