@@ -8,15 +8,17 @@ import { useState } from 'react';
 
 export function Layout() {
 	const initialWindowSize = window.innerWidth;
+
 	const { user } = useAuth();
 	const [isMobile, setIsMobile] = useState(
 		initialWindowSize < 780 ? true : false,
 	);
 
 	function windowSizeCheck() {
-		if (window.innerWidth < 780) {
+		if (window.innerWidth < 780 && isMobile === false) {
 			setIsMobile(true);
-		} else {
+		}
+		if (window.innerWidth >= 780 && isMobile === true) {
 			setIsMobile(false);
 		}
 	}
