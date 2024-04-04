@@ -206,3 +206,7 @@ input:focus {
 	padding: 50px;
 	border: 1px solid black;
 }
+
+.sideBySide-loggedOut > :nth-child(2) {
+	padding: 0px;
+}
