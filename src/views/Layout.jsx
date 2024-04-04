@@ -23,17 +23,17 @@ export function Layout() {
 					</header>
 					<main className="Layout-main">
 						<Outlet />
+						<SignOutButton />
 					</main>
 				</>
 			) : (
 				<>
-					<header className="Layout-header">
+					<header className="Layout-header logged-out">
 						<h1>Smart shopping list</h1>
-						<div>
-							<SignInButton />
-						</div>
+						<SignInButton />
 					</header>
 					<LoggedOut />
+					<SignInButton />
 				</>
 			)}
 		</div>

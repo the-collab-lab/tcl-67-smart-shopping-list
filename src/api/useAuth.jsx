@@ -9,12 +9,13 @@ import Button from '../components/Button.jsx';
  * the button redirects the user to the Google OAuth sign-in page.
  * After the user signs in, they are redirected back to the app.
  */
-export const SignInButton = () => (
+export const SignInButton = ({ className }) => (
 	<Button
 		text="Sign in"
 		type="button"
 		fn={() => signInWithPopup(auth, new GoogleAuthProvider())}
 		color="yellow"
+		className={className}
 	/>
 );
 
