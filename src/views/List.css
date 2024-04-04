@@ -24,31 +24,20 @@ section {
 /* Add Item Form */
 
 .addItemSection {
-	padding: 0;
+	padding: 20px;
 }
 
-.addItemForm form {
+.addItemForm {
 	display: flex;
-	gap: 1em;
 	text-align: center;
+	margin-top: 30px;
 }
 
-@keyframes slideDown {
-	from {
-		height: 5em;
-	}
-	to {
-		height: 28em;
-	}
-}
-
-@keyframes slideUp {
-	from {
-		height: 28em;
-	}
-	to {
-		height: 5em;
-	}
+.addItemForm > :nth-child(1) {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 30px;
 }
 
 .addItemMinimized {
@@ -67,7 +56,8 @@ section {
 }
 
 .addItemButton {
-	width: 2em;
+	width: 30px;
+	height: 30px;
 }
 
 .addItemHeader {
@@ -75,7 +65,6 @@ section {
 	flex-direction: row;
 	align-items: center;
 	gap: 1em;
-	margin: auto;
 }
 
 .addItemForm span {
@@ -86,7 +75,13 @@ section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 1em;
+	gap: 2em;
+	margin: 30px;
+}
+
+.durationButton {
+	width: 100px;
+	background-color: var(--yellow);
 }
 
 /* List Search Items */
@@ -101,16 +96,45 @@ section {
 }
 
 /* List Item */
+
 .listItemRow {
 	display: flex;
 	width: 100%;
 }
 
+.listItemRow input {
+	cursor: pointer;
+	width: 60px;
+}
+
+input[type='checkbox'] {
+	accent-color: #89d2ff;
+	width: 60px;
+	height: 55px;
+	border: 1px solid black;
+	box-shadow: 3px 3px 0px 3px rgba(0, 0, 0, 1);
+}
+
+.checkboxBackground {
+	border: black solid 2px;
+	background-color: black;
+}
+
 .nameAndUrgency {
 	display: flex;
 	flex-direction: column;
+	padding-left: 28px;
 	text-align: left;
 	width: 100%;
+	justify-content: center;
+	border-top: 3px solid black;
+}
+
+.listDelete {
+	padding-left: 2px;
+	padding-top: 2px;
+	padding-right: 5px;
+	background-color: black;
 }
 
 /* Log Out */
@@ -132,24 +156,23 @@ section {
 	font-weight: 400;
 }
 
+/* ShareForm */
+.shareForm {
+	border: 3px black solid;
+}
+
 @media screen and (min-width: 780px) {
 	/* Add Item */
 	.addItemForm {
 		min-width: 100%;
 	}
-
-	.addItemForm input {
-		width: 30%;
-		margin-bottom: 1em;
-	}
-
 	.addItemButtonGroup {
 		margin-top: 3em;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
-		gap: 0;
-		width: 100%;
+		max-width: 80%;
+		margin: auto;
 	}
 
 	.submitButton {
@@ -162,16 +185,7 @@ section {
 		}
 
 		to {
-			height: 42em;
-		}
-	}
-
-	@keyframes slideUp {
-		from {
-			height: 42em;
-		}
-		to {
-			height: 5em;
+			height: 45em;
 		}
 	}
 
@@ -224,14 +238,6 @@ section {
 		height: max-content;
 	}
 
-	input[type='checkbox'] {
-		accent-color: #89d2ff;
-		width: 60px;
-		height: 55px;
-		border: 1px solid black;
-		box-shadow: 3px 3px 0px 3px rgba(0, 0, 0, 1);
-	}
-
 	.nameAndUrgency {
 		display: flex;
 		flex-direction: row;
@@ -241,7 +247,10 @@ section {
 	.nameAndUrgency > * {
 		height: 100%;
 		padding: 10px;
-		border: solid 1px black;
+	}
+
+	.listItemUrgency {
+		border-left: 3px solid black;
 	}
 
 	.nameAndUrgency :nth-child(1),
@@ -249,6 +258,4 @@ section {
 		font-size: 30px;
 		font-weight: 400;
 	}
-
-	/* Share List*/
 }
