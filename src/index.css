@@ -113,15 +113,19 @@ form {
 	flex-direction: column;
 	width: 70%;
 }
-.buttonContainer {
-	position: relative;
+
+.buttonContainer,
+.squareButtonContainer {
+	display: grid;
+	justify-content: center;
 }
-button,
-.buttonBack {
-	position: absolute;
-	top: 0px;
-	left: 0px;
+
+.buttonContainer > *,
+.squareButtonContainer > * {
+	grid-column-start: 1;
+	grid-row-start: 1;
 }
+
 button {
 	width: 150px;
 	height: 55px;
@@ -133,15 +137,29 @@ button {
 	height: 63px;
 	background-color: black;
 }
+
 button:hover {
-	top: 8px;
-	left: 8px;
+	transform: translate(8px, 8px);
 }
 
-button.square {
+.buttonSquare {
 	height: 55px;
 	width: 55px;
+	background-color: var(--blue);
+	color: white;
+	font-size: 40px;
 }
+
+.buttonBackSquare {
+	width: 63px;
+	height: 63px;
+	background-color: black;
+}
+
+.bottonSquare:hover {
+	transform: translate(2px, 2px);
+}
+
 input {
 	border: solid 2px black;
 }

@@ -55,11 +55,6 @@ section {
 	animation-timing-function: linear;
 }
 
-.addItemButton {
-	width: 30px;
-	height: 30px;
-}
-
 .addItemHeader {
 	display: flex;
 	flex-direction: row;
@@ -130,11 +125,8 @@ input[type='checkbox'] {
 	border-top: 3px solid black;
 }
 
-.listDelete {
-	padding-left: 2px;
-	padding-top: 2px;
-	padding-right: 5px;
-	background-color: black;
+.buttonSquare p {
+	transform: rotate(45deg);
 }
 
 /* Log Out */
