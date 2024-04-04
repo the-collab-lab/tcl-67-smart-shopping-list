@@ -27,7 +27,7 @@ export default function SelectListForm({
 						value={selectedList}
 						onChange={handleSelectChange}
 					>
-						<option>{selectedList ? selectedList : 'Select a list'}</option>
+						<option>{selectedList}</option>
 						{data.map((data) => {
 							return (
 								<option key={data.path} value={data.path}>
