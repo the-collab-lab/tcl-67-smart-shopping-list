@@ -41,8 +41,8 @@ export default function AddListForm({ setListPath }) {
 	};
 
 	return (
-		<div className="sideBySide-section">
-			<div>
+		<div className="sideBySide-section createList-section">
+			<div className="createList-header">
 				<h2>Create a List</h2>
 			</div>
 			<div className="green-background form">
@@ -52,7 +52,7 @@ export default function AddListForm({ setListPath }) {
 					</label>
 					<input id="newListName" name="newListName" onChange={handleChange} />
 					<Button text="Create List" type="submit" color="#89D2FF" />
-					<small>{message}</small>
+					{message && <small>{message}</small>}
 				</form>
 			</div>
 		</div>

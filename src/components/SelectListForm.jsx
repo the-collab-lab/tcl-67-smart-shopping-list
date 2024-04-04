@@ -17,7 +17,7 @@ export default function SelectListForm({
 		setSelectedList(input?.split('/')[1]);
 	};
 	return (
-		<div className="sideBySide-section">
+		<div className="sideBySide-section select-section">
 			{areListsLoading ? (
 				<div>Loading lists...</div>
 			) : (
@@ -45,7 +45,7 @@ export default function SelectListForm({
 					</form>
 				</div>
 			)}
-			<div>
+			<div className="selectList-header">
 				<h2>Select a List</h2>
 			</div>
 		</div>

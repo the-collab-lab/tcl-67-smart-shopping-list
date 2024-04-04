@@ -170,13 +170,58 @@ input {
 input:focus {
 	outline: var(--black);
 }
-/* .signOut {
-	position: fixed;
-	bottom: 0;
+
+.form {
+	padding-bottom: 10px;
+}
+
+.createList-header {
+	background-color: #dcff4b;
+	padding: 10px;
+}
+
+.selectList-header {
+	background-color: #89d2ff;
+	padding: 10px;
+}
+
+.select-section {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.sideBySide-loggedOut {
+	display: flex;
+	flex-direction: column;
+	height: 90vh;
 	width: 100%;
-	left: 0;
-	right: 0;
-} */
+}
+
+.sideBySide-loggedOut > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	padding: 50px;
+	border: 1px solid black;
+}
+
+.header {
+	background-color: white;
+}
+
+form > * {
+	margin: 10px;
+}
+
+.blue-background {
+	background-color: #89d2ff;
+}
+.green-background {
+	background-color: #dcff4b;
+}
 
 .logIn,
 .logOut {
@@ -240,33 +285,26 @@ input:focus {
 		padding: 50px;
 		border: 1px solid black;
 	}
-}
+	.createList-header,
+	.selectList-header {
+		background-color: #ffffff;
+	}
 
-.sideBySide-loggedOut {
-	display: flex;
-	flex-direction: row;
-	height: 90vh;
-	width: 100%;
-}
+	.sideBySide-loggedOut {
+		display: flex;
+		flex-direction: row;
+		height: 90vh;
+		width: 100%;
+	}
 
-.sideBySide-loggedOut > div {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	width: 100%;
-	padding: 50px;
-	border: 1px solid black;
-}
-
-form > * {
-	margin: 10px;
-}
-
-.blue-background {
-	background-color: #89d2ff;
-}
-.green-background {
-	background-color: #dcff4b;
+	.sideBySide-loggedOut > div {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		padding: 50px;
+		border: 1px solid black;
+	}
 }
