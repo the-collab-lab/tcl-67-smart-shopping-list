@@ -11,12 +11,18 @@ export function Layout() {
 	const [isMobile, setIsMobile] = useState();
 
 	useEffect(() => {
+		windowSizeCheck();
+	}, []);
+
+	function windowSizeCheck() {
 		if (window.innerWidth < 780) {
 			setIsMobile(true);
 		} else {
 			setIsMobile(false);
 		}
-	}, []);
+	}
+
+	window.addEventListener('resize', windowSizeCheck);
 
 	return (
 		<div className="Layout">

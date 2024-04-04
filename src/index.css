@@ -141,7 +141,6 @@ input:focus {
 	display: flex;
 	justify-content: center;
 	border-bottom: 0;
-	/* height: 72px; */
 }
 
 .mobileLogFooter button {
