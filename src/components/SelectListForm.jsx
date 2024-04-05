@@ -9,6 +9,7 @@ export default function SelectListForm({
 	setListPath,
 	listName,
 }) {
+	console.log(data, areListsLoading, setListPath, listName);
 	const initialListState = listName ? listName : 'Select a list';
 	const [selectedList, setSelectedList] = useState(initialListState);
 	const navigate = useNavigate();
@@ -30,6 +31,7 @@ export default function SelectListForm({
 							value={selectedList}
 							onChange={handleSelectChange}
 						>
+							<option>{selectedList}</option>
 							{data.map((data) => {
 								return (
 									<option key={data.path} value={data.path}>
