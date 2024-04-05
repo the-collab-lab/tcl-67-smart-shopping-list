@@ -1,0 +1,14 @@
+.green-background {
+	background-color: #dcff4b;
+}
+
+.createList-header {
+	background-color: #dcff4b;
+	padding: 10px;
+}
+
+@media screen and (min-width: 780px) {
+	.createList-header {
+		background-color: #ffffff;
+	}
+}

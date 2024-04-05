@@ -175,21 +175,6 @@ input:focus {
 	padding-bottom: 10px;
 }
 
-.createList-header {
-	background-color: #dcff4b;
-	padding: 10px;
-}
-
-.selectList-header {
-	background-color: #89d2ff;
-	padding: 10px;
-}
-
-.select-section {
-	display: flex;
-	flex-direction: column-reverse;
-}
-
 .sideBySide-loggedOut {
 	display: flex;
 	flex-direction: column;
@@ -214,18 +199,6 @@ input:focus {
 
 form > * {
 	margin: 10px;
-}
-
-.blue-background {
-	background-color: #89d2ff;
-}
-.green-background {
-	background-color: #dcff4b;
-}
-
-.logIn,
-.logOut {
-	font-size: 18px;
 }
 
 @media screen and (min-width: 780px) {
@@ -284,10 +257,6 @@ form > * {
 		min-width: 50%;
 		padding: 50px;
 		border: 1px solid black;
-	}
-	.createList-header,
-	.selectList-header {
-		background-color: #ffffff;
 	}
 
 	.sideBySide-loggedOut {

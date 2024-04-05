@@ -3,6 +3,7 @@ import { createList } from '../api/index.js';
 import { auth } from '../api/config.js';
 import { useNavigate } from 'react-router-dom';
 import Button from './Button.jsx';
+import './AddListForm.css';
 
 export default function AddListForm({ setListPath }) {
 	const [newListName, setNewListName] = useState('');

@@ -1,0 +1,23 @@
+.blue-background {
+	background-color: #89d2ff;
+}
+.select-section {
+	display: flex;
+	flex-direction: column-reverse;
+}
+.selectList-header {
+	background-color: #89d2ff;
+	padding: 10px;
+}
+
+@media screen and (min-width: 780px) {
+	.selectList-header {
+		background-color: #ffffff;
+	}
+	.select-section {
+		display: flex;
+		flex-direction: row;
+		height: 50vh;
+		width: 100%;
+	}
+}
