@@ -114,7 +114,11 @@ form {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	width: 100%;
+	width: 90%;
+}
+.form {
+	display: flex;
+	justify-content: center;
 }
 
 .formButtonContainer {
@@ -191,11 +195,7 @@ input:focus {
 }
 
 form > * {
-	margin: 10px;
-}
-
-.sideBySide-section {
-	border: 1px solid black;
+	margin: 10px 0px 10px 0px;
 }
 
 @media screen and (min-width: 780px) {
