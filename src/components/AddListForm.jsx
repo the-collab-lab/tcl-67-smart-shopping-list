@@ -45,14 +45,14 @@ export default function AddListForm({ setListPath }) {
 			<div>
 				<h2>Create a List</h2>
 			</div>
-			<div>
+			<div className="green-background form">
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="newListName" name="newListName">
 						List Name
 					</label>
 					<input id="newListName" name="newListName" onChange={handleChange} />
 					<Button text="Create List" type="submit" color="#89D2FF" />
-					<h6>{message}</h6>
+					<small>{message}</small>
 				</form>
 			</div>
 		</div>

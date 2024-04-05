@@ -17,35 +17,37 @@ export default function SelectListForm({
 		setSelectedList(input?.split('/')[1]);
 	};
 	return (
-		<section className="sideBySide-section">
+		<div className="sideBySide-section">
 			{areListsLoading ? (
 				<div>Loading lists...</div>
 			) : (
-				<div>
-					<select
-						id="listSelector"
-						value={selectedList}
-						onChange={handleSelectChange}
-					>
-						<option>{selectedList}</option>
-						{data.map((data) => {
-							return (
-								<option key={data.path} value={data.path}>
-									{data.name}
-								</option>
-							);
-						})}
-					</select>
-					<Button
-						text="View List"
-						fn={() => navigate('/list')}
-						color="#DCFF4B"
-					/>
+				<div className="blue-background form">
+					<form>
+						<label htmlFor="listSelector">Select List</label>
+						<select
+							id="listSelector"
+							value={selectedList}
+							onChange={handleSelectChange}
+						>
+							{data.map((data) => {
+								return (
+									<option key={data.path} value={data.path}>
+										{data.name}
+									</option>
+								);
+							})}
+						</select>
+						<Button
+							text="View List"
+							fn={() => navigate('/list')}
+							color="#DCFF4B"
+						/>
+					</form>
 				</div>
 			)}
 			<div>
 				<h2>Select a List</h2>
 			</div>
-		</section>
+		</div>
 	);
 }

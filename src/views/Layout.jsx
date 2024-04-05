@@ -33,7 +33,7 @@ export function Layout() {
 				<>
 					<header className="Layout-header">
 						<a href="/">
-							<h1>Smart shopping list</h1>
+							<h1>CleverCart</h1>
 						</a>
 
 						{!isMobile && (
@@ -66,7 +66,7 @@ export function Layout() {
 			) : (
 				<>
 					<header className="Layout-header">
-						<h1>Smart shopping list</h1>
+						<h1>CleverCart</h1>
 						{!isMobile && (
 							<Button
 								fn={() => signInWithPopup(auth, new GoogleAuthProvider())}

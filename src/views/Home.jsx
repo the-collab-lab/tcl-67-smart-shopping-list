@@ -1,7 +1,7 @@
 import './Home.css';
 import AddListForm from '../components/AddListForm.jsx';
 import SelectListForm from '../components/SelectListForm.jsx';
-
+import { auth } from '../api/config.js';
 export function Home({
 	data,
 	areListsLoading,
@@ -14,7 +14,11 @@ export function Home({
 			{!listPath ? (
 				<h2>No list currently selected!</h2>
 			) : (
-				<h5>Current List:{listName}</h5>
+				<>
+					<h4>Welcome, {auth.currentUser.displayName}</h4>
+					<small>Current List:</small>
+					<h5>{listName}</h5>
+				</>
 			)}
 
 			<AddListForm setListPath={setListPath} />
