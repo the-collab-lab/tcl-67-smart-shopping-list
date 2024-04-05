@@ -25,6 +25,7 @@ export const SignInButton = ({ className, value }) => (
  */
 export const SignOutButton = () => (
 	<Button
+		className="signOut"
 		text="Sign out"
 		type="button"
 		fn={() => auth.signOut()}
