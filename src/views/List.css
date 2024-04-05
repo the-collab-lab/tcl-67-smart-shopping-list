@@ -15,9 +15,6 @@ section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border-bottom-width: 1px;
-	border-bottom-color: black;
-	border-bottom-style: solid;
 	margin-bottom: auto;
 }
 

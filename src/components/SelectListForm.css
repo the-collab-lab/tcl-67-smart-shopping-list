@@ -19,5 +19,6 @@
 		flex-direction: row;
 		height: 50vh;
 		width: 100%;
+		border-top: none;
 	}
 }

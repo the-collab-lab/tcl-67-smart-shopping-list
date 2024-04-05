@@ -14,13 +14,17 @@
 	padding: 50px;
 	border: 1px solid black;
 }
+.loggedOut-image {
+	background-image: url('../../public/img/loggedOut-image.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 
 @media screen and (min-width: 780px) {
 	.loggedOut-message > * {
 		padding: 10px;
 	}
 
-	/* loggedOut-image */
 	.sideBySide-loggedOut {
 		display: flex;
 		flex-direction: row;

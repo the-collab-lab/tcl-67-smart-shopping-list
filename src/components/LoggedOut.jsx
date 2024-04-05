@@ -6,7 +6,7 @@ export default function LoggedOut() {
 				<h2>Plan your next grocery run with CleverCart.</h2>
 				<h4>Log in to view your lists.</h4>
 			</div>
-			<div className="loggedOut-image">IMAGE PLACEHOLDER</div>
+			<div className="loggedOut-image" />
 		</section>
 	);
 }

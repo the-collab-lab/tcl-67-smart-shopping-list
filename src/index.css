@@ -78,13 +78,13 @@ h2 {
 
 h3,
 select,
+input,
 option {
 	font-size: 30px;
 	font-weight: 400;
 }
 
 h4,
-input,
 label {
 	font-size: 25px;
 	font-weight: 400;
@@ -163,7 +163,8 @@ button:hover {
 	transform: translate(2px, 2px);
 }
 
-input {
+input,
+select {
 	border: solid 2px black;
 }
 
@@ -183,6 +184,10 @@ form > * {
 	margin: 10px;
 }
 
+.sideBySide-section {
+	border: 1px solid black;
+}
+
 @media screen and (min-width: 780px) {
 	h1 {
 		font-size: 48px;
@@ -197,7 +202,8 @@ form > * {
 		font-size: 28px;
 	}
 
-	select {
+	select,
+	input {
 		font-size: 28px;
 	}
 
@@ -207,9 +213,9 @@ form > * {
 		text-align: left;
 	}
 
-	input {
+	/* input {
 		font-size: 40px;
-	}
+	} */
 
 	h5,
 	label[for='email'],
@@ -229,6 +235,7 @@ form > * {
 		flex-direction: row;
 		height: 50vh;
 		width: 100%;
+		border: none;
 	}
 	.sideBySide-section > div {
 		display: flex;
