@@ -51,7 +51,13 @@ export default function AddListForm({ setListPath }) {
 						List Name
 					</label>
 					<input id="newListName" name="newListName" onChange={handleChange} />
-					<Button text="Create List" type="submit" color="#89D2FF" />
+					<Button
+						text="Create List"
+						type="submit"
+						color="#89D2FF"
+						shadowAndContainerWidth="163px"
+						buttonWidth="155px"
+					/>
 					<h6>{message}</h6>
 				</form>
 			</div>

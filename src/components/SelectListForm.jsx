@@ -40,6 +40,8 @@ export default function SelectListForm({
 						text="View List"
 						fn={() => navigate('/list')}
 						color="#DCFF4B"
+						shadowAndContainerWidth="163px"
+						buttonWidth="155px"
 					/>
 				</div>
 			)}

@@ -117,7 +117,6 @@ form {
 .buttonContainer,
 .squareButtonContainer {
 	display: grid;
-	justify-content: center;
 }
 
 .buttonContainer > *,
@@ -127,10 +126,12 @@ form {
 }
 
 button {
-	width: 150px;
+	/* width: 150px; */
 	height: 55px;
+	/* padding: 0px 30px 0px 30px; */
 	font-size: 20px;
 	border: 2px solid black;
+	white-space: nowrap;
 }
 .buttonBack {
 	width: 158px;
@@ -140,14 +141,6 @@ button {
 
 button:hover {
 	transform: translate(8px, 8px);
-}
-
-.buttonSquare {
-	height: 55px;
-	width: 55px;
-	background-color: var(--blue);
-	color: white;
-	font-size: 40px;
 }
 
 .buttonBackSquare {

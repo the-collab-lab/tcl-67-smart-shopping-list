@@ -46,6 +46,8 @@ export function Layout() {
 									color={'yellow'}
 									className={'logOut'}
 									text={'Log Out'}
+									buttonWidth={'155px'}
+									shadowAndContainerWidth={'163px'}
 								/>
 							</div>
 						)}
@@ -59,7 +61,8 @@ export function Layout() {
 							color={'yellow'}
 							className={'logOut'}
 							text={'Log Out'}
-							buttonWidth={'100%'}
+							buttonWidth={'98%'}
+							shadowAndContainerWidth={'100%'}
 						/>
 					)}
 				</>
@@ -73,6 +76,8 @@ export function Layout() {
 								color={'yellow'}
 								className={'logIn'}
 								text={'Log In'}
+								buttonWidth={'155px'}
+								shadowAndContainerWidth={'163px'}
 							/>
 						)}
 					</header>
@@ -84,6 +89,7 @@ export function Layout() {
 							className={'logIn'}
 							text={'Log In'}
 							buttonWidth={'98%'}
+							shadowAndContainerWidth={'100%'}
 						/>
 					)}
 				</>

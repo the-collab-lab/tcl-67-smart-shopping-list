@@ -57,6 +57,8 @@ const ShareForm = ({ listPath }) => {
 							text="Send List"
 							color="#89D2FF"
 							testId="shareForm-submit-button"
+							shadowAndContainerWidth="163px"
+							buttonWidth="155px"
 						/>
 					</div>
 					<h6 data-testid="shareForm-validation-message">{message}</h6>

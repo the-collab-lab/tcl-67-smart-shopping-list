@@ -66,15 +66,14 @@ export default function AddItemForm({ listPath, data }) {
 	return (
 		<section className="addItemSection">
 			<header className="addItemHeader">
-				<div className="squareButtonContainer">
-					<div className="buttonBackSquare"></div>
-					<button
-						className={(addItemToggle, 'addItemButton, buttonSquare')}
-						onClick={(e) => handleAddItemToggle(e)}
-					>
-						{addItemToggle}
-					</button>
-				</div>
+				<Button
+					className={(addItemToggle, 'addItemButton')}
+					fn={(e) => handleAddItemToggle(e)}
+					color="#89D2FF"
+					text={addItemToggle}
+					buttonWidth="55px"
+					shadowAndContainerWidth="63px"
+				/>
 
 				<h2 data-testid="addItemForm-header" id="addItemH2">
 					Add Item
@@ -100,37 +99,49 @@ export default function AddItemForm({ listPath, data }) {
 				</div>
 				<h4>When would you like a reminder to buy this item?</h4>
 				<div className="addItemButtonGroup">
-					<button
-						className={'durationButton'}
-						onClick={(e) => {
+					<Button
+						className="durationButton"
+						fn={(e) => {
 							handleSelection(e);
 						}}
 						value={7}
-						data-testId="replaceTime"
-					>
-						7 Days
-					</button>
-					<button
-						className={'durationButton'}
-						onClick={(e) => {
+						testId="replaceTime"
+						text="7 Days"
+						shadowAndContainerWidth="110px"
+						buttonWidth="102px"
+					/>
+
+					<Button
+						className="durationButton"
+						fn={(e) => {
 							handleSelection(e);
 						}}
 						value={14}
-					>
-						14 Days
-					</button>
-					<button
-						className={'durationButton'}
-						onClick={(e) => {
+						text="14 Days"
+						shadowAndContainerWidth="110px"
+						buttonWidth="102px"
+					/>
+
+					<Button
+						className="durationButton"
+						fn={(e) => {
 							handleSelection(e);
 						}}
 						value={30}
-					>
-						30 Days
-					</button>
+						text="30 Days"
+						shadowAndContainerWidth="110px"
+						buttonWidth="102px"
+					/>
 				</div>
 				<div>
-					<Button text="Add Item" testId="submit-button" color="#DCFF4B" />
+					<Button
+						color="#DCFF4B"
+						value={7}
+						testId="submit-button"
+						text="Add Item"
+						shadowAndContainerWidth="163px"
+						buttonWidth="155px"
+					/>
 				</div>
 				<div>
 					<h6 data-testid="addItemFormMessage">{message}</h6>
