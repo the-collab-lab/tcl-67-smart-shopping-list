@@ -168,6 +168,11 @@ input:focus {
 	outline: var(--black);
 }
 
+.logIn,
+.logOut {
+	font-size: 18px;
+}
+
 @media screen and (min-width: 780px) {
 	h1 {
 		font-size: 70px;

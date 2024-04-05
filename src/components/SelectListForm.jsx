@@ -4,11 +4,12 @@ import Button from './Button';
 
 export default function SelectListForm({
 	data,
-	listPath,
 	areListsLoading,
 	setListPath,
+	listName,
 }) {
-	const [selectedList, setSelectedList] = useState('');
+	const initialListState = listName ? listName : 'Select a list';
+	const [selectedList, setSelectedList] = useState(initialListState);
 	const navigate = useNavigate();
 	const handleSelectChange = (e) => {
 		const input = e.target.value;
@@ -21,12 +22,12 @@ export default function SelectListForm({
 				<div>Loading lists...</div>
 			) : (
 				<div>
-					<label htmlFor="listSelector">Select List</label>
 					<select
 						id="listSelector"
 						value={selectedList}
 						onChange={handleSelectChange}
 					>
+						<option>{selectedList}</option>
 						{data.map((data) => {
 							return (
 								<option key={data.path} value={data.path}>
