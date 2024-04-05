@@ -1,0 +1,41 @@
+.sideBySide-loggedOut {
+	display: flex;
+	flex-direction: column;
+	height: 90vh;
+	width: 100%;
+}
+
+.sideBySide-loggedOut > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	padding: 50px;
+	border: 1px solid black;
+}
+
+@media screen and (min-width: 780px) {
+	.loggedOut-message > * {
+		padding: 10px;
+	}
+
+	/* loggedOut-image */
+	.sideBySide-loggedOut {
+		display: flex;
+		flex-direction: row;
+		height: 90vh;
+		width: 100%;
+	}
+
+	.sideBySide-loggedOut > div {
+		display: flex;
+		flex-direction: column;
+		/* justify-content: center; */
+		/* align-items: left; */
+		height: 100%;
+		width: 100%;
+		padding: 50px;
+		border: 1px solid black;
+	}
+}

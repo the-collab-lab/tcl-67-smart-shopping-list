@@ -175,24 +175,6 @@ input:focus {
 	padding-bottom: 10px;
 }
 
-.sideBySide-loggedOut {
-	display: flex;
-	flex-direction: column;
-	height: 90vh;
-	width: 100%;
-}
-
-.sideBySide-loggedOut > div {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	width: 100%;
-	padding: 50px;
-	border: 1px solid black;
-}
-
 .header {
 	background-color: white;
 }
@@ -203,25 +185,26 @@ form > * {
 
 @media screen and (min-width: 780px) {
 	h1 {
-		font-size: 70px;
+		font-size: 48px;
 	}
 
 	h2 {
-		font-size: 60px;
+		font-size: 36px;
 	}
 
 	h3,
 	option {
-		font-size: 60px;
+		font-size: 28px;
 	}
 
 	select {
-		font-size: 40px;
+		font-size: 28px;
 	}
 
 	h4,
 	label {
-		font-size: 50px;
+		font-size: 22px;
+		text-align: left;
 	}
 
 	input {
@@ -255,24 +238,6 @@ form > * {
 		height: 100%;
 		width: 100%;
 		min-width: 50%;
-		padding: 50px;
-		border: 1px solid black;
-	}
-
-	.sideBySide-loggedOut {
-		display: flex;
-		flex-direction: row;
-		height: 90vh;
-		width: 100%;
-	}
-
-	.sideBySide-loggedOut > div {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: 100%;
-		width: 100%;
 		padding: 50px;
 		border: 1px solid black;
 	}
