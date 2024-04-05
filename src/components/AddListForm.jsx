@@ -3,6 +3,7 @@ import { createList } from '../api/index.js';
 import { auth } from '../api/config.js';
 import { useNavigate } from 'react-router-dom';
 import Button from './Button.jsx';
+import './AddListForm.css';
 
 export default function AddListForm({ setListPath }) {
 	const [newListName, setNewListName] = useState('');
@@ -41,11 +42,11 @@ export default function AddListForm({ setListPath }) {
 	};
 
 	return (
-		<div className="sideBySide-section">
-			<div>
+		<div className="sideBySide-section createList-section">
+			<div className="createList-header">
 				<h2>Create a List</h2>
 			</div>
-			<div>
+			<div className="green-background form">
 				<form onSubmit={handleSubmit}>
 					<label htmlFor="newListName" name="newListName">
 						List Name

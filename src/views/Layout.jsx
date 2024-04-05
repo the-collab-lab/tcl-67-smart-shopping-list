@@ -33,14 +33,11 @@ export function Layout() {
 				<>
 					<header className="Layout-header">
 						<a href="/">
-							<h1>Smart shopping list</h1>
+							<h1>CleverCart</h1>
 						</a>
 
 						{!isMobile && (
 							<div>
-								<div>
-									<span>Welcome, {auth.currentUser.displayName}</span>
-								</div>
 								<Button
 									fn={() => auth.signOut()}
 									color={'yellow'}
@@ -69,7 +66,7 @@ export function Layout() {
 			) : (
 				<>
 					<header className="Layout-header">
-						<h1>Smart shopping list</h1>
+						<h1>CleverCart</h1>
 						{!isMobile && (
 							<Button
 								fn={() => signInWithPopup(auth, new GoogleAuthProvider())}
