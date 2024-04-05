@@ -38,9 +38,6 @@ export function Layout() {
 
 						{!isMobile && (
 							<div>
-								<div>
-									<span>Welcome, {auth.currentUser.displayName}</span>
-								</div>
 								<Button
 									fn={() => auth.signOut()}
 									color={'yellow'}
