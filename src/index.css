@@ -66,7 +66,8 @@ select,
 option,
 label,
 small,
-button {
+button,
+p {
 	font-family: 'Work Sans';
 	margin: 0px;
 }
@@ -114,10 +115,15 @@ form {
 	width: 70%;
 }
 
+.formButtonContainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
 .buttonContainer,
 .deleteButtonContainer {
 	display: grid;
-	justify-content: center;
 }
 
 .buttonContainer > *,
@@ -156,10 +162,16 @@ button:hover {
 
 input {
 	border: solid 2px black;
+	width: 100%;
+	padding: 15px;
 }
 
 input:focus {
 	outline: var(--black);
+}
+
+#itemName {
+	width: clamp(200px, 80%, 600px);
 }
 
 .logIn,

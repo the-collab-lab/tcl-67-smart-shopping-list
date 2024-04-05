@@ -36,13 +36,15 @@ export default function SelectListForm({
 							);
 						})}
 					</select>
-					<Button
-						text="View List"
-						fn={() => navigate('/list')}
-						color="#DCFF4B"
-						shadowAndContainerWidth="163px"
-						buttonWidth="155px"
-					/>
+					<div className="formButtonContainer">
+						<Button
+							text="View List"
+							fn={() => navigate('/list')}
+							color="#DCFF4B"
+							shadowAndContainerWidth="163px"
+							buttonWidth="155px"
+						/>
+					</div>
 				</div>
 			)}
 			<div>

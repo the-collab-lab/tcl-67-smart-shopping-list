@@ -133,7 +133,7 @@ export default function AddItemForm({ listPath, data }) {
 						buttonWidth="102px"
 					/>
 				</div>
-				<div>
+				<div className="formButtonContainer">
 					<Button
 						color="#DCFF4B"
 						value={7}
