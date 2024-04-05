@@ -107,14 +107,16 @@ export function ListItem({ item, listPath }) {
 				<p className="listItemName">{name}</p>
 				<p className="listItemUrgency">{urgency}</p>
 			</div>
-
-			<div className="listDelete">
-				<Button
-					className="square"
-					fn={handleDeleteItem}
-					text="X"
-					color="#89D2FF"
-				></Button>
+			<div className="squareButtonContainer">
+				<div className="buttonBackSquare"></div>
+				<button
+					className="buttonSquare buttonDelete"
+					onClick={() => {
+						handleDeleteItem();
+					}}
+				>
+					<p>+</p>
+				</button>
 			</div>
 			{deleteError && <p>Error deleting item</p>}
 			{deleteIsLoading && <p>Deleting item...</p>}

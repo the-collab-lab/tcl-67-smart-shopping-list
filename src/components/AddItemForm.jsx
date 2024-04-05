@@ -66,12 +66,15 @@ export default function AddItemForm({ listPath, data }) {
 	return (
 		<section className="addItemSection">
 			<header className="addItemHeader">
-				<button
-					className={(addItemToggle, 'addItemButton')}
-					onClick={(e) => handleAddItemToggle(e)}
-				>
-					{addItemToggle}
-				</button>
+				<div className="squareButtonContainer">
+					<div className="buttonBackSquare"></div>
+					<button
+						className={(addItemToggle, 'addItemButton, buttonSquare')}
+						onClick={(e) => handleAddItemToggle(e)}
+					>
+						{addItemToggle}
+					</button>
+				</div>
 
 				<h2 data-testid="addItemForm-header" id="addItemH2">
 					Add Item

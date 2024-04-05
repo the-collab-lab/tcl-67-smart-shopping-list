@@ -65,7 +65,8 @@ input,
 select,
 option,
 label,
-small {
+small,
+button {
 	font-family: 'Work Sans';
 	margin: 0px;
 }
@@ -112,21 +113,51 @@ form {
 	flex-direction: column;
 	width: 70%;
 }
+
+.buttonContainer,
+.squareButtonContainer {
+	display: grid;
+	justify-content: center;
+}
+
+.buttonContainer > *,
+.squareButtonContainer > * {
+	grid-column-start: 1;
+	grid-row-start: 1;
+}
+
 button {
 	width: 150px;
 	height: 55px;
 	font-size: 20px;
-	border: 1px solid black;
-	box-shadow: 3px 3px 0px 3px rgba(0, 0, 0, 1);
+	border: 2px solid black;
 }
-
-button.square {
-	height: 55px;
-	width: 55px;
+.buttonBack {
+	width: 158px;
+	height: 63px;
+	background-color: black;
 }
 
 button:hover {
-	box-shadow: -3px -3px 0px 3px rgba(0, 0, 0, 1);
+	transform: translate(8px, 8px);
+}
+
+.buttonSquare {
+	height: 55px;
+	width: 55px;
+	background-color: var(--blue);
+	color: white;
+	font-size: 40px;
+}
+
+.buttonBackSquare {
+	width: 63px;
+	height: 63px;
+	background-color: black;
+}
+
+.bottonSquare:hover {
+	transform: translate(2px, 2px);
 }
 
 input {
