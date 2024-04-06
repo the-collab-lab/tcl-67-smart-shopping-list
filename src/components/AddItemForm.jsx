@@ -3,7 +3,7 @@ import { useState, useMemo } from 'react';
 import { useMutation } from 'react-query';
 import { normalizeInput } from '../utils';
 import Button from './Button';
-import './addItemForm.css';
+import './AddItemForm.css';
 
 async function addItemToList({ listPath, userItem, itemDuration }) {
 	return await addItem(listPath, {
