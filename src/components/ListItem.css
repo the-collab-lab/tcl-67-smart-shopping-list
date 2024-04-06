@@ -1,0 +1,80 @@
+.listItemRow {
+	display: flex;
+	width: 100%;
+	background-color: white;
+}
+
+.listItemRow:hover {
+	background-color: #ddf2ff;
+}
+
+.listItemRow input {
+	cursor: pointer;
+	width: 60px;
+}
+
+.checkboxBackground {
+	border: black solid 2px;
+	background-color: black;
+}
+
+input[type='checkbox'] {
+	width: 60px;
+	height: 55px;
+	border: 1px solid black;
+	box-shadow: 3px 3px 0px 3px rgba(0, 0, 0, 1);
+	background-color: white;
+}
+
+input[type='checkbox']:checked {
+	accent-color: #89d2ff;
+}
+
+.nameAndUrgency {
+	display: flex;
+	flex-direction: column;
+	padding-left: 28px;
+	text-align: left;
+	width: 100%;
+	justify-content: center;
+	border-top: 3px solid black;
+}
+
+.buttonDelete {
+	height: 55px;
+	width: 55px;
+	background-color: var(--blue);
+	color: white;
+	font-size: 40px;
+}
+
+.buttonDelete p {
+	transform: rotate(45deg);
+}
+
+@media screen and (min-width: 780px) {
+	.listItemRow {
+		height: max-content;
+	}
+
+	.nameAndUrgency {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+	}
+
+	.nameAndUrgency > * {
+		height: 100%;
+		padding: 10px;
+	}
+
+	.listItemUrgency {
+		border-left: 3px solid black;
+	}
+
+	.nameAndUrgency :nth-child(1),
+	.nameAndUrgency :nth-child(2) {
+		font-size: 30px;
+		font-weight: 400;
+	}
+}

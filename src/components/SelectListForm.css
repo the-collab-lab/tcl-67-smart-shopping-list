@@ -4,10 +4,16 @@
 .select-section {
 	display: flex;
 	flex-direction: column-reverse;
+	padding: 33px 20px 0 20px;
+	background-color: #89d2ff;
+	border: black solid 3px;
+	border-top: 0;
 }
 .selectList-header {
-	background-color: #89d2ff;
 	padding: 10px;
+}
+.viewListBtnDiv {
+	background-color: #89d2ff;
 }
 
 @media screen and (min-width: 780px) {
@@ -20,5 +26,6 @@
 		height: 50vh;
 		width: 100%;
 		border-top: none;
+		padding: 0;
 	}
 }

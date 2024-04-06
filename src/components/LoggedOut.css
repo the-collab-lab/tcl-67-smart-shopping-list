@@ -19,6 +19,9 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+.loggedOut-message {
+	background-color: white;
+}
 
 @media screen and (min-width: 780px) {
 	.loggedOut-message > * {

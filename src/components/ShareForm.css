@@ -1,0 +1,21 @@
+.shareForm {
+	border: 3px black solid;
+	display: flex;
+	padding: 36px 20px 15px 20px;
+	background-color: white;
+}
+
+.formContainer > * {
+	margin: auto;
+}
+
+@media screen and (min-width: 780px) {
+	.shareFormHeader {
+		background-color: white;
+	}
+
+	.shareForm {
+		padding: 0;
+		background-color: var(--green);
+	}
+}

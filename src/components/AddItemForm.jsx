@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react';
 import { useMutation } from 'react-query';
 import { normalizeInput } from '../utils';
 import Button from './Button';
+import './AddItemForm.css';
 
 async function addItemToList({ listPath, userItem, itemDuration }) {
 	return await addItem(listPath, {
@@ -69,7 +70,7 @@ export default function AddItemForm({ listPath, data }) {
 				<Button
 					className={(addItemToggle, 'addItemButton')}
 					fn={(e) => handleAddItemToggle(e)}
-					color="#89D2FF"
+					color="#DCFF4B"
 					text={addItemToggle}
 					buttonWidth="55px"
 					shadowAndContainerWidth="63px"

@@ -3,6 +3,7 @@ import { shareList } from '../api/firebase';
 import { useAuth } from '../api';
 import { useMutation } from 'react-query';
 import Button from './Button';
+import './ShareForm.css';
 
 async function shareListWithUser({ listPath, user, email }) {
 	return await shareList(listPath, user.uid, email);
@@ -37,7 +38,10 @@ const ShareForm = ({ listPath }) => {
 	};
 	return (
 		<section className="sideBySide-section shareForm">
-			<div>
+			<div className="shareFormHeader">
+				<h2 data-testid="shareForm-header">Share your list with a Collabie!</h2>
+			</div>
+			<div className="formContainer">
 				<form onSubmit={handleSubmit}>
 					<div>
 						<label htmlFor="email">
@@ -72,10 +76,6 @@ const ShareForm = ({ listPath }) => {
 					{error && <h6>Unable to share item with user</h6>}
 					{isLoading && <h6>Sharing...</h6>}
 				</form>
-			</div>
-
-			<div>
-				<h2 data-testid="shareForm-header">Share your list with a Collabie!</h2>
 			</div>
 		</section>
 	);
