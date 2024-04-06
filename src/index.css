@@ -66,7 +66,8 @@ select,
 option,
 label,
 small,
-button {
+button,
+p {
 	font-family: 'Work Sans';
 	margin: 0px;
 }
@@ -112,28 +113,44 @@ small {
 form {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	justify-content: center;
+	width: 90%;
+}
+.form {
+	display: flex;
+	justify-content: center;
+}
+
+.formButtonContainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.formButtonContainer {
+	display: flex;
 	justify-content: center;
 	width: 100%;
 }
 
 .buttonContainer,
-.squareButtonContainer {
+.deleteButtonContainer {
 	display: grid;
-	justify-content: center;
 }
 
 .buttonContainer > *,
-.squareButtonContainer > * {
+.deleteButtonContainer > * {
 	grid-column-start: 1;
 	grid-row-start: 1;
 }
 
 button {
-	width: 150px;
+	/* width: 150px; */
 	height: 55px;
+	/* padding: 0px 30px 0px 30px; */
 	font-size: 20px;
 	border: 2px solid black;
+	white-space: nowrap;
 }
 .buttonBack {
 	width: 158px;
@@ -143,14 +160,6 @@ button {
 
 button:hover {
 	transform: translate(8px, 8px);
-}
-
-.buttonSquare {
-	height: 55px;
-	width: 55px;
-	background-color: var(--blue);
-	color: white;
-	font-size: 40px;
 }
 
 .buttonBackSquare {
@@ -166,12 +175,17 @@ button:hover {
 input,
 select {
 	border: solid 2px black;
+	width: 100%;
+	padding: 15px;
 }
 
 input:focus {
 	outline: var(--black);
 }
 
+#itemName {
+	width: clamp(200px, 80%, 600px);
+}
 .form {
 	padding-bottom: 10px;
 }
@@ -181,11 +195,7 @@ input:focus {
 }
 
 form > * {
-	margin: 10px;
-}
-
-.sideBySide-section {
-	border: 1px solid black;
+	margin: 10px 0px 10px 0px;
 }
 
 @media screen and (min-width: 780px) {
@@ -210,12 +220,8 @@ form > * {
 	h4,
 	label {
 		font-size: 22px;
-		text-align: left;
+		text-align: center;
 	}
-
-	/* input {
-		font-size: 40px;
-	} */
 
 	h5,
 	label[for='email'],

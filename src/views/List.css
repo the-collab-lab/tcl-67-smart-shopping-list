@@ -59,6 +59,11 @@ section {
 	gap: 1em;
 }
 
+.addItemHeader button {
+	color: white;
+	font-size: 40px;
+}
+
 .addItemForm span {
 	margin-bottom: 1em;
 }
@@ -122,7 +127,15 @@ input[type='checkbox'] {
 	border-top: 3px solid black;
 }
 
-.buttonSquare p {
+.buttonDelete {
+	height: 55px;
+	width: 55px;
+	background-color: var(--blue);
+	color: white;
+	font-size: 40px;
+}
+
+.buttonDelete p {
 	transform: rotate(45deg);
 }
 

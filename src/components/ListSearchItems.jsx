@@ -42,7 +42,13 @@ export default function ListSearchItems({ data, listPath }) {
 						/>
 					</form>
 
-					<Button text="Clear" fn={clearSearch} color="#DCFF4B" />
+					<Button
+						text="Clear"
+						fn={clearSearch}
+						color="#DCFF4B"
+						shadowAndContainerWidth="100px"
+						buttonWidth="92px"
+					/>
 				</div>
 			)}
 
