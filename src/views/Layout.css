@@ -20,6 +20,8 @@
 
 .Layout-header {
 	text-align: center;
+	border: 3px solid black;
+	padding: 27px 24px 20px 24px;
 }
 
 @media screen and (min-width: 780px) {
