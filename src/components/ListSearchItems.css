@@ -18,6 +18,10 @@
 	padding-bottom: 10px;
 }
 
+.searchSection input {
+	background-color: #f9ffde;
+}
+
 @media screen and (min-width: 780px) {
 	.listSearchItems {
 		display: flex;
