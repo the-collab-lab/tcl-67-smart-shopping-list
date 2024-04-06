@@ -69,7 +69,7 @@ export default function AddItemForm({ listPath, data }) {
 				<Button
 					className={(addItemToggle, 'addItemButton')}
 					fn={(e) => handleAddItemToggle(e)}
-					color="#89D2FF"
+					color="#DCFF4B"
 					text={addItemToggle}
 					buttonWidth="55px"
 					shadowAndContainerWidth="63px"

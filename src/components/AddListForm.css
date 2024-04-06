@@ -10,11 +10,117 @@
 	border-top: 0;
 }
 
+.addItemSection {
+	padding: 20px;
+	background-color: var(--blue);
+	border: black 3px solid;
+	border-top: 0;
+}
+
+.addItemForm {
+	display: flex;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.addItemForm > :nth-child(1) {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.addItemMinimized {
+	display: none;
+	animation-name: slideUp;
+	animation-duration: 0.2;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+.addItemMaximized {
+	overflow: hidden;
+	animation-name: slideDown;
+	animation-duration: 0.2s;
+	animation-timing-function: linear;
+}
+
+.addItemHeader {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1em;
+}
+
+.addItemHeader button {
+	color: black;
+	font-size: 40px;
+}
+
+.addItemForm span {
+	margin-bottom: 1em;
+}
+
+.addItemButtonGroup {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2em;
+	margin: 30px;
+}
+
+.durationButton {
+	width: 100px;
+	background-color: var(--yellow);
+}
+
 @media screen and (min-width: 780px) {
 	.createList-header {
 		background-color: #ffffff;
 	}
 	.createList-section {
 		padding: 0;
+	}
+
+	.addItemForm {
+		min-width: 100%;
+	}
+	.addItemButtonGroup {
+		margin-top: 3em;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		max-width: 80%;
+		margin: auto;
+	}
+
+	.submitButton {
+		width: 14em;
+	}
+
+	@keyframes slideDown {
+		from {
+			height: 5em;
+		}
+
+		to {
+			height: 45em;
+		}
+	}
+
+	.addItemMinimized {
+		overflow: hidden;
+		animation-name: slideUp;
+		animation-duration: 0.2;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+	}
+
+	.addItemMaximized {
+		overflow: hidden;
+		animation-name: slideDown;
+		animation-duration: 0.2s;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
 	}
 }

@@ -1,0 +1,50 @@
+.listSearchItems {
+	width: 100%;
+	background-color: var(--green);
+}
+
+.searchSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 33px 20px 48px 20px;
+	border: 3px solid black;
+	border-top: 0;
+	margin: 0;
+	width: 100%;
+}
+
+.searchSection label {
+	padding-bottom: 10px;
+}
+
+@media screen and (min-width: 780px) {
+	.listSearchItems {
+		display: flex;
+		min-width: 100%;
+	}
+
+	.searchSection {
+		display: flex;
+		flex-direction: row;
+		height: max-content;
+		justify-content: space-between;
+		gap: 0;
+		margin: 0;
+		width: 100%;
+		padding: 0;
+		border-bottom: 0;
+	}
+
+	.searchSection label {
+		font-size: 30px;
+		font-weight: 500;
+		width: 50%;
+		padding: 0;
+	}
+
+	.searchSection form {
+		height: 100%;
+		width: 100%;
+	}
+}

@@ -19,9 +19,10 @@ export function List({ data, isShoppingListLoading, listPath, listName }) {
 
 	return (
 		<>
-			<section>
+			<div className="currentList">
+				<small>Current List:</small>
 				<h2>{listName}</h2>
-			</section>
+			</div>
 			<AddItemForm listPath={listPath} data={data} />
 			<ListSearchItems listPath={listPath} data={data} />
 			<ShareForm listPath={listPath} />

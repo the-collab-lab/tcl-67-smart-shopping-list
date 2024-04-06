@@ -2,6 +2,7 @@ import { comparePurchaseUrgency } from '../api';
 import { ListItem } from './ListItem';
 import { useState } from 'react';
 import Button from './Button';
+import './ListSearchItems.css';
 
 export default function ListSearchItems({ data, listPath }) {
 	const [input, setInput] = useState('');
@@ -45,7 +46,7 @@ export default function ListSearchItems({ data, listPath }) {
 					<Button
 						text="Clear"
 						fn={clearSearch}
-						color="#DCFF4B"
+						color="#89D2FF"
 						shadowAndContainerWidth="100px"
 						buttonWidth="92px"
 					/>

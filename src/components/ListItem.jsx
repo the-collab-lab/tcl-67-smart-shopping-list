@@ -4,6 +4,7 @@ import { useMutation } from 'react-query';
 import { getNextPurchasedDate } from '../utils';
 import { deleteItem } from '../api/firebase';
 import { compareIfDateIsLessThan24Hours, getDaysBetweenDates } from '../utils';
+import './ListItem.css';
 
 export function ListItem({ item, listPath }) {
 	const { id, totalPurchases, name, dateLastPurchased, dateNextPurchased } =
