@@ -4,6 +4,10 @@
 	background-color: white;
 }
 
+.listItemRow:hover {
+	background-color: #ddf2ff;
+}
+
 .listItemRow input {
 	cursor: pointer;
 	width: 60px;
