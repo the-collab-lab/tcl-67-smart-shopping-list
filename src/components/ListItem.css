@@ -13,17 +13,21 @@
 	width: 60px;
 }
 
+.checkboxBackground {
+	border: black solid 2px;
+	background-color: black;
+}
+
 input[type='checkbox'] {
-	accent-color: #89d2ff;
 	width: 60px;
 	height: 55px;
 	border: 1px solid black;
 	box-shadow: 3px 3px 0px 3px rgba(0, 0, 0, 1);
+	background-color: white;
 }
 
-.checkboxBackground {
-	border: black solid 2px;
-	background-color: black;
+input[type='checkbox']:checked {
+	accent-color: #89d2ff;
 }
 
 .nameAndUrgency {

@@ -7,10 +7,16 @@ label {
 	padding: 22px 24px 20px 24px;
 	border: solid black 3px;
 	border-top: 0;
+	background-color: white;
 }
 
 h4 {
 	padding-bottom: 10px;
+}
+
+input,
+select {
+	background-color: white;
 }
 
 @media screen and (min-width: 780px) {

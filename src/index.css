@@ -198,6 +198,25 @@ form > * {
 	margin: 10px 0px 10px 0px;
 }
 
+/* Specifically to handle dark-mode preferred systems */
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+input,
+small,
+label,
+button,
+select {
+	color: black;
+}
+
+/* div {
+	background-color: white;
+} */
+
 @media screen and (min-width: 780px) {
 	h1 {
 		font-size: 48px;

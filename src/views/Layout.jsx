@@ -79,16 +79,18 @@ export function Layout() {
 						)}
 					</header>
 					<LoggedOut />
-					{isMobile && (
-						<Button
-							fn={() => signInWithPopup(auth, new GoogleAuthProvider())}
-							color={'yellow'}
-							className={'logIn'}
-							text={'Log In'}
-							buttonWidth={'98%'}
-							shadowAndContainerWidth={'100%'}
-						/>
-					)}
+					<div>
+						{isMobile && (
+							<Button
+								fn={() => signInWithPopup(auth, new GoogleAuthProvider())}
+								color={'yellow'}
+								className={'logIn'}
+								text={'Log In'}
+								buttonWidth={'98%'}
+								shadowAndContainerWidth={'100%'}
+							/>
+						)}
+					</div>
 				</>
 			)}
 		</div>

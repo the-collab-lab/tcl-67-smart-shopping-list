@@ -12,6 +12,9 @@
 .selectList-header {
 	padding: 10px;
 }
+.viewListBtnDiv {
+	background-color: #89d2ff;
+}
 
 @media screen and (min-width: 780px) {
 	.selectList-header {

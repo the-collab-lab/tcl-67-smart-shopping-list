@@ -40,7 +40,7 @@ export default function SelectListForm({
 								);
 							})}
 						</select>
-						<div className="formButtonContainer">
+						<div className="formButtonContainer viewListBtnDiv">
 							<Button
 								text="View List"
 								fn={() => navigate('/list')}

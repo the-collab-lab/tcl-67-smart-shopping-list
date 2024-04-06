@@ -52,7 +52,7 @@ export default function AddListForm({ setListPath }) {
 						List Name
 					</label>
 					<input id="newListName" name="newListName" onChange={handleChange} />
-					<div className="formButtonContainer">
+					<div className="formButtonContainer createListBtnDiv">
 						<Button
 							text="Create List"
 							type="submit"

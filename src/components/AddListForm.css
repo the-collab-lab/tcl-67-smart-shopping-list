@@ -3,6 +3,10 @@
 	padding: 10px;
 }
 
+.green-background {
+	background-color: #dcff4b;
+}
+
 .createList-section {
 	background-color: #dcff4b;
 	padding: 33px 20px 0 20px;
@@ -72,6 +76,10 @@
 .durationButton {
 	width: 100px;
 	background-color: var(--yellow);
+}
+
+.createListBtnDiv {
+	background-color: #dcff4b;
 }
 
 @media screen and (min-width: 780px) {

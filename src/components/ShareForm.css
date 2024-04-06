@@ -2,6 +2,7 @@
 	border: 3px black solid;
 	display: flex;
 	padding: 36px 20px 15px 20px;
+	background-color: white;
 }
 
 .formContainer > * {
